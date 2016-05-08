@@ -1,0 +1,12 @@
+﻿@model List<Mooshak2.Models.Entity.Student>
+@{
+    Layout = "~/Views/Shared/StudentLayout.cshtml";
+}
+
+<h2>Here is a list of the student (should be assignments)</h2>
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>@item.userName</li>
+    }
+</ul>

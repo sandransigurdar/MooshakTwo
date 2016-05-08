@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mooshak2", "Mooshak2\Mooshak2.csproj", "{F1A3F67A-7F06-4463-9E20-96A725001922}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mooshak2.Tests", "Mooshak2.Tests\Mooshak2.Tests.csproj", "{8658A9C5-19EB-40CA-A1B8-B0D1BC336078}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F1A3F67A-7F06-4463-9E20-96A725001922}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1A3F67A-7F06-4463-9E20-96A725001922}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1A3F67A-7F06-4463-9E20-96A725001922}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1A3F67A-7F06-4463-9E20-96A725001922}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8658A9C5-19EB-40CA-A1B8-B0D1BC336078}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8658A9C5-19EB-40CA-A1B8-B0D1BC336078}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8658A9C5-19EB-40CA-A1B8-B0D1BC336078}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8658A9C5-19EB-40CA-A1B8-B0D1BC336078}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
