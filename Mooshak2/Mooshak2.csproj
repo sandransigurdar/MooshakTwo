@@ -293,7 +293,6 @@
     <Content Include="Views\Shared\Login.cshtml" />
     <Content Include="Views\Student\HomePage.cshtml" />
     <Content Include="Views\Admin\HomePage.cshtml" />
-    <Content Include="Views\Teacher\HomePage.cshtml" />
     <Content Include="Views\Admin\CreateCourse.cshtml" />
     <Content Include="Views\Admin\ViewCourses.cshtml" />
     <Content Include="Views\Admin\CreateUser.cshtml" />
@@ -304,6 +303,7 @@
     <Content Include="Views\Shared\StudentLayout.cshtml" />
     <Content Include="Views\Shared\AdminLayout.cshtml" />
     <Content Include="Views\Shared\TeacherLayout.cshtml" />
+    <Content Include="Views\Teacher\HomePage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
