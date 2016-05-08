@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Mooshak2.Models.Entity;
 
-namespace Mooshak2.Models.HomePageViewModel
+namespace Mooshak2.Models.ViewModels
 {
     public class StudentAssignmentViewModel
     {
-        public List<string> assignmentId { get; set; }
-        public int studentId { get; set; }
-        //public int assignmentId { get; set; }
-        public int assignmentStatus { get; set; }
+        public List <Assignment> assignments { get; set; }
+        public List <AssignmentStudent> assignmentStudent { get; set;}
+        public int currentStudentId { set; get; }
     }
 }

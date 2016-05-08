@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 
 
-namespace Mooshak2.Models.HomePageViewModel
+namespace Mooshak2.Models.ViewModels
 {
     public class HomePageViewModel
     {

@@ -199,6 +199,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AssignmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Models\Entity\AssignmentStudent.cs" />
     <Compile Include="Models\Entity\Student.cs" />
     <Compile Include="Models\Entity\Teacher.cs" />
     <Compile Include="Models\Entity\Admin.cs" />

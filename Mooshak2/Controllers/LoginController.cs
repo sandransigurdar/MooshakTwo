@@ -11,6 +11,8 @@ namespace Mooshak2.Controllers
 {
     public class LoginController : Controller
     {
+        UserService us = new UserService();
+        LoginService ls = new LoginService();
 
         public ActionResult Login()
         {
@@ -24,7 +26,7 @@ namespace Mooshak2.Controllers
             string name = Request.Form["username"];
             string password = Request.Form["password"];
 
-            LoginService ls = new LoginService();
+           
             int userRole;
 
             userRole = ls.Authenticate(name, password);
@@ -32,16 +34,21 @@ namespace Mooshak2.Controllers
 
             if (userRole==1)
             {
-                return View("~/Views/Student/HomePage.cshtml");
+                
+                var student = us.getStudentByName(name);
+                LoginService.nameOfLoggedInUser = name;
+                return View("~/Views/Student/HomePage.cshtml" , student);
             }
 
             else if (userRole==2)
             {
+                LoginService.nameOfLoggedInUser = name;
                 return View("~/Views/Teacher/HomePage.cshtml");
             }
 
             else if (userRole==3)
             {
+                LoginService.nameOfLoggedInUser = name;
                 return View("~/Views/Admin/HomePage.cshtml");
             }
 

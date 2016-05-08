@@ -5,7 +5,7 @@ using System.Web;
 using Mooshak2.Models;
 using Mooshak2.Models.Entity;
 using System.Web.Security;
-using Mooshak2.Models.HomePageViewModel;
+using Mooshak2.Models.ViewModels;
 
 namespace Mooshak2.Services
 {
@@ -43,16 +43,13 @@ namespace Mooshak2.Services
             return allTeachers;
         }
 
-        public List<string> GetAllAdmins()
+        public Student getStudentByName(string name)
         {
-            List<string> allAdmins = new List<string>();
+            Student student = (from x in _db.Students
+                           where x.userName == name
+                           select x).FirstOrDefault();
 
-            foreach (var admin in _db.Admins)
-            {
-                allAdmins.Add(admin.userName);
-            }
-
-            return allAdmins;
+            return student;
         }
     }
 }

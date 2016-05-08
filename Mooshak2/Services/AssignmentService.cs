@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Mooshak2.Models.HomePageViewModel;
+using Mooshak2.Models.ViewModels;
 using Mooshak2.Models.Entity;
 
 namespace Mooshak2.Services
@@ -17,12 +17,36 @@ namespace Mooshak2.Services
         {
             _db = new ApplicationDbContext();
         }
-        /*
-        public GetAllAssignments()
+      
+
+        public List<Assignment> GetAllAssignments()
         {
+            List <Assignment> allAssignments= new List<Assignment>();
+
+            foreach (var item in _db.Assignments)
+            {
+                allAssignments.Add(item);
+            }
+
+            return allAssignments;
+
+        }
 
 
-            return X;
-        }*/
+
+        public List <AssignmentStudent> GetAssignmentStatus(int studentId)
+        {
+            List<AssignmentStudent> statuses = new List<AssignmentStudent>();
+            foreach (var item in _db.AssignmentStudents)
+            {
+                if(studentId == item.studentId)
+                {
+                    statuses.Add(item);
+                }
+            }
+
+            return statuses;
+
+        }
     }
 }

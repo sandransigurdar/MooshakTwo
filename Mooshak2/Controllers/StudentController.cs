@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Mooshak2.Services;
 using Mooshak2.Models;
 using Mooshak2.Models.Entity;
+using Mooshak2.Models.ViewModels;
 
 namespace Mooshak2.Controllers
 {
@@ -22,13 +23,26 @@ namespace Mooshak2.Controllers
 
         public ActionResult ViewAssignments()
         {
+            
+           
 
-            List<Student> listOfStudents = new List<Student>();
-            UserService us = new UserService();
-            //listOfStudents = us.GetAllStudents();
+            AssignmentService aS = new AssignmentService();
+            List <Assignment> ListOfAllAssignments = new List<Assignment>();
+            ListOfAllAssignments = aS.GetAllAssignments();
 
+            UserService uS = new UserService();
 
-            return View(listOfStudents);
+            List<AssignmentStudent> StatusOfAssignments = new List<AssignmentStudent>();
+            Student student = uS.getStudentByName(LoginService.nameOfLoggedInUser);
+
+            StatusOfAssignments = aS.GetAssignmentStatus(student.id);
+
+            StudentAssignmentViewModel sAVM = new StudentAssignmentViewModel();
+            sAVM.currentStudentId = student.id;
+            sAVM.assignments = ListOfAllAssignments;
+            sAVM.assignmentStudent = StatusOfAssignments;
+
+            return View(sAVM);
         }
 
     }

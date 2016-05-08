@@ -20,6 +20,12 @@ namespace Mooshak2.Services
             _db = new ApplicationDbContext();
         }
 
+        public static string nameOfLoggedInUser;
+
+
+        
+
+
         public int Authenticate(string name, string password)
         {
             

@@ -1,12 +1,71 @@
-﻿@model List<Mooshak2.Models.Entity.Student>
+﻿@model Mooshak2.Models.ViewModels.StudentAssignmentViewModel
 @{
     Layout = "~/Views/Shared/StudentLayout.cshtml";
 }
 
-<h2>Here is a list of the student (should be assignments)</h2>
-<ul>
-    @foreach (var item in Model)
-    {
-        <li>@item.userName</li>
-    }
-</ul>
+
+
+<h2>Here is a list of the assignments</h2>
+
+<br />
+
+<br />
+
+<table class="table-bordered">
+
+    <thead>
+
+        <tr>
+
+            <th>Assignment Name:</th>
+
+            <th>Assignment SubName:</th>
+
+            <th>Description:</th>
+
+            <th>Due Date:</th>
+
+            <th>ID:</th>
+
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+        @foreach (var item in @Model.assignments)
+
+        {
+
+            <tr>
+
+                <td>@item.assignmentName</td>
+
+                <td>@item.assignmentSubName</td>
+
+                <td>@item.description</td>
+
+                <td>@item.dueDate</td>
+
+                <td>@item.id</td>
+
+            </tr>
+
+        }
+
+    </tbody>
+
+    <ul>
+       @foreach (var x in @Model.assignmentStudent )
+        {
+        <li>AssignmentID: @x.assignmentId</li>
+        <li>HasBeenTurnedIn:@x.hasBeenTurnedIn</li>
+        <li>StudentID:@x.studentId</li>
+        <li>ID:@x.id</li>
+        }
+    </ul>
+    <hr />
+    <h1>This students id is : @Model.currentStudentId</h1>
+
+</table>
+
