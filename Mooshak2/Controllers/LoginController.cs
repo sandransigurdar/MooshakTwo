@@ -29,7 +29,6 @@ namespace Mooshak2.Controllers
             int userRole;
 
             userRole = ls.Authenticate(name, password);
-            //int userRole = 1;
 
             if (userRole==1)
             {
@@ -41,13 +40,13 @@ namespace Mooshak2.Controllers
 
             else if (userRole==2)
             {
-                LoginService.nameOfLoggedInUser = name;
+                
                 return View("~/Views/Teacher/HomePage.cshtml");
             }
 
             else if (userRole==3)
             {
-                LoginService.nameOfLoggedInUser = name;
+                
                 return View("~/Views/Admin/HomePage.cshtml");
             }
 

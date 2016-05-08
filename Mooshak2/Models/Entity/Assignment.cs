@@ -13,6 +13,7 @@ namespace Mooshak2.Models.Entity
         public string description { get; set; }
         public DateTime dueDate { get; set; }
         public List<string> allHandIns { get; set; }
+        public string input { get; set; }
         public string correctOutput { get; set; }
        
     }
