@@ -12,16 +12,7 @@ namespace Mooshak2.Controllers
         public ActionResult CreateAssignment()
         {
 
-
-            /* List<Student> listOfAllStudents = new List<Student>();
-             UserService us = new UserService();
-             listOfStudents = us.GetAllStudents();*/
-
-            /* List<Course> listOfCourses = new List<Course>();
-           CourseService cs = new CourseService();
-           //listOfCourses = cs. */
-
-
+            
 
             return View();
         }
