@@ -7,7 +7,6 @@ namespace Mooshak2.Models.Entity
 {
     public class Teacher
     {
-
         //name er fullt nafn
         public int id { get; set; }
         public string name { get; set; }

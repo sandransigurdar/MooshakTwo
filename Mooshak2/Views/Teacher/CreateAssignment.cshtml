@@ -5,35 +5,45 @@
 
 <h2>CreateAssignments</h2>
 
-<form>
-    <div class="form-group">
-        <label for="name">Name of assignment:</label>
-        <input type="text" id="name" name="name" />
-     </div>
-    <div class="form-group">
-        <label for="subname">Subname of assignment:</label>
-        <input type="text" id="subname" name="subname" />
+<form class="form-horizontal" action="CreateAssignment" method="POST">
+
+         <div class="form-group">
+       
+                <label for="name">Name of assignment:</label>
+                <input type="text" id="name" name="name" />
+   
+          </div>
+   
+         <div class="form-group">
+            <label for="subname">Subname of assignment:</label>
+            <input type="text" id="subname" name="subname" />
+         </div>
+   
+         <div class="form-group">
+        <label for="description">Description:</label>
+        <input type="textbox" id="description" name="description" />
     </div>
-    <div class="form-group">
-        <label for="description">Subname of assignment:</label>
-        <input type="textarea" id="description" name="description" />
-    </div>
-    <div class="form-group">
+    
+        <div class="form-group">
         <label for="date">Date:</label>
         <input type="datetime" id="date" name="date" />
     </div>
-    <div class="form-group">
-        <label for="input">Input:</label>
-        <input type="textarea" id="input" name="input" />
-    </div>
-    <div class="form-group">
-        <label for="input">Input:</label>
-        <input type="textarea" id="input" name="input" />
-    </div>
-    <div class="form-group">
-        <label for="correctoutput">Correct Output:</label>
-        <input type="textarea" id="correctoutput" name="correctoutput" />
-    </div>
+
+            <div class="form-group">
+                <label for="input">Input:</label>
+                <input type="textarea" id="input" name="input" />
+            </div>
+            <div class="form-group">
+                <label for="correctoutput">Correct Output:</label>
+                <input type="textarea" id="correctoutput" name="correctoutput" />
+            </div>
+            <div class="form-group">
+                <button type="submit" value="Create Assignment" class="btn btn-default" />
+            </div>
 </form>
 
-     
+<div>
+
+    @Html.ActionLink("Return home", "HomePage", "Teacher")
+
+</div>
