@@ -236,3 +236,21 @@ body, html {
     margin-left: auto;
     margin-right: auto;
 }
+/*----------------------Student ViewAssignments -----------------------------*/
+.table-bordered
+{
+    background-color: white;
+}
+
+.assignmentlist
+{
+    float: left;
+    width:200px;
+}
+
+.descforassignments
+{
+    float: right;
+    width:500px;
+    color:red;
+}
