@@ -14,19 +14,12 @@
 <table class="table-bordered">
 
     <thead>
-
         <tr>
-
             <th>Assignment Name:</th>
-
             <th>Assignment SubName:</th>
-
             <th>Description:</th>
-
             <th>Due Date:</th>
-
             <th>ID:</th>
-
         </tr>
 
     </thead>
@@ -34,34 +27,26 @@
     <tbody>
 
         @foreach (var item in @Model.assignments)
-
         {
-
             <tr>
-
                 <td>@item.assignmentName</td>
-
                 <td>@item.assignmentSubName</td>
-
                 <td>@item.description</td>
-
                 <td>@item.dueDate</td>
-
                 <td>@item.id</td>
-
             </tr>
-
         }
 
     </tbody>
 
+</table>
     <ul>
        @foreach (var x in @Model.assignmentStudent )
         {
-        <li>AssignmentID: @x.assignmentId</li>
-        <li>HasBeenTurnedIn:@x.hasBeenTurnedIn</li>
-        <li>StudentID:@x.studentId</li>
-        <li>ID:@x.id</li>
+            <li>AssignmentID: @x.assignmentId</li>
+            <li>HasBeenTurnedIn:@x.hasBeenTurnedIn</li>
+            <li>StudentID:@x.studentId</li>
+            <li>ID:@x.id</li>
         }
     </ul>
     <hr />
