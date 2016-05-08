@@ -221,3 +221,11 @@ body, html {
 .forgot-password:focus{
     color: rgb(12, 97, 33);
 }
+/* ---------------------Home Page CSS --------------------------------------*/
+
+.boxbody
+{
+    padding-top: 100px;
+    padding-left: 100px;
+    background-color: white;
+}

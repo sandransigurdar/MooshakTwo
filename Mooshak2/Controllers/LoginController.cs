@@ -6,7 +6,6 @@ using System.Web.Mvc;
 using Mooshak2.Models;
 using Mooshak2.Services;
 
-//Leynilegt skilaboð, Sandra ef þú getur lesið þetta segðu þá lykilorðið sem er:  MAMMALAKKABÚGGÚDEI.
 namespace Mooshak2.Controllers
 {
     public class LoginController : Controller
