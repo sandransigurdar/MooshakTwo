@@ -3,7 +3,7 @@
     Layout = "~/Views/Shared/StudentLayout.cshtml";
 }
 
-
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 
 <br />
 <br />
@@ -19,11 +19,13 @@
                 <div class="panel-body" id="navbuttons">
                     @foreach (var item in Model.assignments)
                     {
-                        <button type="button" class="btn btn-default" data-toggle="collapse" data-path="#accordion" href="#subname">@item.assignmentName</button>
-                        <div id="subname" class="collapse">
+                        <button type="button" class="btn btn-default" id="btn-id" data-toggle="collapse" data-path="#accordion" href="#@item.assignmentName">@item.assignmentName</button>
+                        <div id="@item.assignmentName" class="collapse">
                             <span> - @item.assignmentSubName </span>
                         </div>
                     }
+
+
                 </div>
             </div>
         </div>
@@ -61,6 +63,17 @@
                         <p>@item.description</p>
                     }
                     @* --------------- for testing purposes --------------*@
+                    @**
+                                        <script>
+                        $(document).ready(function()
+                        {
+                            $("#show").click(function(){
+                                $("p").show(@item.description);
+                            });
+
+                        });
+                     
+                    </script>**@
                         
                 </div>
             </div>
