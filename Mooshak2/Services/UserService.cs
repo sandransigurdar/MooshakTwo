@@ -51,5 +51,47 @@ namespace Mooshak2.Services
 
             return student;
         }
+
+        public void CreateUser(string name, string userName, string ssn, string email, string password, string userRole)
+        {
+            /*
+            if (userRole == 1)
+            {
+
+
+            }
+
+            else if (userRole == 2)
+            {
+
+
+            }*/
+
+
+
+
+            /* List<Course> allUsers = new List<Course>();
+
+            foreach (var item in _db.Courses)
+            {
+                allCourses.Add(item);
+            }
+
+            int newId = allCourses.Count + 1;
+
+            foreach (var item in _db.Courses)
+            {
+                if (item.id == newId)
+                {
+                    item.id = 8;
+                    item.courseName = name;
+                    item.courseTeacher = teacher;
+                }
+            }*/
+        }
+
+
+
     }
-}
+    }
+

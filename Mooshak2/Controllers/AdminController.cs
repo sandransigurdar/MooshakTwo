@@ -38,16 +38,13 @@ namespace Mooshak2.Controllers
 
         public ActionResult CreateUser()
         {
-
-
-
-
             return View();
         }
 
         [HttpPost]
         public ActionResult CreateUser(FormCollection formCollection)
         {
+
             string name = Request.Form["name"];
             string userName = Request.Form["username"];
             string ssn = Request.Form["ssn"];
@@ -55,6 +52,9 @@ namespace Mooshak2.Controllers
             string password = Request.Form["password"];
             string userRole = Request.Form["role"];
 
+            UserService uS = new UserService();
+
+            uS.CreateUser(name, userName, ssn, email, password, userRole);
 
             return View();
         }

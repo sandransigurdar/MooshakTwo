@@ -14,6 +14,6 @@ namespace Mooshak2.Models.Entity
         public string ssn { get; set; }            
         public string email { get; set; }
         public string password { get; set; }
-        public string role { get; set; }
+        public int role { get; set; }
     }
 }
