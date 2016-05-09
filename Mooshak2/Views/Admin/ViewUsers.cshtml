@@ -1,9 +1,30 @@
-﻿
+﻿@model List <Mooshak2.Models.ViewModels.AdminUserViewModel>
 @{
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 
-<h2>ViewUsers</h2>
+<h2>List of Teachers</h2>
+
+<ul>
+
+    @foreach (var item in @Model)
+    {
+        <li>Name of course:@item.teachers  </li>
+    }
+
+</ul>
+
+<h2>List of Teachers</h2>
+
+<ul>
+
+    @foreach (var item in @Model)
+    {
+        <li>Name of course:@item.students  </li>
+    }
+
+</ul>
+
 
 <div>
 

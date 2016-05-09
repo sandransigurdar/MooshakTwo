@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Mooshak2.Models.Entity;
 using Mooshak2.Services;
+using Mooshak2.Models.ViewModels;
 
 namespace Mooshak2.Controllers
 {
@@ -69,14 +70,26 @@ namespace Mooshak2.Controllers
             return View();
         }
 
-        public ActionResult ViewCourse()
+        public ActionResult ViewCourses()
         {
-            return View();
+            List<Course> allCourses = new List<Course>();
+            allCourses = cS.GetAllCourses();
+            return View(allCourses);
         }
 
         public ActionResult ViewUsers()
         {
-            return View();
+            List<Student> allStudents = new List<Student>();
+            allStudents = uS.GetAllStudents();
+
+            List<Teacher> allTeachers = new List<Teacher>();
+            allTeachers = uS.GetAllTeachers();
+
+            AdminUserViewModel aUVM = new AdminUserViewModel();
+            aUVM.students = allStudents;
+            aUVM.teachers = allTeachers;
+
+            return View(aUVM);
         }
 
     }

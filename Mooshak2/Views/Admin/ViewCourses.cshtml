@@ -1,9 +1,23 @@
-﻿
+﻿@model List <Mooshak2.Models.Entity.Course>
 @{
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 
-<h2>ViewCourses</h2>
+<h2>Courses</h2>
+
+<ul>
+    
+    @foreach (var item in @Model)
+    {
+        <li>Name of course:@item.courseName  </li>
+        <li>Course teacher:@item.courseTeacher</li>
+    }
+
+</ul>
+
+
+
+
 
 <div>
 
