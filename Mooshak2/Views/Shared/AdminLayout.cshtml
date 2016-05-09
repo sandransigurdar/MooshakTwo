@@ -14,8 +14,8 @@
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
+    <header class="navbar navbar-default navbar-static-top">
+        <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
@@ -31,16 +31,18 @@
                 </ul>
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Mooshak 2.0</p>
-        </footer>
-    </div>
+    </header>
+
+    @RenderBody()
+
+    <footer class="panel-footer">
+        <div class="container-fluid">
+            <p>&copy; @DateTime.Now.Year - The Moo-iest Experience!</p>
+        </div>
+    </footer>
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-  
+
 </body>
 </html>

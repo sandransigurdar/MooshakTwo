@@ -80,7 +80,7 @@ namespace Mooshak2.Services
                         student.email = email;
                         student.password = password;
                         student.role = 1;
-                        student.????//COURSE O.S.F.V
+                        //student.????//COURSE O.S.F.V
 
                         _db.Students.Add(student);
                         _db.SaveChanges();
