@@ -13,6 +13,7 @@ namespace Mooshak2.Controllers
     {
         UserService uS = new UserService();
         CourseService cS = new CourseService();
+        AdminUserViewModel aUVM = new AdminUserViewModel();
 
         public ActionResult CreateCourse()
         {
@@ -85,7 +86,7 @@ namespace Mooshak2.Controllers
             List<Teacher> allTeachers = new List<Teacher>();
             allTeachers = uS.GetAllTeachers();
 
-            AdminUserViewModel aUVM = new AdminUserViewModel();
+            
             aUVM.students = allStudents;
             aUVM.teachers = allTeachers;
 
