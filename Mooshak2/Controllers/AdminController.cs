@@ -10,10 +10,12 @@ namespace Mooshak2.Controllers
 {
     public class AdminController : Controller
     {
-        
+        UserService uS = new UserService();
+        CourseService cS = new CourseService();
+
         public ActionResult CreateCourse()
         {
-            UserService uS = new UserService();
+            
 
             List<Teacher> ListOfAllTeachers = new List<Teacher>();
             ListOfAllTeachers = uS.GetAllTeachers();
@@ -28,7 +30,7 @@ namespace Mooshak2.Controllers
             string courseName = Request.Form["coursename"];
             string courseTeacher = Request.Form["teacher"];
 
-            CourseService cS = new CourseService();
+            
             cS.CreateCourse(courseName, courseTeacher);
 
             return View("~/Views/Teacher/HomePage.cshtml"); 
@@ -38,7 +40,10 @@ namespace Mooshak2.Controllers
 
         public ActionResult CreateUser()
         {
-            return View();
+            List<Course> listOfAllCourses = new List<Course>();
+            listOfAllCourses = cS.GetAllCourses();
+
+            return View(listOfAllCourses);
         }
 
         [HttpPost]
@@ -51,10 +56,11 @@ namespace Mooshak2.Controllers
             string email = Request.Form["email"];
             string password = Request.Form["password"];
             string userRole = Request.Form["role"];
+            string course = Request.Form["course"];
 
             UserService uS = new UserService();
 
-            uS.CreateUser(name, userName, ssn, email, password, userRole);
+            uS.CreateUser(name, userName, ssn, email, password, userRole, course);
 
             return View();
         }

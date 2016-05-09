@@ -14,12 +14,14 @@
     <select multiple id="teacher" name="teacher">
         @foreach (var item in @Model)
         {
-
             <option value="@item.name">@item.name</option>
-
         }
     </select>
 
         <input type="submit" value="Create Course"/>
 </form>
+<div>
 
+    @Html.ActionLink("Return home", "HomePage", "Admin")
+
+</div>
