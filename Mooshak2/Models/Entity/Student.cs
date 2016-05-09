@@ -8,7 +8,7 @@ namespace Mooshak2.Models.Entity
     public class Student
     {
 
-        //name er fullt nafn
+        
         public int id { get; set; }
         public string name { get; set; }
         public string userName { get; set; }
@@ -16,5 +16,6 @@ namespace Mooshak2.Models.Entity
         public string email { get; set; }
         public string password { get; set; }
         public int role { get; set; }
+        //HVAÐ MEÐ COURSE HÉR
     }
 }

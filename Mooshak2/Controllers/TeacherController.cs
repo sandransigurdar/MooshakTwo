@@ -28,25 +28,7 @@ namespace Mooshak2.Controllers
             
 
 
-            /*
-         UserService uS = new UserService();
-         CourseService cS = new CourseService();
-         AssignmentService aS = new AssignmentService();
-
-
-
-         List <Student> listOfAllStudents = new List <Student> ();
-         listOfAllStudents = uS.GetAllStudents();
-
-
-         List<Course> listOfAllCourses = new List<Course>();
-         listOfAllCourses = cS.GetAllCourses();
-
-         List<Assignment> listOfAllAssignments = new List<Assignment>();
-         listOfAllAssignments = aS.GetAllAssignments();
-
-         TeacherAssignmentViewModel tAVM = new TeacherAssignmentViewModel();
-         */
+         
             return View();
         }
 
