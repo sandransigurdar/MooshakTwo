@@ -5,45 +5,100 @@
 
 
 
-<h2>Here is a list of the assignments</h2>
-
+<br />
+<br />
 <br />
 
-<br />
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading" id="navtitle">
+                    <h2 class="navtitle">Assignments</h2>
+                </div>
+                <div class="panel-body" id="navbuttons">
+                    @foreach (var item in Model.assignments)
+                    {
+                        <button type="button" class="btn btn-default" data-toggle="collapse" data-path="#accordion" href="#subname">@item.assignmentName</button>
+                        <div id="subname" class="collapse">
+                            <span> - @item.assignmentSubName </span>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
 
-<div class="assignmentlist">
-    <label for="assignments"/>
+    <div class="col-md-1"></div>
     
-    <select multiple="multiple" id="assignment-list">
-        @foreach (var item in Model.assignments)
-        {
-            <option>@item.assignmentName</option>
-        }
-    </select>
+        <div class="col-md-7">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    @foreach (var item in Model.assignments)
+                    {
+                        <h1 class="panel-title">@item.assignmentName - @item.assignmentSubName</h1>
+                    }
+                        
+                </div>
+                <div class="panel-body">
+
+
+                    @foreach (var item in Model.assignments)
+                    {
+                        <p>@item.description</p>
+                    }
+                    @* --------------- for testing purposes --------------*@
+                       
+                    @foreach (var item in Model.assignments)
+                    {
+                        <p>@item.description</p>
+                    }
+                    @foreach (var item in Model.assignments)
+                    {
+                        <p>@item.description</p>
+                    }
+                    @foreach (var item in Model.assignments)
+                    {
+                        <p>@item.description</p>
+                    }
+                    @* --------------- for testing purposes --------------*@
+                        
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
-<div class="descforassignments">
-    <textarea class="descrptionhere" cols="50" rows="50">jahjlkdfhsjldahfjlkasdhflkjashd
-    fjkashfjkasdhfjlkhdslkjafhjlkas
-    fhdsjkalhfjkdashflkjashlkfjas</textarea>
+<br />
+<br />
+<br />
 
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+                <li><a data-toggle="tab" href="#menu1">Menu 1</a></li>
+                <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
+            </ul>
 
+            <div class="tab-content">
+                <div id="home" class="tab-pane fade in active">
+                    <h3>HOME</h3>
+                    <p>Það þarf að laga helling hérna en ágætis byrjun...</p>
+                </div>
+                <div id="menu1" class="tab-pane fade">
+                    <h3>Menu 1</h3>
+                    <p>Some content in menu 1.</p>
+                </div>
+                <div id="menu2" class="tab-pane fade">
+                    <h3>Menu 2</h3>
+                    <p>Some content in menu 2.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
-
-<div class="dropdown">
-    <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Dropdown trigger
-        <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu" aria-labelledby="dLabel">
-        @foreach(var item in Model.assignments)
-        {
-            <li>@item.assignmentName</li>
-        }
-
-    </ul>
-</div>
 
 
 <!--------------------
@@ -84,6 +139,6 @@
             <li>ID:@x.id</li>
         }
     </ul>
-    <hr />
-    <h1>This students id is : @Model.currentStudentId</h1>
+    
+    
 

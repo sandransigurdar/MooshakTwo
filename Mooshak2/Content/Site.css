@@ -31,9 +31,32 @@ textarea {
     display: block;
 }
 
+.btn-default
+{
+    display: block;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 1px;
+}
+
 .container{
     margin-top: 0;
     margin-bottom: 0;
+}
+
+.container-fluid
+{
+    margin: 0 80px;
+}
+
+.navbar-brand
+{
+    padding: 15px 0;
+}
+
+.row
+{
+    margin: 0;
 }
 
 h2 .container{
@@ -63,7 +86,7 @@ h2.container img{
     bottom: 0px;
     position: fixed;
     width: 100%;
-    padding: 5px 15px;
+    padding: 5px 0px;
 }
 
 footer p{
@@ -87,7 +110,7 @@ header footer{
  * General styles
  */
 body, html {
-    background-repeat: no-repeat;
+    background-repeat: round;
     background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgb(104, 145, 162));
     height: 100%;
 }
@@ -253,4 +276,89 @@ body, html {
     float: right;
     width:500px;
     color:red;
+}
+
+.col-md-4
+{
+    padding: 0;
+}
+
+.col-md-7
+{
+    padding: 0;
+}
+
+.panel-body
+{
+    min-height: 300px;
+    max-height: 300px;
+    overflow: auto;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+}
+
+#accordion
+{
+padding: 5px 2px;
+}
+
+.panel-heading
+{
+    height: 70px;
+    background-color: #94b6d2;
+}
+
+h2.navtitle
+{
+    margin-top: 15px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#navbuttons
+{
+    padding: 1px 1px;
+}
+
+.col-lg-12
+{
+    padding: 0;
+}
+
+.nav-tabs
+{
+    border-bottom: 0;
+}
+
+.nav-tabs > li > a
+{
+    border: 1px solid white;
+    color: black;
+    background-color: lightgray;
+}
+
+.tab-content
+{
+    display: block;
+    min-height: 250px;
+    max-height: 100%;
+    background-color: white;
+    padding: 5px 15px;
+    overflow: auto;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.panel-default > .panel-heading
+{
+    background-color: lightgray;
 }
