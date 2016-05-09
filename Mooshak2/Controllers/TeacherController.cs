@@ -13,11 +13,9 @@ namespace Mooshak2.Controllers
     {
         public ActionResult CreateAssignment()
         {
-            AssignmentService aS = new AssignmentService();
-            List<Assignment> allAssignments = new List<Assignment>();
-            allAssignments = aS.GetAllAssignments();
+         
 
-            return View(allAssignments);
+            return View();
         }
 
         [HttpPost]
