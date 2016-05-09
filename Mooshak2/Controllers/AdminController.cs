@@ -15,7 +15,6 @@ namespace Mooshak2.Controllers
 
         public ActionResult CreateCourse()
         {
-            
 
             List<Teacher> ListOfAllTeachers = new List<Teacher>();
             ListOfAllTeachers = uS.GetAllTeachers();
@@ -33,7 +32,7 @@ namespace Mooshak2.Controllers
             
             cS.CreateCourse(courseName, courseTeacher);
 
-            return View("~/Views/Teacher/HomePage.cshtml"); 
+            return View("~/Views/Admin/HomePage.cshtml"); 
         }
 
 
@@ -62,10 +61,8 @@ namespace Mooshak2.Controllers
 
             uS.CreateUser(name, userName, ssn, email, password, userRole, course);
 
-            return RedirectToAction("~/Views/Teacher/HomePage.cshtml");
+            return View("~/Views/Admin/HomePage.cshtml");
         }
-
-
 
         public ActionResult HomePage()
         {
