@@ -3,25 +3,49 @@
 @{
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 
-<form action="CreateCourse" method="POST" class="admin-form">
-    <h1>Create Course</h1>
-    <label for="coursename">Course name:</label>
-    <input type="text" id="coursename" name="coursename" />
-    <br />
-        
-    <select multiple id="teacher" name="teacher">
-    @foreach (var item in @Model)
-    {
-        <option value="@item.name">@item.name</option>
-    }
-    </select>
+<div class="container-fluid" id="fluid">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading" id="navtitle">
+                    <h2 class="navtitle">Courses</h2>
+                </div>
+                <div class="panel-body" id="navbuttons"></div>
+            </div>
+        </div>
+    
 
-    <input type="submit" value="Create Course"/>
+    <div class="col-md-1"></div>
+    
+    <div class="col-md-7">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h1>Create Course</h1>
+            </div>
+     
+                <div class="panel-body">
 
-</form>
-<div>
+                    <form action="CreateCourse" method="POST" class="form-horizontal">
 
-    @Html.ActionLink("Return home", "HomePage", "Admin")
+                            <label for="coursename">Course name:</label>
+                            <input type="text" id="coursename" name="coursename" />
+                            <br />
+                       
+                            <select multiple id="teacher" name="teacher" class="course-created-select">
+                                @foreach (var item in @Model)
+                                {
+                                    <option value="@item.name">@item.name</option>
+                                }
+                            </select>
 
+                            <input type="submit" value="Create Course" />
+
+                    </form>
+                </div>
+            </div>
+         </div>
+    </div>
 </div>
+
