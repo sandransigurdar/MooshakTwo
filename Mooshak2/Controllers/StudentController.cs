@@ -23,8 +23,6 @@ namespace Mooshak2.Controllers
 
         public ActionResult ViewAssignments()
         {
-            
-           
 
             AssignmentService aS = new AssignmentService();
             List <Assignment> ListOfAllAssignments = new List<Assignment>();

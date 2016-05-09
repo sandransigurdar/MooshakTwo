@@ -1,7 +1,25 @@
-﻿
+﻿@model List<Mooshak2.Models.Entity.Teacher>
 @{
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 
-<h2>CreateCourse</h2>
+<h1>CreateCourse</h1>
+
+<form action="CreateCourse" method="POST">
+
+        <label for="coursename">Course name:</label>
+        <input type="text" id="coursename" name="coursename" />
+        <br />
+        
+    <select multiple id="teacher" name="teacher">
+        @foreach (var item in @Model)
+        {
+
+            <option value="@item.name">@item.name</option>
+
+        }
+    </select>
+
+        <input type="submit" value="Create Course"/>
+</form>
 

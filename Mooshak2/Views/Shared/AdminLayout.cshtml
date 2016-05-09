@@ -22,11 +22,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Home", "HomePage", "Student", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Home", "HomePage", "Admin", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Assignments", "ViewAssignments", "Student")</li>
+                    <li>@Html.ActionLink("Create Course", "CreateCourse", "Admin")</li>
+                    <li>@Html.ActionLink("Create User", "CreateUser", "Admin")</li>
                 </ul>
             </div>
         </div>

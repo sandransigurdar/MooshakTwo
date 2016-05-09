@@ -3,5 +3,35 @@
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 
-<h2>CreateUser</h2>
+<h1>CreateUser</h1>
 
+<form action="CreateUser" method="POST">
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" />
+    </div>
+    <div>
+        <label for="username">UserName:</label>
+        <input type="text" id="username" name="username" />
+    </div>
+    <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" />
+    </div>
+    <div>
+        <label for="ssn">Social security number:</label>
+        <input type="text" id="ssn" name="ssn" />
+    </div>
+    <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" />
+    </div>
+    <div>
+        <input type="radio" name ="role" id="role" value="1" /> Student <br />
+        <input type="radio" name="role" id="role" value="2" /> Teacher <br />
+    </div> 
+    <div>
+        <input type="submit" id="submit" value="Create User" />
+    </div>      
+
+</form>
