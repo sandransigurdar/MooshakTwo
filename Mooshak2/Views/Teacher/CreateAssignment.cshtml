@@ -1,47 +1,121 @@
-﻿
+﻿@model Mooshak2.Models.ViewModels.TeacherAssignmentViewModel
 @{
     Layout = "~/Views/Shared/TeacherLayout.cshtml";
 }
 
-<h2>CreateAssignments</h2>
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 
-<form class="form-horizontal" action="CreateAssignment" method="POST">
+<br />
+<br />
+<br />
 
-         <div class="form-group">
-       
-                <label for="name">Name of assignment:</label>
-                <input type="text" id="name" name="name" />
-   
-          </div>
-   
-         <div class="form-group">
-            <label for="subname">Subname of assignment:</label>
-            <input type="text" id="subname" name="subname" />
-         </div>
-   
-         <div class="form-group">
-        <label for="description">Description:</label>
-        <input type="text" id="description" name="description" />
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading" id="navtitle">
+                    <h2 class="navtitle">Assignments</h2>
+                </div>
+                <div class="panel-body" id="navbuttons">
+                  @*--  @foreach (var item in Model.assignments)
+                    {
+                        <button type="button" class="btn btn-default" id="btn-id" data-toggle="collapse" data-path="#accordion" href="#@item.id">@item.assignmentName</button>
+                        <div id="@item.id" class="collapse">
+                            <span> - @item.assignmentSubName </span>
+                        </div>
+                    }*@
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-1"></div>
+
+        <div class="col-md-7">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                 @*   @foreach (var item in Model.assignments)
+                    {
+                        <h1 class="panel-title">@item.assignmentName - @item.assignmentSubName</h1>
+                    }*@
+
+                </div>
+                <div class="panel-body">
+
+                        <form class="form-horizontal" action="CreateAssignment" method="POST">
+
+                            <div class="form-group">
+
+                                <label for="name">Name of assignment:</label>
+                                <input type="text" id="name" name="name" />
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="subname">Subname of assignment:</label>
+                                <input type="text" id="subname" name="subname" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="description">Description:</label>
+                                <input type="text" id="description" name="description" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="date">Date:</label>
+                                <input type="datetime" id="date" name="date" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="input">Input:</label>
+                                <input type="textarea" id="input" name="input" />
+                            </div>
+                            <div class="form-group">
+                                <label for="correctoutput">Correct Output:</label>
+                                <input type="textarea" id="correctoutput" name="correctoutput" />
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" value="Create Assignment" class="btn btn-default" />
+                            </div>
+                        </form>
+
+                </div>
+            </div>
+        </div>
     </div>
-    
-        <div class="form-group">
-        <label for="date">Date:</label>
-        <input type="datetime" id="date" name="date" />
+</div>
+
+<br />
+<br />
+<br />
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+                <li><a data-toggle="tab" href="#menu1">Menu 1</a></li>
+                <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
+            </ul>
+
+            <div class="tab-content">
+                <div id="home" class="tab-pane fade in active">
+                    <h3>HOME</h3>
+                    <p>Það þarf að laga helling hérna en ágætis byrjun...</p>
+                </div>
+                <div id="menu1" class="tab-pane fade">
+                    <h3>Menu 1</h3>
+                    <p>Some content in menu 1.</p>
+                </div>
+                <div id="menu2" class="tab-pane fade">
+                    <h3>Menu 2</h3>
+                    <p>Some content in menu 2.</p>
+                </div>
+            </div>
+        </div>
     </div>
-
-            <div class="form-group">
-                <label for="input">Input:</label>
-                <input type="textarea" id="input" name="input" />
-            </div>
-            <div class="form-group">
-                <label for="correctoutput">Correct Output:</label>
-                <input type="textarea" id="correctoutput" name="correctoutput" />
-            </div>
-            <div class="form-group">
-                <button type="submit" value="Create Assignment" class="btn btn-default" />
-            </div>
-</form>
-
+</div>
 <div>
 
     @Html.ActionLink("Return home", "HomePage", "Teacher")
