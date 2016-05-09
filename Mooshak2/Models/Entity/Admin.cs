@@ -9,7 +9,7 @@ namespace Mooshak2.Models.Entity
     {
         //name er fullt nafn
         public int id { get; set; }
-        public string name { get; set; }                      //agnes að prufa
+        public string name { get; set; }
         public string userName { get; set; }
         public string ssn { get; set; }
         public string email { get; set; }

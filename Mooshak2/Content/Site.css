@@ -300,7 +300,7 @@ body, html {
     -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
 }
-}
+
 
 #accordion
 {
@@ -362,3 +362,6 @@ h2.navtitle
 {
     background-color: lightgray;
 }
+
+
+
