@@ -62,7 +62,7 @@ namespace Mooshak2.Controllers
 
             uS.CreateUser(name, userName, ssn, email, password, userRole, course);
 
-            return View();
+            return RedirectToAction("~/Views/Teacher/HomePage.cshtml");
         }
 
 

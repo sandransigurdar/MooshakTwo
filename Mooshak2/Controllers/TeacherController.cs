@@ -13,7 +13,11 @@ namespace Mooshak2.Controllers
     {
         public ActionResult CreateAssignment()
         {
-            return View();
+            AssignmentService aS = new AssignmentService();
+            List<Assignment> allAssignments = new List<Assignment>();
+            allAssignments = aS.GetAllAssignments();
+
+            return View(allAssignments);
         }
 
         [HttpPost]
@@ -29,7 +33,6 @@ namespace Mooshak2.Controllers
             AssignmentService aS = new AssignmentService();
             aS.CreateAssignment(name, subname, description, date, input, correctoutput);
 
-         
             return View();
         }
 
