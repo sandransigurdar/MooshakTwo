@@ -10,12 +10,5 @@ namespace Mooshak2.Models.Entity
         public int id { get; set; }
         public string courseName { get; set; }
         public string courseTeacher { get; set; }
-
-
-        
-        
-   
-
-
     }
 }
