@@ -31,24 +31,14 @@ namespace Mooshak2.Services
 
         public void CreateCourse(string name, string teacher)
         {
-            List<Course> allCourses = new List<Course>();
+            //TODO TEST THIS
 
-            foreach (var item in _db.Courses)
-            {
-                allCourses.Add(item);
-            }
+            Course newCourse = new Course();
+            newCourse.courseName = name;
+            newCourse.courseTeacher = teacher;
+            _db.Courses.Add(newCourse);
+            _db.SaveChanges();
 
-            int newId = allCourses.Count + 1;
-
-            foreach (var item in _db.Courses)
-            {
-                if (item.id == newId)
-                {
-                    item.id = 8;
-                    item.courseName = name;
-                    item.courseTeacher = teacher;
-                }
-            }
         }
     }
 }

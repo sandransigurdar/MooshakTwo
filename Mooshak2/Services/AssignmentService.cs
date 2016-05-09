@@ -48,5 +48,20 @@ namespace Mooshak2.Services
             return statuses;
 
         }
+
+        public void CreateAssignment(string name, string subName, string description, DateTime date, string input, string correctOutput)
+        {
+            Assignment newAssignment = new Assignment();
+            newAssignment.assignmentName = name;
+            newAssignment.assignmentSubName = subName;
+            newAssignment.description = description;
+            newAssignment.dueDate = date;
+            newAssignment.input = input;
+            newAssignment.correctOutput = correctOutput;
+
+            _db.Assignments.Add(newAssignment);
+            _db.SaveChanges();
+
+        }
     }
 }

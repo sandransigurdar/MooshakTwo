@@ -33,6 +33,7 @@ namespace Mooshak2.Models
             public DbSet<Teacher>           Teachers      { get; set; }
             public DbSet<Admin>             Admins        { get; set; }
             public DbSet<AssignmentStudent> AssignmentStudents { get; set; }
+            public DbSet<CourseStudent>     CourseStudents { get; set; } 
         /// <summary>
 
         /// Hér fyrir ofan er tenging við database fyrir entity klasa samkvæmt fyrirlestri hjá Dabs...

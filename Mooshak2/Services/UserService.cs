@@ -56,63 +56,77 @@ namespace Mooshak2.Services
         {
             int user = Convert.ToInt32(userRole);
 
-            List<Student> getNumberOfStudents = new List<Student>();
-            List<Teacher> getNumberOfTeachers = new List<Teacher>();
-
             if (user == 1)
             {
-                foreach (var item in _db.Students)
+
+                Student newStudent = new Student();
+
+                newStudent.name = name;
+                newStudent.userName = userName;
+                newStudent.ssn = ssn;
+                newStudent.email = email;
+                newStudent.password = password;
+                newStudent.role = 1;
+
+                int courseId = 0;
+
+                foreach (var item in _db.Courses)
                 {
-                    getNumberOfStudents.Add(item);
-                }
-
-                int studentId = getNumberOfStudents.Count + 1;
-
-                foreach (var student in _db.Students)
-                {
-                    Student newStudent = new Student();
-
-                    if (student.id == studentId)
+                    
+                    if(item.courseName == course)
                     {
-                        student.name = name;
-                        student.userName = userName;
-                        student.ssn = ssn;
-                        student.email = email;
-                        student.password = password;
-                        student.role = 1;
-                        student.????//COURSE O.S.F.V
-
-                        _db.Students.Add(student);
-                        _db.SaveChanges();
-
+                        courseId = item.id;
                     }
                 }
+
+                _db.Students.Add(newStudent);
+                _db.SaveChanges();
+
+                
+                int studentId = 0;
+
+                foreach(var item in _db.Students)
+                {
+                    if (item.name == name)
+                    {
+                        studentId = item.id;
+                    }
+                }
+
+                CourseStudent cS = new CourseStudent();
+                cS.courseId = courseId;
+                cS.studentId = studentId;
+
+                _db.CourseStudents.Add(cS);
+                _db.SaveChanges();
             }
 
-            else if (user == 2)
+            else if(user == 2)
             {
-                foreach (var item in _db.Teachers)
-                {
-                    getNumberOfTeachers.Add(item);
-                }
+                Teacher newTeacher = new Teacher(); 
 
-                int teacherId = getNumberOfTeachers.Count + 1;
+                newTeacher.name = name;
+                newTeacher.userName = userName;
+                newTeacher.ssn = ssn;
+                newTeacher.email = email;
+                newTeacher.password = password;
+                newTeacher.role = 2;
 
-                foreach (var teacher in _db.Teachers)
+
+                foreach(var item in _db.Courses)
                 {
-                    if (teacher.id == teacherId)
+                    if(item.courseName == course)
                     {
-                        teacher.name = name;
-                        teacher.userName = userName;
-                        teacher.ssn = ssn;
-                        teacher.email = email;
-                        teacher.password = password;
-                        teacher.role = 2;
-
-                        _db.Teachers.Add(teacher);
-                        _db.SaveChanges();
+                        item.courseTeacher = name;
+                        
                     }
                 }
+
+                _db.SaveChanges();
+
+                _db.Teachers.Add(newTeacher);
+                _db.SaveChanges();
+
             }
         }
     }

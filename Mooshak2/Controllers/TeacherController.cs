@@ -22,11 +22,12 @@ namespace Mooshak2.Controllers
             string name = Request.Form["name"];
             string subname = Request.Form["subname"];
             string description = Request.Form["description"];
-            //date date = Request.Form["date"];
+            DateTime date = DateTime.Parse(Request.Form["date"]);
             string input = Request.Form["input"];
             string correctoutput = Request.Form["correctoutput"];
-            
 
+            AssignmentService aS = new AssignmentService();
+            aS.CreateAssignment(name, subname, description, date, input, correctoutput);
 
          
             return View();
