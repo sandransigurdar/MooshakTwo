@@ -75,19 +75,10 @@ namespace Mooshak2.Services
                     
                     if(item.courseName == course)
                     {
-<<<<<<< HEAD
                         courseId = item.id;
                     }
                 }
-=======
-                        student.name = name;
-                        student.userName = userName;
-                        student.ssn = ssn;
-                        student.email = email;
-                        student.password = password;
-                        student.role = 1;
-                        //student.????//COURSE O.S.F.V
->>>>>>> ed206dc92913bc3f5660f9104ab0801afa78f6eb
+
 
                 _db.Students.Add(newStudent);
                 _db.SaveChanges();
