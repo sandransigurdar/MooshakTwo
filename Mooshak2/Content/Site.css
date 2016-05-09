@@ -37,6 +37,10 @@ textarea {
     width: 100%;
     text-align: left;
     margin-bottom: 1px;
+    border-right: 0px;
+    border-top:0px;
+    border-left:4px solid lightgrey;
+    border-radius:0px;
 }
 
 .container{
@@ -110,9 +114,10 @@ header footer{
  * General styles
  */
 body, html {
-    background-repeat: round;
+    background-repeat: no-repeat;
     background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgb(104, 145, 162));
     height: 100%;
+    background-color:rgb(104, 145, 162);
 }
 
 .card-container.card {
@@ -328,6 +333,8 @@ h2.navtitle
 .col-lg-12
 {
     padding: 0;
+    white-space:nowrap;
+    padding-bottom:100px;
 }
 
 .nav-tabs
