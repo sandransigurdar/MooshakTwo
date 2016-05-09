@@ -275,7 +275,7 @@ body, html {
     display: block;
     margin: auto;
 }
-/*----------------------Student ViewAssignments -----------------------------*/
+/*----------------------Student ViewAssignments -----Teacher ViewAssignment------------------------*/
 .table-bordered
 {
     background-color: white;
@@ -306,7 +306,7 @@ body, html {
 
 .panel-body
 {
-    min-height: 300px;
+    min-height: 2px;
     max-height: 300px;
     overflow: auto;
     -moz-border-radius: 2px;
@@ -345,7 +345,7 @@ h2.navtitle
 {
     padding: 0;
     white-space:nowrap;
-    padding-bottom:100px;
+    padding-bottom:70px;
 }
 
 .nav-tabs
@@ -358,6 +358,7 @@ h2.navtitle
     border: 1px solid white;
     color: black;
     background-color: lightgray;
+    padding:2px 5px;
 }
 
 .tab-content
@@ -381,5 +382,8 @@ h2.navtitle
     background-color: lightgray;
 }
 
-
-
+#fluid
+{
+    padding-top: 100px;
+    padding-bottom: 20px;
+}
