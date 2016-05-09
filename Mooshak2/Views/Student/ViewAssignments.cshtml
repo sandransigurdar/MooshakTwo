@@ -19,8 +19,8 @@
                 <div class="panel-body" id="navbuttons">
                     @foreach (var item in Model.assignments)
                     {
-                        <button type="button" class="btn btn-default" id="btn-id" data-toggle="collapse" data-path="#accordion" href="#@item.assignmentName">@item.assignmentName</button>
-                        <div id="@item.assignmentName" class="collapse">
+                        <button type="button" class="btn btn-default" id="btn-id" data-toggle="collapse" data-path="#accordion" href="#@item.id">@item.assignmentName</button>
+                        <div id="@item.id" class="collapse">
                             <span> - @item.assignmentSubName </span>
                         </div>
                     }
@@ -63,8 +63,10 @@
                         <p>@item.description</p>
                     }
                     @* --------------- for testing purposes --------------*@
-                    @**
-                                        <script>
+                    
+    
+                    @* ------- byrjun á Javascript til að birta viðkomandi description ---------------
+                    <script>
                         $(document).ready(function()
                         {
                             $("#show").click(function(){
@@ -73,7 +75,7 @@
 
                         });
                      
-                    </script>**@
+                    </script>*@
                         
                 </div>
             </div>
