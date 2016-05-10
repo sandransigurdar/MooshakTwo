@@ -86,7 +86,6 @@ namespace Mooshak2.Controllers
             List<Teacher> allTeachers = new List<Teacher>();
             allTeachers = uS.GetAllTeachers();
 
-            
             aUVM.students = allStudents;
             aUVM.teachers = allTeachers;
 
