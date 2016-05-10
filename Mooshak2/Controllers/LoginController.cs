@@ -15,7 +15,6 @@ namespace Mooshak2.Controllers
 
         public ActionResult Login()
         {
-
             return View();
         }
 
