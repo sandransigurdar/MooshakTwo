@@ -9,25 +9,20 @@ namespace Mooshak2.Controllers
 {
     public class AssignmentController : Controller
     {
-   
 
         private AssignmentService service = new AssignmentService();
 
-
-
-        //dæmi frá Dabs
-
-        public ActionResult SkodaNemendur(int id)
-
+        public ActionResult Index()
         {
 
-            //var viewModel = service.GetAssignmentByID(id);
-
-
-
-            return View(/*viewModel*/);
+            return View();
 
         }
 
+        public void GetAssignmentFileFromUser()
+        {
+
+            
         }
+    }
 }
