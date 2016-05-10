@@ -9,7 +9,7 @@
         <div class="col-md-4">
             <div class="panel panel-default">
                 <div class="panel-heading" id="navtitle">
-                    <h2 class="navtitle">Courses</h2>
+                    <h2 class="navtitle">Users</h2>
                 </div>
                 <div class="panel-body" id="navbuttons"></div>
             </div>
@@ -21,51 +21,55 @@
         <div class="col-md-7">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h1>CreateUser</h1>
+                    <h1>Create User</h1>
                 </div>
-                
+
 
                 <form action="CreateUser" method="POST" class="form-horizontal">
-                    <div>
-                        <label for="name">Name:</label>
-                        <input type="text" id="name" name="name" />
-                    </div>
-                    <div>
-                        <label for="username">UserName:</label>
-                        <input type="text" id="username" name="username" />
-                    </div>
-                    <div>
-                        <label for="password">Password:</label>
-                        <input type="password" id="password" name="password" />
-                    </div>
-                    <div>
-                        <label for="ssn">Social security number:</label>
-                        <input type="text" id="ssn" name="ssn" />
-                    </div>
-                    <div>
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" />
-                    </div>
-                    <div>
-                        <input type="radio" name="role" id="role" value="1" /> Student <br />
-                        <input type="radio" name="role" id="role" value="2" /> Teacher <br />
-                    </div>
-                    <hr />
-                    <h2>Pick a course below</h2>
-                    <div>
-                        @foreach (var item in @Model)
-                        {
-                            <input type="radio" name="course" id="course" value="@item.courseName" />@item.courseName<br />
-                        }
+                    <div class="user-created-div">
+                        <div>
+                            <label for="name">Name:</label>
+                            <input type="text" id="name" name="name" />
+                        </div>
+                        <div>
+                            <label for="username">UserName:</label>
+                            <input type="text" id="username" name="username" />
+                        </div>
+                        <div>
+                            <label for="password">Password:</label>
+                            <input type="password" id="password" name="password" />
+                        </div>
+                        <div>
+                            <label for="ssn">Social security number:</label>
+                            <input type="text" id="ssn" name="ssn" />
+                        </div>
+                        <div>
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" />
+                        </div>
+                        <div>
+                            <input type="radio" name="role" id="role" value="1" /> Student <br />
+                            <input type="radio" name="role" id="role" value="2" /> Teacher <br />
+                        </div>
+                        <hr />
+                        <h2>Pick a course below</h2>
+                        <div>
+                            @foreach (var item in @Model)
+                            {
+                                <input type="radio" name="course" id="course" value="@item.courseName" />@item.courseName<br />
+                            }
 
-                    </div>
-                    <hr />
+                        </div>
+                        <hr />
 
 
-                    <div>
-                        <input type="submit" id="submit" value="Create User" />
+                        <div>
+                            <input type="submit" id="submit" value="Create User" />
+                        </div>
                     </div>
 
                 </form>
+            </div>
         </div>
     </div>
+</div>
