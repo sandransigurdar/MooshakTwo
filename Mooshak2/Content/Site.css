@@ -393,8 +393,22 @@ h2.navtitle
 
 
 }
-/********************** Create course View **********************/
+/************************ Create course View **********************/
 .course-created-select
 {
-    margin-left: 15px;
+    margin-left: 20px;
 }
+/*********************** Create user View *************************/
+.user-created-div
+{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 20px;
+}
+/********************** View courses View ***************************/
+.user-created-div ul
+{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 20px;
+} 

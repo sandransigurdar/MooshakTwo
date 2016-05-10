@@ -1,26 +1,41 @@
-﻿@model List <Mooshak2.Models.Entity.Course>
+﻿@model List<Mooshak2.Models.Entity.Course>
 @{
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 
-<h2>Courses</h2>
-
-<ul>
-    
-    @foreach (var item in @Model)
-    {
-        <li>Name of course:@item.courseName  </li>
-        <li>Course teacher:@item.courseTeacher</li>
-    }
-
-</ul>
-
+<div class="container-fluid" id="fluid">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading" id="navtitle">
+                    <h2 class="navtitle">View Courses</h2>
+                </div>
+                <div class="panel-body" id="navbuttons"></div>
+            </div>
+        </div>
 
 
+        <div class="col-md-1"></div>
 
+        <div class="col-md-7">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2>A list of all courses </h2>
+                </div>
 
-<div>
+                <form action="ViewCourses" method="POST" class="form-horizontal">
+                    <ul>
 
-    @Html.ActionLink("Return home", "HomePage", "Admin")
+                        @foreach (var item in @Model)
+                        {
+                            <li>Name of course:@item.courseName  </li>
+                            <li>Course teacher:@item.courseTeacher</li>
+                        }
 
+                    </ul>
+                </form>
+
+            </div>
+        </div>
+    </div>
 </div>
