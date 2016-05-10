@@ -310,11 +310,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="StudentAssignments\agga\" />
-    <Folder Include="StudentAssignments\asi\" />
-    <Folder Include="StudentAssignments\hoxa\" />
-    <Folder Include="StudentAssignments\sasa\" />
-    <Folder Include="StudentAssignments\trewtrew\" />
+    <Folder Include="StudentAssignments\" />
     <Folder Include="Views\Assignment\" />
   </ItemGroup>
   <ItemGroup>

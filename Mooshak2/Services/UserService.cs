@@ -15,6 +15,9 @@ namespace Mooshak2.Services
 {
     public class UserService
     {
+        CourseStudent cS = new CourseStudent();
+        LoginService lS = new LoginService();
+
         private ApplicationDbContext _db;
 
 
@@ -98,17 +101,13 @@ namespace Mooshak2.Services
                         studentId = item.id;
                     }
                 }
- 
-                //Hér fyrir neðan er búið til path sem geymir verkefni.
-                string root = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
-                root = root.Remove(root.Length - 3);
-                string path = "StudentAssignments\\" + studentId;
-                string wholePath = root + path;
-                wholePath = wholePath.Remove(0, 6);
+
+                string rootPath = lS.GetRootPathOfProject();
+                string wholePath = rootPath + studentId;
 
                 Directory.CreateDirectory(wholePath);
 
-                CourseStudent cS = new CourseStudent();
+                
                 cS.courseId = courseId;
                 cS.studentId = studentId;
 

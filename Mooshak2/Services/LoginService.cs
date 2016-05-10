@@ -63,6 +63,17 @@ namespace Mooshak2.Services
             return 404;
 
         }
+
+        public string GetRootPathOfProject()
+        {
+            string root = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
+            root = root.Remove(root.Length - 3);
+            string path = "StudentAssignments\\";
+            string wholePath = root + path;
+            wholePath = wholePath.Remove(0, 6);
+
+            return wholePath;
+        }
     }
 }
 

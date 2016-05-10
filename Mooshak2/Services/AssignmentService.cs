@@ -11,8 +11,8 @@ namespace Mooshak2.Services
 
     public class AssignmentService
     {
-        
- 
+        LoginService lS = new LoginService();
+
         private ApplicationDbContext _db;
 
         public AssignmentService()
@@ -68,13 +68,25 @@ namespace Mooshak2.Services
 
         public void SaveAssignment(string assignmentCode)
         {
-            string path = "~\\StudentAssignments\\";
+
+            int studentId =0;
+            //string assignmentName;
+
             string loggedInUser = LoginService.nameOfLoggedInUser;
 
-            string completePath = path + loggedInUser;
+            foreach (var item in _db.Students)
+            {
+                if(loggedInUser == item.name)
+                {
+                    studentId = item.id;
+                }
+            }
+           
 
-            System.IO.File.WriteAllText(completePath, assignmentCode);
+            string rootPath = lS.GetRootPathOfProject();
+            string wholePath = rootPath + studentId;
 
+            //System.IO.File.WriteAllText(wholePath + );
 
 
 
