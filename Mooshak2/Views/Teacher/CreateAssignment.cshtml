@@ -4,8 +4,15 @@
 
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js">
+<<<<<<< HEAD
     $(document).ready(function () {
     $( "#date" ).datepicker();
+=======
+
+
+    $(function () {
+        $("#date").datepicker();
+>>>>>>> e6265711a3420789601372a0aef7226f2ac0fb29
     });
 
 </script>
@@ -34,14 +41,20 @@
         <div class="col-md-1"></div>
         <div class="col-md-7">
             <div class="panel panel-default">
+<<<<<<< HEAD
                 <div class="panel-heading">
                     <h2 class="navtitle">Create Assignment</h2>
                  @*   @foreach (var item in Model.assignments)
+=======
+                <div class="panel-heading" id="createheading">Create Assignment
+                    @*@foreach (var item in Model.assignments)
+>>>>>>> e6265711a3420789601372a0aef7226f2ac0fb29
                     {
                         <h1 class="panel-title">@item.assignmentName - @item.assignmentSubName</h1>
                     }*@
                 </div>
                 <div class="panel-body">
+<<<<<<< HEAD
                     <form class="form-horizontal" action="CreateAssignment" method="POST">
                         <div class="form-group">
                             <label for="name">Name of assignment:</label>
@@ -71,6 +84,41 @@
                             <button type="submit" id="formButton" value="Save" class="btn btn-info" >Create assignmnet</button>
                         </div>
                     </form>
+=======
+
+                        <form class="form-horizontal" action="CreateAssignment" id="createassignment" method="POST">
+
+                            <div class="form-group">
+
+                                <label for="name">Name of assignment:</label>
+                                <input type="text" id="name" name="name" />
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="date">Due Date:</label>
+                                <input type="date" id="date" name="date" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="subname">Subname:</label>
+                                <input type="text" id="subname" name="subname" placeholder="Enter the name for each part.."/>
+                            </div>
+
+                            <textarea rows="5" name="description" id="description" form="createassignment" placeholder="Description goes here..."></textarea>
+
+                            <div class="row">
+                                <textarea rows="5" name="input" id="input" form="createassignment" placeholder="Input goes here..."></textarea>
+
+                                <textarea rows="5" name="correctoutput" id="correctoutput" form="createassignment" placeholder="Output goes here..."></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <button type="submit" id="formButton" value="Save" >Save</button>
+                            </div>
+                        </form>
+
+>>>>>>> e6265711a3420789601372a0aef7226f2ac0fb29
                 </div>
             </div>
         </div>
