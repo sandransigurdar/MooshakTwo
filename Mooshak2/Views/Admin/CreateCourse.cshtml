@@ -24,7 +24,7 @@
             <div class="panel-heading">
                 <h1>Create Course</h1>
             </div>
-     
+
                 <div class="panel-body">
 
                     <form action="CreateCourse" method="POST" class="form-horizontal">
@@ -32,13 +32,16 @@
                             <label for="coursename">Course name:</label>
                             <input type="text" id="coursename" name="coursename" />
                             <br />
+                            <br />
                        
-                            <select multiple id="teacher" name="teacher" class="course-created-select">
+                            <select multiple id="teacher" name="teacher">
                                 @foreach (var item in @Model)
                                 {
                                     <option value="@item.name">@item.name</option>
                                 }
                             </select>
+                            <br />
+                            <br />
 
                             <input type="submit" value="Create Course" />
 
