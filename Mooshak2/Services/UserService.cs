@@ -7,6 +7,8 @@ using Mooshak2.Models.Entity;
 using System.Web.Security;
 using Mooshak2.Models.ViewModels;
 
+
+
 namespace Mooshak2.Services
 {
     public class UserService
@@ -67,6 +69,9 @@ namespace Mooshak2.Services
                 newStudent.email = email;
                 newStudent.password = password;
                 newStudent.role = 1;
+
+                string coreDirectory = "~/StudentAssignments/";
+                System.IO.Directory.CreateDirectory(coreDirectory + name);
 
                 int courseId = 0;
 

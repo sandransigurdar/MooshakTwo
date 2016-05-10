@@ -63,5 +63,24 @@ namespace Mooshak2.Services
             _db.SaveChanges();
 
         }
+
+        public void SaveAssignment(string assignment)
+        {
+            //LoginService lS = new LoginService();
+            string fds = LoginService.nameOfLoggedInUser;
+
+
+
+
+
+        }
+
+       /* public int GetAssignmentStatus()
+        {
+
+        }*/
+
+       
+
     }
 }
