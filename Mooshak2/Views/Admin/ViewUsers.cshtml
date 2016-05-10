@@ -7,20 +7,20 @@
 
 <ul>
 
-    @foreach(var item in )
+    @foreach(var item in Model.teachers)
     {
-        <li>Name of course: </li>
+        <li>Name of teacher: @item.name </li>
     }
 
 </ul>
 
-<h2>List of Teachers</h2>
+<h2>List of Students</h2>
 
 <ul>
 
-    @foreach(var item in @Model)
+    @foreach(var item in Model.students)
     {
-        <li>Name of course:@item.students  </li>
+        <li>Name of student:@item.name  </li>
     }
 
 </ul>
