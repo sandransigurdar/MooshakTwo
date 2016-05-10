@@ -275,7 +275,7 @@ body, html {
     display: block;
     margin: auto;
 }
-/*----------------------Student ViewAssignments -----Teacher ViewAssignment------------------------*/
+/*----------------------Student ViewAssignments -----Teacher CreateAssignment------------------------*/
 .table-bordered
 {
     background-color: white;
@@ -393,11 +393,7 @@ h2.navtitle
 
 
 }
-/************************ Create course View **********************/
-.course-created-select
-{
-    margin-left: 20px;
-}
+
 /*********************** Create user View *************************/
 .user-created-div
 {
@@ -406,7 +402,7 @@ h2.navtitle
     margin-left: 20px;
 }
 /********************** View courses View ***************************/
-.user-created-div ul
+.viewcourses-box
 {
     margin-top: 15px;
     margin-bottom: 15px;
