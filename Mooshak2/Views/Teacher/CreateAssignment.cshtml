@@ -4,15 +4,12 @@
 
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js">
-<<<<<<< HEAD
-    $(document).ready(function () {
-    $( "#date" ).datepicker();
-=======
+
 
 
     $(function () {
         $("#date").datepicker();
->>>>>>> e6265711a3420789601372a0aef7226f2ac0fb29
+
     });
 
 </script>
@@ -41,50 +38,16 @@
         <div class="col-md-1"></div>
         <div class="col-md-7">
             <div class="panel panel-default">
-<<<<<<< HEAD
+
                 <div class="panel-heading">
                     <h2 class="navtitle">Create Assignment</h2>
                  @*   @foreach (var item in Model.assignments)
-=======
+
                 <div class="panel-heading" id="createheading">Create Assignment
-                    @*@foreach (var item in Model.assignments)
->>>>>>> e6265711a3420789601372a0aef7226f2ac0fb29
-                    {
-                        <h1 class="panel-title">@item.assignmentName - @item.assignmentSubName</h1>
-                    }*@
+                    *@
                 </div>
                 <div class="panel-body">
-<<<<<<< HEAD
-                    <form class="form-horizontal" action="CreateAssignment" method="POST">
-                        <div class="form-group">
-                            <label for="name">Name of assignment:</label>
-                            <input type="text" id="name" name="name" />
-                        </div>
-                        <div class="form-group">
-                            <label for="subname">Subname of assignment:</label>
-                            <input type="text" id="subname" name="subname" />
-                        </div>
-                        <div class="form-group">
-                            <label for="description">Description:</label>
-                            <input type="text" id="description" name="description" />
-                        </div>
-                        <div class="form-group">
-                            <label for="date">Date:</label>
-                            <input type="datetime" id="date" name="date" />
-                        </div>
-                        <div class="form-group">
-                            <label for="input">Input:</label>
-                            <input type="textarea" id="input" name="input" />
-                        </div>
-                        <div class="form-group">
-                            <label for="correctoutput">Correct Output:</label>
-                            <input type="textarea" id="correctoutput" name="correctoutput" />
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" id="formButton" value="Save" class="btn btn-info" >Create assignmnet</button>
-                        </div>
-                    </form>
-=======
+
 
                         <form class="form-horizontal" action="CreateAssignment" id="createassignment" method="POST">
 
@@ -117,8 +80,6 @@
                                 <button type="submit" id="formButton" value="Save" >Save</button>
                             </div>
                         </form>
-
->>>>>>> e6265711a3420789601372a0aef7226f2ac0fb29
                 </div>
             </div>
         </div>
