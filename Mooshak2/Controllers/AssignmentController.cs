@@ -10,7 +10,7 @@ namespace Mooshak2.Controllers
     public class AssignmentController : Controller
     {
 
-        private AssignmentService service = new AssignmentService();
+        AssignmentService aS = new AssignmentService();
 
         public ActionResult Index()
         {
@@ -19,10 +19,12 @@ namespace Mooshak2.Controllers
 
         }
 
-        public void GetAssignmentFileFromUser()
+        public void GetAssignmentFileFromUser(FormCollection formCollection)
         {
-
-            
+            string filePath = Request.Form["file"];
+            string file = System.IO.File.ReadAllText(filePath);
+            aS.SaveAssignment(file);
         }
+    
     }
 }
