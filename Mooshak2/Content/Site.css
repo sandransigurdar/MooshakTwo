@@ -1,7 +1,7 @@
 ﻿body {
     margin: 0;
     padding: 0;
-    height: 100%;
+    /*height: 100%;*/
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -116,7 +116,7 @@ header footer{
 body, html {
     background-repeat: no-repeat;
     background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgb(104, 145, 162));
-    height: 100%;
+    /*height: 100%;*/
     background-color:rgb(104, 145, 162);
 }
 
@@ -307,7 +307,7 @@ body, html {
 .panel-body
 {
     min-height: 2px;
-    max-height: 300px;
+    max-height: 450px;
     overflow: auto;
     -moz-border-radius: 2px;
     -webkit-border-radius: 2px;
@@ -325,13 +325,13 @@ padding: 5px 2px;
 
 .panel-heading
 {
-    height: 70px;
+    height: 40px;
     background-color: #94b6d2;
 }
 
 h2.navtitle
 {
-    margin-top: 15px;
+    margin: 0;
     font-weight: bold;
     font-size: 20px;
 }
@@ -382,6 +382,12 @@ h2.navtitle
     background-color: lightgray;
 }
 
+.panel-title
+{
+    display: inline;
+    text-align: center;
+}
+
 #fluid
 {
     padding-top: 100px;
@@ -390,8 +396,57 @@ h2.navtitle
 
 #formButton
 {
+    float: right;
+    margin-top: 5px;
+}
 
+.form-group
+{
+    margin-bottom:5px;
+}
 
+.form-horizontal .form-group
+{
+    margin-left:0;
+    margin-right:0;
+}
+
+input, select, textarea
+{
+    max-width: none;
+}
+
+#description
+{
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+input#name
+{
+    width: 76.8%;
+}
+
+textarea#input
+{
+    width: 49.6%;
+}
+
+textarea#correctoutput
+{
+    width: 49.6%;
+}
+
+#createheading
+{
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+}
+
+input#subname
+{
+    width: 45%;
 }
 /********************** Create course View **********************/
 .course-created-select

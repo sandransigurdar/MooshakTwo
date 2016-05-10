@@ -6,16 +6,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js">
 
 
-    $(document).ready(function () {
-
-         
-
-            $( "#date" ).datepicker();
-
-     
-
-
-
+    $(function () {
+        $("#date").datepicker();
     });
 
 </script>
@@ -47,8 +39,8 @@
 
         <div class="col-md-7">
             <div class="panel panel-default">
-                <div class="panel-heading">
-                 @*   @foreach (var item in Model.assignments)
+                <div class="panel-heading" id="createheading">Create Assignment
+                    @*@foreach (var item in Model.assignments)
                     {
                         <h1 class="panel-title">@item.assignmentName - @item.assignmentSubName</h1>
                     }*@
@@ -56,7 +48,7 @@
                 </div>
                 <div class="panel-body">
 
-                        <form class="form-horizontal" action="CreateAssignment" method="POST">
+                        <form class="form-horizontal" action="CreateAssignment" id="createassignment" method="POST">
 
                             <div class="form-group">
 
@@ -66,30 +58,25 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="subname">Subname of assignment:</label>
-                                <input type="text" id="subname" name="subname" />
+                                <label for="date">Due Date:</label>
+                                <input type="date" id="date" name="date" />
                             </div>
 
                             <div class="form-group">
-                                <label for="description">Description:</label>
-                                <input type="text" id="description" name="description" />
+                                <label for="subname">Subname:</label>
+                                <input type="text" id="subname" name="subname" placeholder="Enter the name for each part.."/>
+                            </div>
+
+                            <textarea rows="5" name="description" id="description" form="createassignment" placeholder="Description goes here..."></textarea>
+
+                            <div class="row">
+                                <textarea rows="5" name="input" id="input" form="createassignment" placeholder="Input goes here..."></textarea>
+
+                                <textarea rows="5" name="correctoutput" id="correctoutput" form="createassignment" placeholder="Output goes here..."></textarea>
                             </div>
 
                             <div class="form-group">
-                                <label for="date">Date:</label>
-                                <input type="datetime" id="date" name="date" />
-                            </div>
-
-                            <div class="form-group">
-                                <label for="input">Input:</label>
-                                <input type="textarea" id="input" name="input" />
-                            </div>
-                            <div class="form-group">
-                                <label for="correctoutput">Correct Output:</label>
-                                <input type="textarea" id="correctoutput" name="correctoutput" />
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" id="formButton" value="Save" class="btn btn-info" >Save</button>
+                                <button type="submit" id="formButton" value="Save" >Save</button>
                             </div>
                         </form>
 
