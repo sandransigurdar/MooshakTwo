@@ -20,8 +20,9 @@ namespace Mooshak2.Services
             _db = new ApplicationDbContext();
         }
 
-        public static string nameOfLoggedInUser;
-
+        public static string nameOfLoggedInUser = "";
+        
+        public static int userRole = 0;
 
         
 

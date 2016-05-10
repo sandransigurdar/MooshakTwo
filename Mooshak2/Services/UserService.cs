@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Net;
 using Mooshak2.Models;
 using Mooshak2.Models.Entity;
 using System.Web.Security;
 using Mooshak2.Models.ViewModels;
-
+using System.IO;
+using System.ComponentModel.DataAnnotations;
 
 
 namespace Mooshak2.Services
@@ -60,10 +62,6 @@ namespace Mooshak2.Services
 
             if (user == 1)
             {
-                /*string path = "~/StudentAssignments/";
-                string coreDirectory = System.IO.Path.Combine(path, userName);
-                System.IO.Directory.CreateDirectory(coreDirectory);*/
-                
 
                 Student newStudent = new Student();
 
@@ -73,9 +71,6 @@ namespace Mooshak2.Services
                 newStudent.email = email;
                 newStudent.password = password;
                 newStudent.role = 1;
-
-               
-                
 
                 int courseId = 0;
 
@@ -88,6 +83,7 @@ namespace Mooshak2.Services
                     }
                 }
 
+                
 
                 _db.Students.Add(newStudent);
                 _db.SaveChanges();
@@ -102,6 +98,15 @@ namespace Mooshak2.Services
                         studentId = item.id;
                     }
                 }
+ 
+                //Hér fyrir neðan er búið til path sem geymir verkefni.
+                string root = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
+                root = root.Remove(root.Length - 3);
+                string path = "StudentAssignments\\" + studentId;
+                string wholePath = root + path;
+                wholePath = wholePath.Remove(0, 6);
+
+                Directory.CreateDirectory(wholePath);
 
                 CourseStudent cS = new CourseStudent();
                 cS.courseId = courseId;

@@ -15,6 +15,7 @@ namespace Mooshak2.Controllers
         CourseService cS = new CourseService();
         AdminUserViewModel aUVM = new AdminUserViewModel();
 
+        //[Authorize (LoginService.userRole == 3)]
         public ActionResult CreateCourse()
         {
 
@@ -27,12 +28,14 @@ namespace Mooshak2.Controllers
         [HttpPost]
         public ActionResult CreateCourse(FormCollection formCollection)
         {
-       
+            
             string courseName = Request.Form["coursename"];
             string courseTeacher = Request.Form["teacher"];
 
             
-            cS.CreateCourse(courseName, courseTeacher);
+                cS.CreateCourse(courseName, courseTeacher);
+            
+            
 
             return View("~/Views/Admin/HomePage.cshtml"); 
         }
@@ -61,7 +64,10 @@ namespace Mooshak2.Controllers
 
             UserService uS = new UserService();
 
-            uS.CreateUser(name, userName, ssn, email, password, userRole, course);
+            //if (ModelState.IsValid)
+            //{
+                uS.CreateUser(name, userName, ssn, email, password, userRole, course);
+            //}
 
             return View("~/Views/Admin/HomePage.cshtml");
         }

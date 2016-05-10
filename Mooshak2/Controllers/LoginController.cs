@@ -35,18 +35,21 @@ namespace Mooshak2.Controllers
                 
                 var student = us.getStudentByName(name);
                 LoginService.nameOfLoggedInUser = name;
+                LoginService.userRole = 1;
                 return View("~/Views/Student/HomePage.cshtml" , student);
             }
 
             else if (userRole==2)
             {
-                
+                LoginService.nameOfLoggedInUser = name;
+                LoginService.userRole = 2;
                 return View("~/Views/Teacher/HomePage.cshtml");
             }
 
             else if (userRole==3)
             {
-                
+                LoginService.nameOfLoggedInUser = name;
+                LoginService.userRole = 3;
                 return View("~/Views/Admin/HomePage.cshtml");
             }
 
