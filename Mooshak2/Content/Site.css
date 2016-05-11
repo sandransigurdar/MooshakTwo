@@ -515,6 +515,16 @@ ul
 }
 .form-horizontal
 {
-    padding-top: 20px;
+   padding-top: 20px;
+}
+
+#style-button
+{
+    padding-left: 30px;
+}
+
+#h2padding
+{
+    padding: 10px;
 }
 
