@@ -3,7 +3,15 @@
     Layout = "~/Views/Shared/StudentLayout.cshtml";
 }
 
-    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js">
+
+        $(".btn").click(function () {
+            var divToToggle = $($(this).find("button").attr('href'));
+            $(".toggle:visible").not(divToToggle).hide();
+            divToToggle.slideToggle("slow");
+        });
+
+    </script>
 
 <div class="container-fluid" id="fluid">
     <div class="row">
@@ -15,7 +23,7 @@
                 <div class="panel-body" id="navbuttons">
                     @foreach (var item in Model.assignments)
                     {
-                        <button type="button" class="btn btn-default" id="btn-id" data-toggle="collapse" data-path="#accordion" href="#button_@item.id">@item.assignmentName</button>
+                        <button type="button" class="btn btn-default" id="btn-id" data-toggle="collapse" data-path="#accordion" href="#box_@item.id">@item.assignmentName</button>
                         <div id="button_@item.id" class="collapse">
                             <span> - @item.assignmentSubName </span>
                         </div>
@@ -42,48 +50,50 @@
     <div class="col-md-1"></div>
     
         <div class="col-md-7">
-            
-            @foreach (var item in Model.assignments)
+
+    @foreach (var item in Model.assignments)
             {
-                <div class="panel panel-default" id="ipanel_@item.id">
+            <div class="toggle" id="box_@item.id">
+                <div class="panel panel-default" id="button_@item.id">
                     <div class="panel-heading">
-                        
+
                         <h1 class="panel-title">@item.assignmentName - @item.assignmentSubName</h1>
-                            
-                            <form action="~/Assignment/GetAssignmentFileFromUser" id="studentform" method="post">
-                                <label for="file">
-                                    <span class="glyphicon glyphicon-folder-open" id="foldericon" aria-hidden="true">File</span>
-                                    <input type="file" id="file" style="display:none">
-                                </label>
-                                <label for="submit">
-                                    <span class="glyphicon glyphicon-floppy-disk" id="saveicon" aria-hidden="true">Submit</span>
-                                    <input type="submit" id="submit" style="display:none">
-                                </label>
-                            </form>
+
+                        <form action="~/Assignment/GetAssignmentFileFromUser" id="studentform" method="post">
+                            <label for="file">
+                                <span class="glyphicon glyphicon-folder-open" id="foldericon" aria-hidden="true">File</span>
+                                <input type="file" id="file" style="display:none">
+                            </label>
+                            <label for="submit">
+                                <span class="glyphicon glyphicon-floppy-disk" id="saveicon" aria-hidden="true">Submit</span>
+                                <input type="submit" id="submit" style="display:none">
+                            </label>
+                        </form>
                     </div>
 
                     <div class="panel-body">
-                        
-                        
-                            <p>@item.description</p>
-                        
-                    
-    
+
+
+                        <p>@item.description</p>
+
+
+
                         @* ------- byrjun á Javascript til að birta viðkomandi description ---------------
-                        <script>
-                            $(document).ready(function()
-                            {
-                                $("#show").click(function(){
-                                    $("p").show(@item.description);
+                            <script>
+                                $(document).ready(function()
+                                {
+                                    $("#show").click(function(){
+                                        $("p").show(@item.description);
+                                    });
+
                                 });
 
-                            });
-                     
-                        </script>*@
-                        
+                            </script>*@
+
                     </div>
                 </div>
-            }
+            </div>
+    }
         </div>
     </div>
 </div>
