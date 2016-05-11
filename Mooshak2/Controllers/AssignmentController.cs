@@ -9,8 +9,9 @@ namespace Mooshak2.Controllers
 {
     public class AssignmentController : Controller
     {
-
+        LoginService lS = new LoginService();
         AssignmentService aS = new AssignmentService();
+
 
         public ActionResult Index()
         {
@@ -19,15 +20,16 @@ namespace Mooshak2.Controllers
 
         }
 
+        [HttpPost]
         public void GetAssignmentFileFromUser(FormCollection formCollection)
         {
             
-            var assignmentname = Request.Form["assignmentname"];
-            //string assignmentName = Request.Form["assignmentname"];
-            string filePath = Request.Form["file"];
-            string file = System.IO.File.ReadAllText(filePath);
-            aS.SaveAssignment(file);
+            string assignmentName = Request.Form["assignmentname"];
+            
+            var filePath = Request.Files.Get("file");
+
+            aS.SaveAssignment(assignmentName , filePath);
+
         }
-    
     }
 }

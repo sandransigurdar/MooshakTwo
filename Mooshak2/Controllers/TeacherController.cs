@@ -11,6 +11,8 @@ namespace Mooshak2.Controllers
 {
     public class TeacherController : Controller
     {
+        AssignmentService aS = new AssignmentService();
+
         public ActionResult CreateAssignment()
         {
      
@@ -23,14 +25,57 @@ namespace Mooshak2.Controllers
             string name = Request.Form["name"];
             string subname = Request.Form["subname"];
             string description = Request.Form["description"];
-            DateTime date = DateTime.Parse(Request.Form["date"]);
+            string dateString = (Request.Form["date"]);
+            DateTime date = DateTime.Now;
+
+            if(!(string.IsNullOrEmpty(dateString)))
+            {
+                date = DateTime.Parse(dateString);
+            }
+           
+            
+
+
             string input = Request.Form["input"];
             string correctoutput = Request.Form["correctoutput"];
 
-            AssignmentService aS = new AssignmentService();
-            aS.CreateAssignment(name, subname, description, date, input, correctoutput);
+            Assignment newAssignment = new Assignment();
 
-            return View();
+            newAssignment = aS.CreateAssignment(name, subname, description, date, input, correctoutput);
+
+            if (string.IsNullOrEmpty(newAssignment.assignmentName))
+            {
+                ModelState.AddModelError("name", "Please enter a name!");
+            }
+            if (string.IsNullOrEmpty(newAssignment.assignmentSubName))
+            {
+                ModelState.AddModelError("subName", "Please enter a subname!");
+            }
+            if (string.IsNullOrEmpty(newAssignment.description))
+            {
+                ModelState.AddModelError("description", "Please enter a description!");
+            }
+            if (string.IsNullOrEmpty(newAssignment.description))
+            {
+                ModelState.AddModelError("date", "Please enter a date!");
+            }
+            if (string.IsNullOrEmpty(newAssignment.input))
+            {
+                ModelState.AddModelError("input", "Please enter input!");
+            }
+            if (string.IsNullOrEmpty(newAssignment.correctOutput))
+            {
+                ModelState.AddModelError("correctOutput", "Please enter a correct output!");
+            }
+
+            if(ModelState.IsValid)
+            {
+                aS.SaveChangesToDatabase(newAssignment);
+                return RedirectToAction("HomePage");
+            }
+
+            return View(newAssignment);
+
         }
 
         public ActionResult HomePage()

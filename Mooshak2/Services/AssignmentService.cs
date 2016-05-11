@@ -19,11 +19,11 @@ namespace Mooshak2.Services
         {
             _db = new ApplicationDbContext();
         }
-      
+
 
         public List<Assignment> GetAllAssignments()
         {
-            List <Assignment> allAssignments= new List<Assignment>();
+            List<Assignment> allAssignments = new List<Assignment>();
 
             foreach (var item in _db.Assignments)
             {
@@ -36,12 +36,12 @@ namespace Mooshak2.Services
 
 
 
-        public List <AssignmentStudent> GetAssignmentStatus(int studentId)
+        public List<AssignmentStudent> GetAssignmentStatus(int studentId)
         {
             List<AssignmentStudent> statuses = new List<AssignmentStudent>();
             foreach (var item in _db.AssignmentStudents)
             {
-                if(studentId == item.studentId)
+                if (studentId == item.studentId)
                 {
                     statuses.Add(item);
                 }
@@ -51,7 +51,7 @@ namespace Mooshak2.Services
 
         }
 
-        public void CreateAssignment(string name, string subName, string description, DateTime date, string input, string correctOutput)
+        public Assignment CreateAssignment(string name, string subName, string description, DateTime date, string input, string correctOutput)
         {
             Assignment newAssignment = new Assignment();
             newAssignment.assignmentName = name;
@@ -61,43 +61,51 @@ namespace Mooshak2.Services
             newAssignment.input = input;
             newAssignment.correctOutput = correctOutput;
 
-            _db.Assignments.Add(newAssignment);
-            _db.SaveChanges();
+            return newAssignment;
 
         }
 
-        public void SaveAssignment(string assignmentCode)
+        public void SaveAssignment(string assignmentName, HttpPostedFileBase filePath)
         {
 
-            int studentId =0;
-            //string assignmentName;
+            int studentId = 0;
             
+
             string loggedInUser = LoginService.nameOfLoggedInUser;
 
             foreach (var item in _db.Students)
             {
-                if(loggedInUser == item.name)
+                if (loggedInUser == item.userName)
                 {
                     studentId = item.id;
                 }
             }
 
+            if(!System.IO.Directory.Exists(""))
+            {
 
-            string assignmentPath = lS.GetPathForAssignments();
-            string wholePath = assignmentPath + studentId;
+            }
+            string rootOfProjectPath = lS.GetPathForAssignments() + studentId + "\\" + assignmentName;
+            System.IO.FileStream outStream = new System.IO.FileStream(rootOfProjectPath, System.IO.FileMode.CreateNew);
 
-            //System.IO.File.WriteAllText(wholePath + );
-
-
+            filePath.InputStream.CopyTo(outStream);
+            outStream.Flush();
+            outStream.Dispose();
 
         }
 
-       /* public int GetAssignmentStatus()
+        public void SaveChangesToDatabase(Assignment newAssignment)
         {
+            _db.Assignments.Add(newAssignment);
+            _db.SaveChanges();
+        }
 
-        }*/
+        /* public int GetAssignmentStatus()
+         {
 
-       
+         }*/
+
+
 
     }
 }

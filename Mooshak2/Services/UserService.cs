@@ -86,8 +86,6 @@ namespace Mooshak2.Services
                     }
                 }
 
-                
-
                 _db.Students.Add(newStudent);
                 _db.SaveChanges();
 

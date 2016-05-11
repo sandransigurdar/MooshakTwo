@@ -55,6 +55,15 @@
 
                             <div class="form-group">
 
+
+                                @Html.ValidationMessage("name")
+                                @Html.ValidationMessage("subName")
+                                @Html.ValidationMessage("description")
+                                @Html.ValidationMessage("date")
+                                @Html.ValidationMessage("input")
+                                @Html.ValidationMessage("correctOutput")
+
+
                                 <label for="name">Name of assignment:</label>
                                 <input type="text" id="name" name="name" />
 
