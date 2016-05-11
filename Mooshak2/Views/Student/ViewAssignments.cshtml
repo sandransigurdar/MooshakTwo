@@ -5,7 +5,7 @@
 
     <script src="https://code.jquery.com/jquery-1.9.1.min.js">
 
-       /* $(document).ready(function () {
+        $(document).ready(function () {
 
         $(".btn").click(function () {
             var divToToggle = $($(this).find("button").attr('href'));
@@ -13,7 +13,7 @@
             divToToggle.slideToggle("slow");
 
         });
-        });*/
+        });
 
 
     </script>
@@ -26,13 +26,13 @@
                     <h2 class="navtitle">Assignments</h2>
                 </div>
                 <div class="panel-body" id="navbuttons">
-                 @*   @foreach (var item in Model.assignments)
+                    @foreach (var item in Model.assignments)
     {
         <button type="button" class="btn btn-default" id="btn-id" data-toggle="collapse" data-path="#accordion" href="#box_@item.id">@item.assignmentName</button>
         <div id="button_@item.id" class="collapse">
             <span> - @item.assignmentSubName </span>
         </div>
-    }*@
+    }
             </div>
         </div>
     </div>
@@ -66,9 +66,9 @@
              <input type="submit" name="submit" value="Submit" />
          </form>
 
-    }
+    }*@
 
-        *@
+        
                 
         <div class="col-md-1"></div>
 
