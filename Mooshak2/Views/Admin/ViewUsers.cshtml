@@ -3,66 +3,98 @@
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 
-<!-------------------------------------------------------------------------
 <div class="container-fluid" id="fluid">
     <div class="row">
-        <div class="col-md-4">
-            <div class="panel panel-default">
-                <div class="panel-heading" id="navtitle">
-                    <h2 class="navtitle">View Courses</h2>
-                </div>
-                <div class="panel-body" id="navbuttons"></div>
-            </div>
-        </div>
---------------------------------------------------------------------------->
-
-
         <div class="col-md-1"></div>
-
         <div class="col-md-7">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h2 class="navtitle">List of Teachers</h2>
                 </div>
-
                 <form action="ViewCourses" method="POST" class="form-horizontal">
                     <div class="created-div">
-                        <ul>
+                        <table class="navtitle">
+                            <tr>
+                                <th>Name</th>
+                                <th>SSN</th>
+                                <th>Email</th>
+                            </tr>
                             @foreach (var item in Model.teachers)
                             {
-                                <li>Name of teacher: @item.name </li>
+                            <tr>
+                                <td>@item.name</td>
+                                <td>@item.ssn</td>
+                                <td>@item.email</td>
+                            </tr>
                             }
-                        </ul>
-                        
+                        </table>
                     </div>
                 </form>
-
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">      <!--------var svona-------<div class="container-fluid" id="fluid"-->
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-7">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="navtitle">List of Teachers</h2>
+                </div>
+                <form action="ViewCourses" method="POST" class="form-horizontal">
+                    <div class="created-div">
+                            <table class="navtitle">
+                                <tr>
+                                    <th>Name</th>
+                                </tr>
+                               @foreach (var item in Model.students)
+                               {
+                               <tr>
+                                    <td>@item.name</td>
+                                    </tr>
+                                }
+                            </table>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 </div>
 
 
+
+
+
+
+
+
 @******************************************************
 
-    <div>
+                <div>
 
-        @Html.ActionLink("Return home", "HomePage", "Admin")
+                    @Html.ActionLink("Return home", "HomePage", "Admin")
 
-    </div>
+                </div>
 
 ************************************************************@
 
+@**************************************************************
+<ul>
+    @foreach (var item in Model.students)
+    {
+        <li>Name of student:@item.name  </li>
+    }
+</ul>
+****************************************************************@
 
-
-@***********************************************
-
-        <h2>List of Students</h2>
-    <ul>
-        @foreach (var item in Model.students)
-        {
-            <li>Name of student:@item.name  </li>
-        }
-    </ul>
-
-*************************************************@
+@************************************
+<ul>
+    @foreach (var item in Model.teachers)
+    {
+        <li>Name: @item.name </li>
+        <li>SSN: @item.ssn </li>
+        <li>Email: @item.email </li>
+    }
+</ul>
+************************************@
