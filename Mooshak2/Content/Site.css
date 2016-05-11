@@ -494,16 +494,22 @@ input#subname
     margin-bottom: 15px;
 }
 
-/************************* Create User div  ********************************/
+/******************************* Create User View div  ********************************/
 .user-created-div 
 {
     margin-top: 15px;
     margin-bottom: 15px;
     margin-left: 20px;
+    line-height: 25px;
+}
+/******************************* View Courses View **********************************/
+.created-view-div
+{
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 ul
 {
     list-style-type: none;
 }
-
