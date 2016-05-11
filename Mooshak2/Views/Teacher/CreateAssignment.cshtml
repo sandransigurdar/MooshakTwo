@@ -5,15 +5,13 @@
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js">
 
-
-
+    $(document).ready(function () { 
+    
     $(function () {
         $("#date").datepicker();
 
     });
-
-    
-
+    });
 </script>
 
 
@@ -52,44 +50,34 @@
 
 
                         <form class="form-horizontal" action="CreateAssignment" id="createassignment" method="POST">
-
+                        
                             <div class="form-group">
-
-
-                                @Html.ValidationMessage("name")
-                                @Html.ValidationMessage("subName")
-                                @Html.ValidationMessage("description")
-                                @Html.ValidationMessage("date")
-                                @Html.ValidationMessage("input")
-                                @Html.ValidationMessage("correctOutput")
-
-
+                                <div class="alert-danger">@Html.ValidationMessage("name")</div>
                                 <label for="name">Name of assignment:</label>
                                 <input type="text" id="name" name="name" />
-
                             </div>
-
                             <div class="form-group">
+                                <div class="alert-danger">@Html.ValidationMessage("date")</div>
                                 <label for="date">Due Date:</label>
                                 <input type="date" id="date" name="date" />
                             </div>
-
                             <div class="form-group">
+                                <div class="alert-danger">@Html.ValidationMessage("subName")</div>
                                 <label for="subname">Subname:</label>
                                 <input type="text" id="subname" name="subname" placeholder="Enter the name for each part.."/>
                             </div>
-
+                            <div class="alert-danger">@Html.ValidationMessage("description")</div>
                             <textarea rows="5" name="description" id="description" form="createassignment" placeholder="Description goes here..."></textarea>
-
+                            
                             <div class="row">
+                                <div class="alert-danger">@Html.ValidationMessage("input")</div>
                                 <textarea rows="5" name="input" id="input" form="createassignment" placeholder="Input goes here..."></textarea>
-
-                                <textarea rows="5" name="correctoutput" id="correctoutput" form="createassignment" placeholder="Output goes here..."></textarea>
+                                <div class="alert-danger">@Html.ValidationMessage("correctOutput")</div>   
+                                <textarea rows="5" name="correctoutput" id="correctoutput" form="createassignment" placeholder="Output goes here..."></textarea>               
                             </div>
-
-                            <div class="form-group">
-                                <button type="submit" id="formButton" value="Save" >Save</button>
-                            </div>
+                                <div class="form-group">
+                                    <button type="submit" id="formButton" value="Save">Save</button>
+                                </div>
                         </form>
                 </div>
             </div>

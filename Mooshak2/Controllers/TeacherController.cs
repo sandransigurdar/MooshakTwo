@@ -32,9 +32,6 @@ namespace Mooshak2.Controllers
             {
                 date = DateTime.Parse(dateString);
             }
-           
-            
-
 
             string input = Request.Form["input"];
             string correctoutput = Request.Form["correctoutput"];
@@ -45,27 +42,27 @@ namespace Mooshak2.Controllers
 
             if (string.IsNullOrEmpty(newAssignment.assignmentName))
             {
-                ModelState.AddModelError("name", "Please enter a name!");
+                ModelState.AddModelError("name", "* Please enter a name.");
             }
             if (string.IsNullOrEmpty(newAssignment.assignmentSubName))
             {
-                ModelState.AddModelError("subName", "Please enter a subname!");
+                ModelState.AddModelError("subName", "* Please enter a subname.");
             }
             if (string.IsNullOrEmpty(newAssignment.description))
             {
-                ModelState.AddModelError("description", "Please enter a description!");
+                ModelState.AddModelError("description", "* Please enter a description.");
             }
             if (string.IsNullOrEmpty(newAssignment.description))
             {
-                ModelState.AddModelError("date", "Please enter a date!");
+                ModelState.AddModelError("date", "* Please enter a date.");
             }
             if (string.IsNullOrEmpty(newAssignment.input))
             {
-                ModelState.AddModelError("input", "Please enter input!");
+                ModelState.AddModelError("input", "* Please enter input.");
             }
             if (string.IsNullOrEmpty(newAssignment.correctOutput))
             {
-                ModelState.AddModelError("correctOutput", "Please enter a correct output!");
+                ModelState.AddModelError("correctOutput", "* Please enter a correct output.");
             }
 
             if(ModelState.IsValid)
