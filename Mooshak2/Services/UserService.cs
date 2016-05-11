@@ -102,7 +102,7 @@ namespace Mooshak2.Services
                     }
                 }
 
-                string rootPath = lS.GetRootPathOfProject();
+                string rootPath = lS.GetPathForAssignments();
                 string wholePath = rootPath + studentId;
 
                 Directory.CreateDirectory(wholePath);

@@ -21,6 +21,9 @@ namespace Mooshak2.Controllers
 
         public void GetAssignmentFileFromUser(FormCollection formCollection)
         {
+            
+            var assignmentname = Request.Form["assignmentname"];
+            //string assignmentName = Request.Form["assignmentname"];
             string filePath = Request.Form["file"];
             string file = System.IO.File.ReadAllText(filePath);
             aS.SaveAssignment(file);
