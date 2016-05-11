@@ -15,13 +15,47 @@
 
                     <form action="ViewCourses" method="POST" class="form-horizontal">
                         <div class="created-view-div">
-                            <ul>
+                            <table class="table">
+                                <tr>
+                                    <th>Course</th>
+                                    <th>Teacher</th>
+                                </tr>
                                 @foreach (var item in @Model)
                                 {
-                                        <li>Name of course:@item.courseName  </li>
-                                        <li>Course teacher:@item.courseTeacher</li>
+                                    <tr>
+                                        <td>@item.courseName  </td>
+                                        <td>@item.courseTeacher</td>
+                                    </tr>
                                 }
-                            </ul>
+                            </table>
+
+                            @*************************************
+
+                                <table class="table">
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>SSN</th>
+                                        <th>Email</th>
+                                    </tr>
+                                    @foreach (var item in Model.teachers)
+                                    {
+                                    <tr>
+                                        <td>@item.name</td>
+                                        <td>@item.ssn</td>
+                                        <td>@item.email</td>
+                                    </tr>
+                                    }
+                                </table>
+
+
+
+
+        **********************************************@
+
+
+
+
+
                         </div>
                     </form>
 
