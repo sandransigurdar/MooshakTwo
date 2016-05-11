@@ -487,18 +487,40 @@ input#subname
     width: 45%;
 }
 
-/*********************** Admin boxin views *************************/
+/*********************** Admin boxin views (nema Create User-div) *************************/
 .created-div
 {
-    margin-top: 5px;
+    margin-top: 15px;
     margin-bottom: 15px;
-    margin-left: 20px;
 }
 
+/************************* Create User div  ********************************/
 .user-created-div
 {
     margin-top: 15px;
     margin-bottom: 15px;
     margin-left: 20px;
+<<<<<<< HEAD
 } 
 
+=======
+<<<<<<< HEAD
+}
+
+ul
+{
+    list-style-type: none;
+}
+=======
+<<<<<<< HEAD
+} 
+/********************** Create courses***************************/
+.col-md-7
+{
+    padding-top:30px; 
+}
+=======
+}
+>>>>>>> 826b196c3ff835da223167d888382398cf3b3ef6
+>>>>>>> 5723236703adf91bd5372bb3ec8a134f7968b02e
+>>>>>>> 7621471f01b765e159ad64886aeb00b6a88458ba
