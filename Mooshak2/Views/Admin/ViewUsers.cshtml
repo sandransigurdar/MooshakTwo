@@ -3,31 +3,66 @@
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 
-<h2>List of Teachers</h2>
-
-<ul>
-
-    @foreach(var item in Model.teachers)
-    {
-        <li>Name of teacher: @item.name </li>
-    }
-
-</ul>
-
-<h2>List of Students</h2>
-
-<ul>
-
-    @foreach(var item in Model.students)
-    {
-        <li>Name of student:@item.name  </li>
-    }
-
-</ul>
+<!-------------------------------------------------------------------------
+<div class="container-fluid" id="fluid">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading" id="navtitle">
+                    <h2 class="navtitle">View Courses</h2>
+                </div>
+                <div class="panel-body" id="navbuttons"></div>
+            </div>
+        </div>
+--------------------------------------------------------------------------->
 
 
-<div>
+        <div class="col-md-1"></div>
 
-    @Html.ActionLink("Return home", "HomePage", "Admin")
+        <div class="col-md-7">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="navtitle">List of Teachers</h2>
+                </div>
 
+                <form action="ViewCourses" method="POST" class="form-horizontal">
+                    <div class="created-div">
+                        <ul>
+                            @foreach (var item in Model.teachers)
+                            {
+                                <li>Name of teacher: @item.name </li>
+                            }
+                        </ul>
+                        
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
 </div>
+
+
+@******************************************************
+
+    <div>
+
+        @Html.ActionLink("Return home", "HomePage", "Admin")
+
+    </div>
+
+************************************************************@
+
+
+
+@***********************************************
+
+        <h2>List of Students</h2>
+    <ul>
+        @foreach (var item in Model.students)
+        {
+            <li>Name of student:@item.name  </li>
+        }
+    </ul>
+
+*************************************************@
