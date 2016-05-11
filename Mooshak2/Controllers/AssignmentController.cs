@@ -21,7 +21,7 @@ namespace Mooshak2.Controllers
         }
 
         [HttpPost]
-        public void GetAssignmentFileFromUser(FormCollection formCollection)
+        public ActionResult GetAssignmentFileFromUser(FormCollection formCollection)
         {
             
             string assignmentName = Request.Form["assignmentname"];
@@ -30,6 +30,7 @@ namespace Mooshak2.Controllers
 
             aS.SaveAssignment(assignmentName , filePath);
 
+            return View("~/Views/Student/HomePage.cshtml");
         }
     }
 }

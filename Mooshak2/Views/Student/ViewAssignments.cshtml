@@ -83,17 +83,16 @@
                             <h1 class="panel-title">@item.assignmentName - @item.assignmentSubName</h1>
 
                             <form action="~/Assignment/GetAssignmentFileFromUser" method="post" enctype="multipart/form-data">
-
-                                <input type="text" class="assignmentname" name="assignmentname" value="@item.assignmentName" style="display:none">
-
                                 <label for="file">
+                                    <input type="text" class="assignmentname" name="assignmentname" value="@item.assignmentName" style="display:none">
                                     <span class="glyphicon glyphicon-folder-open" id="foldericon" aria-hidden="true">File</span>
                                 </label>
                                 <input type="file" id="file" name="file" style="display:none"/>
                                 <label for="submit">
                                     <span class="glyphicon glyphicon-floppy-disk" id="saveicon" aria-hidden="true">Submit</span>
+                                    <input type="submit" id="submit" value="submit" style="display:none" />
                                 </label>
-                                <input type="submit" id="submit" value="submit" style="display:none"/>
+                                
                             </form>
                         </div>
 

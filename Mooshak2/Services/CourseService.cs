@@ -30,18 +30,20 @@ namespace Mooshak2.Services
 
         }
 
-        public void CreateCourse(string name, string teacher)
+        public Course CreateCourse(string name, string teacher)
         {
-            //TODO TEST THIS
 
             Course newCourse = new Course();
             newCourse.courseName = name;
             newCourse.courseTeacher = teacher;
 
-            
+            return newCourse;
+        }
+
+        public void SaveCourseToDatabase(Course newCourse)
+        {
             _db.Courses.Add(newCourse);
             _db.SaveChanges();
-
         }
     }
 }

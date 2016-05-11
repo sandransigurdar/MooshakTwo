@@ -31,10 +31,26 @@ namespace Mooshak2.Controllers
             string courseName = Request.Form["coursename"];
             string courseTeacher = Request.Form["teacher"];
 
-            cS.CreateCourse(courseName, courseTeacher);
-            return View("~/Views/Admin/HomePage.cshtml");
+            Course newCourse = new Course();
+            newCourse = cS.CreateCourse(courseName, courseTeacher);
 
-            return View();
+            if (string.IsNullOrEmpty(newCourse.courseName))
+            {
+                ModelState.AddModelError("courseName", "* Please enter a name for the course.");
+            }
+
+            if (string.IsNullOrEmpty(newCourse.courseTeacher))
+            {
+                ModelState.AddModelError("courseTeacher", "* Please pick a teacher for the course.");
+            }
+
+            if (ModelState.IsValid)
+            {
+                //cS.SaveCourseToDatabase(newCourse);
+                return RedirectToAction("HomePage");
+            }
+
+            return View(newCourse);
         }
 
         public ActionResult CreateUser()
@@ -57,11 +73,11 @@ namespace Mooshak2.Controllers
             string userRole = Request.Form["role"];
             string course = Request.Form["course"];
 
-            UserService uS = new UserService();
-
+            
             uS.CreateUser(name, userName, ssn, email, password, userRole, course);
 
             return View("~/Views/Admin/HomePage.cshtml");
+
         }
 
         public ActionResult HomePage()

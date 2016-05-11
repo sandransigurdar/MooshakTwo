@@ -65,7 +65,6 @@ namespace Mooshak2.Services
 
             if (user == 1)
             {
-
                 Student newStudent = new Student();
 
                 newStudent.name = name;

@@ -28,11 +28,12 @@
                 <div class="panel-body">
                     <form action="CreateCourse" method="POST" class="form-horizontal">
                         <div class="created-view-div">
+                            <div class="alert-danger">@Html.ValidationMessage("courseName")</div>
                             <label for="coursename">Course name:</label>
                             <input type="text" id="coursename" name="coursename" />
                             <br />
                             <br />
-                       
+                            <div class="alert-danger">@Html.ValidationMessage("courseTeacher")</div>
                             <select multiple id="teacher" name="teacher">
                                 @foreach (var item in @Model)
                                 {

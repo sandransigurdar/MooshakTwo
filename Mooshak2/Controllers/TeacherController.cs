@@ -26,15 +26,15 @@ namespace Mooshak2.Controllers
             string subname = Request.Form["subname"];
             string description = Request.Form["description"];
             string dateString = (Request.Form["date"]);
+            string input = Request.Form["input"];
+            string correctoutput = Request.Form["correctoutput"];
+
             DateTime date = DateTime.Now;
 
             if(!(string.IsNullOrEmpty(dateString)))
             {
                 date = DateTime.Parse(dateString);
             }
-
-            string input = Request.Form["input"];
-            string correctoutput = Request.Form["correctoutput"];
 
             Assignment newAssignment = new Assignment();
 
