@@ -2,29 +2,30 @@
 @{
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
-
+<div class="container-fluid" id="fluid">
+    <div class="row">
 
         <div class="col-md-1"></div>
-
-        <div class="col-md-7">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h2 class="navtitle">A list of all courses </h2>
-                </div>
-
-                <form action="ViewCourses" method="POST" class="form-horizontal">
-                    <div class="created-div">
-                        <ul>
-
-                            @foreach (var item in @Model)
-                            {
-                                <li>Name of course:@item.courseName  </li>
-                                <li>Course teacher:@item.courseTeacher</li>
-                            }
-
-                        </ul>
+        
+            <div class="col-md-8">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h2 class="navtitle">A list of all courses </h2>
                     </div>
-                </form>
 
+                    <form action="ViewCourses" method="POST" class="form-horizontal">
+                        <div class="created-view-div">
+                            <ul>
+                                @foreach (var item in @Model)
+                                {
+                                        <li>Name of course:@item.courseName  </li>
+                                        <li>Course teacher:@item.courseTeacher</li>
+                                }
+                            </ul>
+                        </div>
+                    </form>
+
+                </div>
             </div>
-        </div>
+    </div>
+</div>
