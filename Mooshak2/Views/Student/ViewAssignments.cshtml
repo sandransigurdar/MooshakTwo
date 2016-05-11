@@ -5,14 +5,19 @@
 
     <script src="https://code.jquery.com/jquery-1.9.1.min.js">
 
+        $(document).ready(function () {
+
         $(".btn").click(function () {
             var divToToggle = $($(this).find("button").attr('href'));
             $(".toggle:visible").not(divToToggle).hide();
             divToToggle.slideToggle("slow");
+
+        });
         });
 
-    </script>
 
+    </script>
+@*
 <div class="container-fluid" id="fluid">
     <div class="row">
         <div class="col-md-4">
@@ -31,22 +36,26 @@
                 </div>
             </div>
         </div>
-
+    *@
 
         <!--FORM TIL AÐ TAKA VIÐ CPP SKJALI-->
-        @*<div class="input-group-btn">
-            <form action="~/Assignment/GetAssignmentFileFromUser" method="post">
-                <label for="file">
-                    <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
-                    <input type="file" id="file" style="display:none">
-                </label>
-                <label for="submit">
-                    <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
-                    <input type="submit" id="submit" style="display:none">
-                </label>
-            </form>
-        </div>*@
+        
+           @foreach (var item in Model.assignments)
+           {
+                <h3>@item.assignmentName</h3>
+                <form action="~/Assignment/GetAssignmentFileFromUser" method="post">
 
+                    <label for="file">Filename:</label>
+                    <input type="file" name="file" id="file" />
+                    <br />
+                    <input type="text" id="assignmentname" name="assignmentname" style="visibility:none;"/>
+                    <input type="submit" name="submit" value="Submit" />
+                </form>
+              
+           }
+           
+           
+        @*
     <div class="col-md-1"></div>
     
         <div class="col-md-7">
@@ -60,10 +69,13 @@
                         <h1 class="panel-title">@item.assignmentName - @item.assignmentSubName</h1>
 
                         <form action="~/Assignment/GetAssignmentFileFromUser" id="studentform" method="post">
+                            
+                            <input type="hidden" name="assignmentname" id="assignmentname" value="@item.assignmentName" />
+                            
                             <label for="file">
                                 <span class="glyphicon glyphicon-folder-open" id="foldericon" aria-hidden="true">File</span>
-                                <input type="file" id="file" style="display:none">
                             </label>
+                            <input type="file" id="file" name="file" style="display:none">
                             <label for="submit">
                                 <span class="glyphicon glyphicon-floppy-disk" id="saveicon" aria-hidden="true">Submit</span>
                                 <input type="submit" id="submit" style="display:none">

@@ -64,7 +64,7 @@ namespace Mooshak2.Services
 
         }
 
-        public string GetRootPathOfProject()
+        public string GetPathForAssignments()
         {
             string root = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
             root = root.Remove(root.Length - 3);

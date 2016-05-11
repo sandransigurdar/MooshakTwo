@@ -71,7 +71,7 @@ namespace Mooshak2.Services
 
             int studentId =0;
             //string assignmentName;
-
+            
             string loggedInUser = LoginService.nameOfLoggedInUser;
 
             foreach (var item in _db.Students)
@@ -81,10 +81,10 @@ namespace Mooshak2.Services
                     studentId = item.id;
                 }
             }
-           
 
-            string rootPath = lS.GetRootPathOfProject();
-            string wholePath = rootPath + studentId;
+
+            string assignmentPath = lS.GetPathForAssignments();
+            string wholePath = assignmentPath + studentId;
 
             //System.IO.File.WriteAllText(wholePath + );
 
