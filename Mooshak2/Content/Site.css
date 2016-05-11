@@ -495,7 +495,7 @@ input#subname
 }
 
 /************************* Create User div  ********************************/
-.user-created-div
+.user-created-div 
 {
     margin-top: 15px;
     margin-bottom: 15px;
@@ -506,3 +506,4 @@ ul
 {
     list-style-type: none;
 }
+
