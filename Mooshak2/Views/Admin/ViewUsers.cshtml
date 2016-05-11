@@ -13,7 +13,7 @@
                 </div>
                 <form action="ViewCourses" method="POST" class="form-horizontal">
                     <div class="created-div">
-                        <table class="navtitle">
+                        <table class="table">
                             <tr>
                                 <th>Name</th>
                                 <th>SSN</th>
@@ -40,19 +40,23 @@
         <div class="col-md-7">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h2 class="navtitle">List of Teachers</h2>
+                    <h2 class="navtitle">List of Students</h2>
                 </div>
                 <form action="ViewCourses" method="POST" class="form-horizontal">
                     <div class="created-div">
-                            <table class="navtitle">
+                            <table class="table">
                                 <tr>
                                     <th>Name</th>
+                                    <th>SSN</th>
+                                    <th>Email</th>
                                 </tr>
                                @foreach (var item in Model.students)
                                {
-                               <tr>
+                                <tr>
                                     <td>@item.name</td>
-                                    </tr>
+                                    <td>@item.ssn</td>
+                                    <td>@item.email</td>
+                                </tr>
                                 }
                             </table>
                     </div>
@@ -62,39 +66,6 @@
     </div>
 </div>
 
-
-
-
-
-
-
-
-@******************************************************
-
-                <div>
-
-                    @Html.ActionLink("Return home", "HomePage", "Admin")
-
-                </div>
-
-************************************************************@
-
-@**************************************************************
-<ul>
-    @foreach (var item in Model.students)
-    {
-        <li>Name of student:@item.name  </li>
-    }
-</ul>
-****************************************************************@
-
-@************************************
-<ul>
-    @foreach (var item in Model.teachers)
-    {
-        <li>Name: @item.name </li>
-        <li>SSN: @item.ssn </li>
-        <li>Email: @item.email </li>
-    }
-</ul>
-************************************@
+<div>
+    @Html.ActionLink("Return home", "HomePage", "Admin")
+</div>
