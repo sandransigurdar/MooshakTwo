@@ -26,12 +26,18 @@
 
 
         <!--FORM TIL AÐ TAKA VIÐ CPP SKJALI-->
-        <form action="~/Assignment/GetAssignmentFileFromUser" method="post">
-            <input type="file" id="file" name="file"/>
-            <input type="submit" value="submit"/>
-
-        </form>
-
+        @*<div class="input-group-btn">
+            <form action="~/Assignment/GetAssignmentFileFromUser" method="post">
+                <label for="file">
+                    <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
+                    <input type="file" id="file" style="display:none">
+                </label>
+                <label for="submit">
+                    <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
+                    <input type="submit" id="submit" style="display:none">
+                </label>
+            </form>
+        </div>*@
 
     <div class="col-md-1"></div>
     
@@ -42,10 +48,18 @@
                 <div class="panel panel-default" id="ipanel_@item.id">
                     <div class="panel-heading">
                         
-                        
-                            <h1 class="panel-title">@item.assignmentName - @item.assignmentSubName</h1>
-                        
-                        
+                        <h1 class="panel-title">@item.assignmentName - @item.assignmentSubName</h1>
+                            
+                            <form action="~/Assignment/GetAssignmentFileFromUser" id="studentform" method="post">
+                                <label for="file">
+                                    <span class="glyphicon glyphicon-folder-open" id="foldericon" aria-hidden="true">File</span>
+                                    <input type="file" id="file" style="display:none">
+                                </label>
+                                <label for="submit">
+                                    <span class="glyphicon glyphicon-floppy-disk" id="saveicon" aria-hidden="true">Submit</span>
+                                    <input type="submit" id="submit" style="display:none">
+                                </label>
+                            </form>
                     </div>
 
                     <div class="panel-body">

@@ -320,14 +320,39 @@ body, html {
 
 [id^="ipanel"]
 {
-    position:absolute;
-    width:100%;
+    /*position:absolute;
+    width:100%;*/ 
 }
 
+#studentform
+{
+    display: inline;
+    float: right;
+}
+
+#foldericon
+{
+    margin-right: 5px;
+    padding: 3px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+#saveicon
+{
+    padding: 3px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.glyphicon-folder-open:before
+{
+    padding-right: 6px;
+}
 
 #accordion
 {
-padding: 5px 2px;
+    padding: 5px 2px;
 }
 
 .panel-heading
