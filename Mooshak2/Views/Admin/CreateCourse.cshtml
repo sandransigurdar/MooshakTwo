@@ -5,6 +5,9 @@
 }
 <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 
+
+<!---------------------------------------------
+
 <div class="container-fluid" id="fluid">
     <div class="row">
         <div class="col-md-4">
@@ -15,15 +18,18 @@
                 <div class="panel-body" id="navbuttons"></div>
             </div>
         </div>
-    
 
-    <div class="col-md-1"></div>
-    
-    <div class="col-md-7">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h2 class="navtitle">Create Course</h2>
-            </div>
+-------------------------------------------------------->
+
+<div class="container-fluid" id="fluid">
+    <div class="row">
+        <div class="col-md-1"></div>
+
+        <div class="col-md-7">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="navtitle">Create Course</h2>
+                </div>
 
                 <div class="panel-body">
                     <form action="CreateCourse" method="POST" class="form-horizontal">
@@ -33,7 +39,11 @@
                             <input type="text" id="coursename" name="coursename" />
                             <br />
                             <br />
+<<<<<<< HEAD
                             <div class="alert-danger">@Html.ValidationMessage("courseTeacher")</div>
+=======
+
+>>>>>>> 398106c90375cab76f0db5ae8b36e55ad858f0e9
                             <select multiple id="teacher" name="teacher">
                                 @foreach (var item in @Model)
                                 {
@@ -48,7 +58,8 @@
                 </div>
 
             </div>
-         </div>
+        </div>
     </div>
+
 </div>
 
