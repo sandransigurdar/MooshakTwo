@@ -428,7 +428,7 @@ h2.navtitle
 
 #fluid
 {
-    padding-top: 50px;
+    padding-top: 100px;
     padding-bottom: 20px;
 }
 
@@ -500,7 +500,6 @@ input#subname
     margin-top: 15px;
     margin-bottom: 15px;
     margin-left: 20px;
-<<<<<<< HEAD
     line-height: 25px;
 }
 /******************************* View Courses View **********************************/
@@ -509,9 +508,6 @@ input#subname
     margin-top: 15px;
     margin-bottom: 15px;
 }
-=======
-} 
->>>>>>> 39fe6bb0263c55327417458a255ebcb6c23bdd2c
 
 ul
 {

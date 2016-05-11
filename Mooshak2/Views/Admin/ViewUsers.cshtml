@@ -34,7 +34,7 @@
         </div>
     </div>
 </div>
-<div class="container-fluid">      <!--------var svona-------<div class="container-fluid" id="fluid"-->
+<div class="container-fluid" >      <!--------var svona-------<div class="container-fluid" id="fluid"-->
     <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-7">
@@ -44,28 +44,27 @@
                 </div>
                 <form action="ViewCourses" method="POST" class="form-horizontal">
                     <div class="created-div">
-                            <table class="table">
-                                <tr>
-                                    <th>Name</th>
-                                    <th>SSN</th>
-                                    <th>Email</th>
-                                </tr>
-                               @foreach (var item in Model.students)
-                               {
-                                <tr>
-                                    <td>@item.name</td>
-                                    <td>@item.ssn</td>
-                                    <td>@item.email</td>
-                                </tr>
-                                }
+                        <table class="table">
+                            <tr>
+                                <th>Name</th>
+                                <th>SSN</th>
+                                <th>Email</th>
+                            </tr>
+                            @foreach (var item in Model.students)
+                            {
+                            <tr>
+                                <td>@item.name</td>
+                                <td>@item.ssn</td>
+                                <td>@item.email</td>
+                            </tr>
+                            }
                             </table>
-                    </div>
+                        </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
-
 <div>
     @Html.ActionLink("Return home", "HomePage", "Admin")
 </div>
