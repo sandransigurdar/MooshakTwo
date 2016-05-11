@@ -20,19 +20,21 @@
         <div class="col-md-7">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h1>A list of all courses </h1>
+                    <h2 class="navtitle">A list of all courses </h2>
                 </div>
 
                 <form action="ViewCourses" method="POST" class="form-horizontal">
-                    <ul class="viewcourses-box">
+                    <div class="created-div">
+                        <ul>
 
-                        @foreach (var item in @Model)
-                        {
-                            <li>Name of course:@item.courseName  </li>
-                            <li>Course teacher:@item.courseTeacher</li>
-                        }
+                            @foreach (var item in @Model)
+                            {
+                                <li>Name of course:@item.courseName  </li>
+                                <li>Course teacher:@item.courseTeacher</li>
+                            }
 
-                    </ul>
+                        </ul>
+                    </div>
                 </form>
 
             </div>
