@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using Mooshak2.Models.Entity;
 using Mooshak2.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace Mooshak2.Services
 {
@@ -36,6 +37,8 @@ namespace Mooshak2.Services
             Course newCourse = new Course();
             newCourse.courseName = name;
             newCourse.courseTeacher = teacher;
+
+            
             _db.Courses.Add(newCourse);
             _db.SaveChanges();
 
