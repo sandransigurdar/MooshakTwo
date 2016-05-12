@@ -126,7 +126,7 @@ namespace Mooshak2.Services
             _db.SaveChanges();
         }
 
-        public void CompileAndReturnStatusOfAssignment(string nameOfAssignment)
+        public void CompileAndReturnStatusOfAssignment(string code)
         {
         }
 

@@ -75,6 +75,7 @@ namespace Mooshak2.Services
                 newStudent.password = password;
                 newStudent.role = 1;
 
+                
                 int courseId = 0;
 
                 foreach (var item in _db.Courses)
