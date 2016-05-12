@@ -139,35 +139,15 @@ namespace Mooshak2.Services
 
         public int CompileAndReturnStatusOfAssignment(string assignmentId, string code)
         {
-
-            //---------------------------------------------------
-
-            //TODO FINNA FOLDER TIL AÐ VISTA C++ SKJAL
-
-            var workingFolder = "C:\\test\\";
-            var cppFileName = "Hello.cpp";
-            var exeFilePath = workingFolder + "Hello.exe";
-
-            // Write the code to a file, such that the compiler
-
-            // can find it:
+            string workingFolder = GetPathForAssignments();
+            string cppFileName = assignmentId + ".cpp";
+            string exeFilePath = workingFolder + assignmentId + ".exe";
 
             System.IO.File.WriteAllText(workingFolder + cppFileName, code);
-
-            // In this case, we use the C++ compiler (cl.exe) which ships
-            // with Visual Studio. It is located in this folder:
 
             //TODO Búa til lykil fyrir pathið á visual studio e.t.c.
 
             var compilerFolder = "C:\\Program Files\\Microsoft Visual Studio 14.0\\VC\\bin\\";
-
-            // There is a bit more to executing the compiler than
-            // just calling cl.exe. In order for it to be able to know
-            // where to find #include-d files (such as <iostream>),
-            // we need to add certain folders to the PATH.
-            // There is a .bat file which does that, and it is
-            // located in the same folder as cl.exe, so we need to execute
-            // that .bat file first.
 
             // Using this approach means that:
             // * the computer running our web application must have
@@ -179,7 +159,8 @@ namespace Mooshak2.Services
 
             // Execute the compiler:
 
-            var lines = new List<string>();
+            List <string> lines = new List<string>();
+
             Process compiler = new Process();
             compiler.StartInfo.FileName = "cmd.exe";
             compiler.StartInfo.WorkingDirectory = workingFolder;
@@ -227,6 +208,24 @@ namespace Mooshak2.Services
                 // TODO: We might want to clean up after the process, there
                 // may be files we should delete etc.
             }
+            List <string> codeStringList = lines;
+
+            string codeResult = "";
+            for (int i = 0; i<codeStringList.Count; i++)
+            {
+                codeResult += codeResult[i];
+            }
+
+            foreach(var item in _db.AssignmentStudents)
+            {
+                if(assignmentId == item.)
+                {
+
+                }
+            }
+            
+
+
             return 5;
             
 
