@@ -27,11 +27,11 @@ namespace Mooshak2.Models
             Database.SetInitializer<ApplicationDbContext>(null);
         }
 
-            public DbSet<Assignment>        Assignments    { get; set; }
+            public DbSet<Assignment>        Assignments       { get; set; }
             public DbSet<Course>            Courses           { get; set; }
-            public DbSet<Student>           Students         { get; set; }
-            public DbSet<Teacher>           Teachers      { get; set; }
-            public DbSet<Admin>             Admins        { get; set; }
+            public DbSet<Student>           Students          { get; set; }
+            public DbSet<Teacher>           Teachers          { get; set; }
+            public DbSet<Admin>             Admins            { get; set; }
             public DbSet<AssignmentStudent> AssignmentStudents { get; set; }
             public DbSet<CourseStudent>     CourseStudents { get; set; } 
         /// <summary>

@@ -79,45 +79,46 @@ namespace Mooshak2.Services
 
         }
 
-        public void SaveAssignment(string assignmentName, HttpPostedFileBase filePath)
+        public string SaveAssignment(string assignmentId, HttpPostedFileBase filePath)
         {
+            var bla = filePath;
 
-            int studentId = 0;
+            int studentId = 404;
 
             string loggedInUser = LoginService.nameOfLoggedInUser;
 
-            foreach (var item in _db.Students)
+            foreach(var item in _db.Students)
             {
-                if (loggedInUser == item.userName)
+                if(loggedInUser == item.userName)
                 {
                     studentId = item.id;
                 }
             }
 
-            int assignmentId = 404;
-            foreach(var item in _db.Assignments)
+            if(studentId == 404)
             {
-                if(item.assignmentName == assignmentName)
-                {
-                    assignmentId = item.id;
-                }
+                //return View("~/Views/Shared/Error.cshtml");
             }
 
-            string assignmentIdString = assignmentId.ToString();
-
-            string rootOfProjectPath = GetPathForAssignments() + studentId + "\\" + assignmentIdString;
+            string rootOfProjectPath = GetPathForAssignments() + studentId + "\\"  /* + assignmentId + ".cpp"*/;
 
             if (!System.IO.Directory.Exists(rootOfProjectPath))
             {
-                //koma í veg fyrir villur   createdirectory
+                string createText = "Hello and Welcome" + Environment.NewLine;
+                File.WriteAllText(rootOfProjectPath, createText);
             }
+            rootOfProjectPath +=  assignmentId + ".cpp";
+
+            
 
             System.IO.FileStream outStream = new System.IO.FileStream(rootOfProjectPath, System.IO.FileMode.CreateNew);
 
             filePath.InputStream.CopyTo(outStream);
             outStream.Flush();
             outStream.Dispose();
+            //string readText = File.ReadAllText(rootOfProjectPath);
 
+            return rootOfProjectPath;
         }
 
         public void SaveChangesToDatabase(Assignment newAssignment)
@@ -126,42 +127,30 @@ namespace Mooshak2.Services
             _db.SaveChanges();
         }
 
-        public void CompileAndReturnStatusOfAssignment(string code)
-        {
-        }
+        
 
-        public string ReturnCode(string nameOfAssignment)
+        public string ReturnCode(string assignmentId, string filePath)
 
         {
             //TODO FINNA SKJAL
-            int assignmentId = 404;
-            foreach (var item in _db.Assignments)
-            {
-                if(nameOfAssignment == item.assignmentName)
-                {
-                    assignmentId = item.id;
-                }
-            }
 
-            string assignmentIdString = assignmentId.ToString();
 
-            string rootOfProjectPath = GetPathForAssignments();
-
-            string path = rootOfProjectPath + assignmentIdString;
             
             //string path = @"c:\test\bla.cpp";
 
-            if (!File.Exists(path))
+            if (!File.Exists(filePath))
             {
-                string createText = "Hello and Welcome" + Environment.NewLine;
-                File.WriteAllText(path, createText);
+                //return View("Error");
             }
+            
+            string readText = File.ReadAllText(filePath);
 
-            string readText = File.ReadAllText(path);
             return readText;
         }
 
-
+        public void CompileAndReturnStatusOfAssignment(string code)
+        {
+        }
 
 
 
