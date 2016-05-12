@@ -39,6 +39,7 @@
 
         <div class="col-md-1"></div>
 
+<<<<<<< HEAD
         <div class="col-md-7">
 
 
@@ -60,6 +61,33 @@
                                 <input type="submit" value="submit" />
                             </label>
                         </form>
+=======
+            <div class="col-md-7">
+
+        @foreach (var item in Model.assignments)
+                {
+                <div class="toggle" id="box_@item.id">
+                    <div class="panel panel-default" id="button_@item.id">
+                        <div class="panel-heading">
+
+                            <h1 class="panel-title">@item.assignmentName - @item.assignmentSubName</h1>
+
+                            <form action="~/Assignment/GetAssignmentFileFromUser" method="post" enctype="multipart/form-data" id="studentform">
+                                <label for="file">
+                                    <input type="text" class="assignmentname" name="assignmentname" value="@item.assignmentName" style="display:none">
+                                    <span class="glyphicon glyphicon-folder-open" id="foldericon" aria-hidden="true">File</span>
+                                </label>
+                                <input type="file" id="file" name="file" style="display:none"/>
+                                <label for="submit">
+                                    <span class="glyphicon glyphicon-floppy-disk" id="saveicon" aria-hidden="true">Submit</span>
+                                    <input type="submit" id="submit" value="submit" style="display:none" />
+                                </label>
+                                
+                            </form>
+                        </div>
+
+                        <div class="panel-body">
+>>>>>>> 8f1da94cff54dca56cc855da978d654aa9b2b2c1
 
                     </div>
                 </div>

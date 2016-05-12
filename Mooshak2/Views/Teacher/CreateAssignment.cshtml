@@ -41,7 +41,7 @@
 
 <div class="container-fluid" id="fluid">
     <div class="row">
-        <div class="col-md-1"></div>
+     <!----   <div class="col-md-1"></div>     ---->
         <div class="col-md-7">
             <div class="panel panel-default">
 
@@ -55,36 +55,63 @@
                 <div class="panel-body">
 
 
-                    <form class="form-horizontal" action="CreateAssignment" id="createassignment" method="POST">
 
+
+
+
+                    <form class="form-horizontal" action="CreateAssignment" id="createassignment" method="POST">
+                        
                         <div class="form-group">
                             <div class="alert-danger">@Html.ValidationMessage("name")</div>
-                            <label for="name">Name of assignment:</label>
-                            <input type="text" id="name" name="name" />
+                            <label for="name" class="col-sm-2 control-label">Name:</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="name" class="form-control" name="name" />
+                            </div>
                         </div>
+
                         <div class="form-group">
                             <div class="alert-danger">@Html.ValidationMessage("date")</div>
-                            <label for="date">Due Date:</label>
-                            <input type="date" id="date" name="date" />
+                            <label for="date" class="col-sm-2 control-label">Due Date:</label>
+                            <div class="col-sm-10">
+                                <input type="date" id="date" class="form-control" name="date" />
+                            </div>
                         </div>
+
                         <div class="form-group">
                             <div class="alert-danger">@Html.ValidationMessage("subName")</div>
-                            <label for="subname">Subname:</label>
-                            <input type="text" id="subname" name="subname" placeholder="Enter the name for each part.." />
+                            <label for="subname" class="col-sm-2 control-label">Subname:</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="subname" class="form-control" name="subname" placeholder="Enter the name for each part.." />
+                            </div>
                         </div>
-                        <div class="alert-danger">@Html.ValidationMessage("description")</div>
-                        <textarea rows="5" name="description" id="description" form="createassignment" placeholder="Description goes here..."></textarea>
 
-                        <div class="row">
-                            <div class="alert-danger">@Html.ValidationMessage("input")</div>
-                            <textarea rows="5" name="input" id="input" form="createassignment" placeholder="Input goes here..."></textarea>
-                            <div class="alert-danger">@Html.ValidationMessage("correctOutput")</div>
-                            <textarea rows="5" name="correctoutput" id="correctoutput" form="createassignment" placeholder="Output goes here..."></textarea>
+                        <div class="form-group">
+                            <div class="alert-danger">@Html.ValidationMessage("description")</div>
+                            <div class="col-sm-10">
+                                <textarea rows="5" name="description" id="description" class="form-control" form="createassignment" placeholder="Description goes here..."></textarea>
+                            </div>
                         </div>
+
+                        <div class="row form-group">
+                            <div class="alert-danger">@Html.ValidationMessage("input")</div>
+                            <div class="col-sm-10">
+                                <textarea rows="5" name="input" id="input" class="form-control" form="createassignment" placeholder="Input goes here..."></textarea>
+                                <div class="alert-danger">@Html.ValidationMessage("correctOutput")</div>
+                                <textarea rows="5" name="correctoutput" id="correctoutput" class="form-control" form="createassignment" placeholder="Output goes here..."></textarea>
+                            </div>
+                        </div>
+
                         <div class="form-group">
                             <button type="submit" id="formButton" value="Save">Save</button>
                         </div>
                     </form>
+
+
+
+
+
+
+
                 </div>
             </div>
         </div>

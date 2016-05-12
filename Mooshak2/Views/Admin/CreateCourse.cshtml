@@ -23,7 +23,7 @@
 
 <div class="container-fluid" id="fluid">
     <div class="row">
-        <div class="col-md-1"></div>
+<!-----        <div class="col-md-1"></div>--->
 
         <div class="col-md-7">
             <div class="panel panel-default">
@@ -32,14 +32,27 @@
                 </div>
 
                 <div class="panel-body">
-                    <form action="CreateCourse" method="POST" class="form-horizontal">
+
+                    <form action="CreateCourse" method="POST" id="courseBox" class="form-horizontal">
                         <div class="created-view-div">
-                            <div class="alert-danger">@Html.ValidationMessage("courseName")</div>
-                            <label for="coursename">Course name:</label>
-                            <input type="text" id="coursename" name="coursename" />
+                            
+                            <div class="form-group">
+                                <div class="alert-danger">@Html.ValidationMessage("courseName")</div>
+                                <label for="coursename" class="col-sm-2 control-label">Name:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" id="coursename" class="form-control"  name="coursename" />
+                                </div>
+                            </div>
+
+
                             <br />
                             <br />
+
+
                             <div class="alert-danger">@Html.ValidationMessage("courseTeacher")</div>
+
+                            <div class="form-group">
+                            <div class="col-sm-10">
 
                             <select multiple id="teacher" name="teacher">
                                 @foreach (var item in @Model)
@@ -47,13 +60,17 @@
                                     <option value="@item.name">@item.name</option>
                                 }
                             </select>
+                            </div>
+                            </div>
+
                             <br />
                             <br />
-                            <input type="submit" value="Create Course" />
+                            <div class="form-group">
+                                <input type="submit" value="Create Course" />
+                            </div>
                         </div>
                     </form>
                 </div>
-
             </div>
         </div>
     </div>
