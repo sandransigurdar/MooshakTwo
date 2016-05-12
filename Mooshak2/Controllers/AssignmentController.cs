@@ -23,12 +23,16 @@ namespace Mooshak2.Controllers
         [HttpPost]
         public ActionResult GetAssignmentFileFromUser(FormCollection formCollection)
         {
-            
-            string assignmentName = Request.Form["assignmentname"];
+
+            string assignmentName = Request.Form["asName"];
             
             var filePath = Request.Files.Get("file");
 
             aS.SaveAssignment(assignmentName , filePath);
+
+            // string assignmentName2 = "6";
+            // aS.CompileAndReturnStatusOfAssignment(assignmentName);
+            string code = aS.ReturnCode("Verk1");
 
             return View("~/Views/Student/HomePage.cshtml");
         }

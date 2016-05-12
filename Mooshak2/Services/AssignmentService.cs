@@ -5,12 +5,15 @@ using System.Linq;
 using System.Web;
 using Mooshak2.Models.ViewModels;
 using Mooshak2.Models.Entity;
+using System.IO;
+using System.Diagnostics;
 
 namespace Mooshak2.Services
 {
 
     public class AssignmentService
     {
+        
         LoginService lS = new LoginService();
 
         private ApplicationDbContext _db;
@@ -51,6 +54,17 @@ namespace Mooshak2.Services
 
         }
 
+        public string GetPathForAssignments()
+        {
+            string root = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
+            root = root.Remove(root.Length - 3);
+            string path = "StudentAssignments\\";
+            string wholePath = root + path;
+            wholePath = wholePath.Remove(0, 6);
+
+            return wholePath;
+        }
+
         public Assignment CreateAssignment(string name, string subName, string description, DateTime date, string input, string correctOutput)
         {
             Assignment newAssignment = new Assignment();
@@ -69,7 +83,6 @@ namespace Mooshak2.Services
         {
 
             int studentId = 0;
-            
 
             string loggedInUser = LoginService.nameOfLoggedInUser;
 
@@ -81,11 +94,24 @@ namespace Mooshak2.Services
                 }
             }
 
-            if(!System.IO.Directory.Exists(""))
+            int assignmentId = 404;
+            foreach(var item in _db.Assignments)
             {
-
+                if(item.assignmentName == assignmentName)
+                {
+                    assignmentId = item.id;
+                }
             }
-            string rootOfProjectPath = lS.GetPathForAssignments() + studentId + "\\" + assignmentName;
+
+            string assignmentIdString = assignmentId.ToString();
+
+            string rootOfProjectPath = GetPathForAssignments() + studentId + "\\" + assignmentIdString;
+
+            if (!System.IO.Directory.Exists(rootOfProjectPath))
+            {
+                //koma í veg fyrir villur   createdirectory
+            }
+
             System.IO.FileStream outStream = new System.IO.FileStream(rootOfProjectPath, System.IO.FileMode.CreateNew);
 
             filePath.InputStream.CopyTo(outStream);
@@ -100,10 +126,42 @@ namespace Mooshak2.Services
             _db.SaveChanges();
         }
 
-        /* public int GetAssignmentStatus()
-         {
-            //TODO
-         }*/
+        public void CompileAndReturnStatusOfAssignment(string code)
+        {
+        }
+
+        public string ReturnCode(string nameOfAssignment)
+
+        {
+            //TODO FINNA SKJAL
+            int assignmentId = 404;
+            foreach (var item in _db.Assignments)
+            {
+                if(nameOfAssignment == item.assignmentName)
+                {
+                    assignmentId = item.id;
+                }
+            }
+
+            string assignmentIdString = assignmentId.ToString();
+
+            string rootOfProjectPath = GetPathForAssignments();
+
+            string path = rootOfProjectPath + assignmentIdString;
+            
+            //string path = @"c:\test\bla.cpp";
+
+            if (!File.Exists(path))
+            {
+                string createText = "Hello and Welcome" + Environment.NewLine;
+                File.WriteAllText(path, createText);
+            }
+
+            string readText = File.ReadAllText(path);
+            return readText;
+        }
+
+
 
 
 

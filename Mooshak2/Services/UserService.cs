@@ -15,6 +15,7 @@ namespace Mooshak2.Services
 {
     public class UserService
     {
+        AssignmentService aS = new AssignmentService();
         CourseStudent cS = new CourseStudent();
         LoginService lS = new LoginService();
 
@@ -74,6 +75,7 @@ namespace Mooshak2.Services
                 newStudent.password = password;
                 newStudent.role = 1;
 
+                
                 int courseId = 0;
 
                 foreach (var item in _db.Courses)
@@ -99,7 +101,7 @@ namespace Mooshak2.Services
                     }
                 }
 
-                string rootPath = lS.GetPathForAssignments();
+                string rootPath = aS.GetPathForAssignments();
                 string wholePath = rootPath + studentId;
 
                 Directory.CreateDirectory(wholePath);
