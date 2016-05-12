@@ -47,11 +47,18 @@
             <div class="toggle" id="box_@item.id">
                 <div class="panel panel-default" id="button1_@item.id">
                     <div class="panel-heading">
-
+                        <h1 class="panel-heading">@item.assignmentName - @item.assignmentSubName</h1>
                         <form action="~/Assignment/GetAssignmentFileFromUser" method="post" enctype="multipart/form-data">
                             <input type="hidden" class="asName" name="asName" value=@item.id />
-                            <input type="file" name="file" style="display:none" />
-                            <input type="submit" value="submit" />
+                            <label for="file">
+                                <span class="glyphicon-folder-open" id="foldericon" aria-hidden="true">File</Span>
+                                <input type="file" name="file" style="display:none" />
+                            </label>
+                            
+                            <label for="submit">
+                                <span class="glyphicon-floppy-disk" aria-hidden="true">Submit</span>
+                                <input type="submit" value="submit" />
+                            </label>
                         </form>
 
                     </div>
