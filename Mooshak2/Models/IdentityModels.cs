@@ -42,16 +42,7 @@ namespace Mooshak2.Models
             Database.SetInitializer<ApplicationDbContext>(null);
         }
 
-<<<<<<< HEAD
-            public DbSet<Assignment>        Assignments       { get; set; }
-            public DbSet<Course>            Courses           { get; set; }
-            public DbSet<Student>           Students          { get; set; }
-            public DbSet<Teacher>           Teachers          { get; set; }
-            public DbSet<Admin>             Admins            { get; set; }
-            public DbSet<AssignmentStudent> AssignmentStudents { get; set; }
-            public DbSet<CourseStudent>     CourseStudents { get; set; } 
-        /// <summary>
-=======
+
             public IDbSet<Assignment>        Assignments    { get; set; }
             public IDbSet<Course>            Courses           { get; set; }
             public IDbSet<Student>           Students         { get; set; }
@@ -62,7 +53,7 @@ namespace Mooshak2.Models
         // <summary>
 
         // Hér fyrir ofan er tenging við database fyrir entity klasa samkvæmt fyrirlestri hjá Dabs...
->>>>>>> 7e9543448994f8162cc75ac7bd8ae3262f1b184c
+
 
         // </summary>
 
