@@ -5,13 +5,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-
-
-
 namespace Mooshak2.Services
 {
     public class LoginService
     {
+        private readonly IMyDataContext _dab;
+
+        public LoginService(IMyDataContext context)
+        {
+            _dab = context ?? new ApplicationDbContext();
+        }
 
         private ApplicationDbContext _db;
 
