@@ -19,7 +19,22 @@ namespace Mooshak2.Models
         }
     }
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+
+    // Hér fyrir neðan er interface og Fake data-stöööff
+
+    public interface IMyDataContext
+    {
+        IDbSet<Assignment> Assignments { get; set; }
+        IDbSet<Course> Courses { get; set; }
+        IDbSet<Student> Students { get; set; }
+        IDbSet<Teacher> Teachers { get; set; }
+        IDbSet<Admin> Admins { get; set; }
+        IDbSet<AssignmentStudent> AssignmentStudents { get; set; }
+        IDbSet<CourseStudent> CourseStudents { get; set; }
+        int SaveChanges();
+    }
+
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IMyDataContext
     {
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
@@ -27,19 +42,21 @@ namespace Mooshak2.Models
             Database.SetInitializer<ApplicationDbContext>(null);
         }
 
-            public DbSet<Assignment>        Assignments    { get; set; }
-            public DbSet<Course>            Courses           { get; set; }
-            public DbSet<Student>           Students         { get; set; }
-            public DbSet<Teacher>           Teachers      { get; set; }
-            public DbSet<Admin>             Admins        { get; set; }
-            public DbSet<AssignmentStudent> AssignmentStudents { get; set; }
-            public DbSet<CourseStudent>     CourseStudents { get; set; } 
-        /// <summary>
+            public IDbSet<Assignment>        Assignments    { get; set; }
+            public IDbSet<Course>            Courses           { get; set; }
+            public IDbSet<Student>           Students         { get; set; }
+            public IDbSet<Teacher>           Teachers      { get; set; }
+            public IDbSet<Admin>             Admins        { get; set; }
+            public IDbSet<AssignmentStudent> AssignmentStudents { get; set; }
+            public IDbSet<CourseStudent>     CourseStudents { get; set; }
+        // <summary>
 
-        /// Hér fyrir ofan er tenging við database fyrir entity klasa samkvæmt fyrirlestri hjá Dabs...
+        // Hér fyrir ofan er tenging við database fyrir entity klasa samkvæmt fyrirlestri hjá Dabs...
 
-        /// </summary>
+        // </summary>
 
+
+        // ^^ endirinn á DataContext stöffinu
 
         public static ApplicationDbContext Create()
         {

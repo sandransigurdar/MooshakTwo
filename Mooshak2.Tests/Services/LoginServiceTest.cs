@@ -1,10 +1,13 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+// LoginService test
+
+
 namespace Mooshak2.Tests.Services
 {
     [TestClass]
-    public class Rename
+    public class LoginServiceTest
     {
         [TestMethod]
         public void TestMethod1()
