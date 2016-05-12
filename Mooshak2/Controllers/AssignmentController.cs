@@ -30,7 +30,13 @@ namespace Mooshak2.Controllers
 
             string pathToFile = aS.SaveAssignment(assignmentId , fileName);
 
-            string code = aS.ReturnCode(assignmentId, pathToFile);
+            string code = aS.ReturnCode(pathToFile);
+
+            //Status 0 equals Not returned
+            //Status 1 equals Returned with no errors
+            //Status 2 equals Returned with errors
+
+            //int status = aS.CompileAndReturnStatusOfAssignment(assignmentId, code); 
 
             return View("~/Views/Student/HomePage.cshtml");
         }
