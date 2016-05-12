@@ -27,53 +27,46 @@
                 </div>
                 <div class="panel-body" id="navbuttons">
                     @foreach (var item in Model.assignments)
-    {
-        <button type="button" class="btn btn-default" id="btn-id" data-toggle="collapse" data-path="#accordion" href="#box_@item.id">@item.assignmentName</button>
-        <div id="button_@item.id" class="collapse">
-            <span> - @item.assignmentSubName </span>
-        </div>
-    }
+                    {
+                        <button type="button" class="btn btn-default" id="btn-id" data-toggle="collapse" data-path="#accordion" href="#box_@item.id">@item.assignmentName</button>
+                        <div id="button_@item.id" class="collapse">
+                            <span> - @item.assignmentSubName </span>
+                        </div>
+                    }
+                </div>
             </div>
         </div>
-    </div>
-       
-        
-         <!--FORM TIL AÐ TAKA VIÐ CPP SKJALI-->
-        @**foreach (var item in Model.assignments)
-        {
-            <div>
-                <form action="~/Assignment/GetAssignmentFileFromUser" method="post">
-                    <input type="file" id="file" name="file" />
-                    <input type="text" id="assignment_" + @item.id name="assignmentname" style="visibility:none;">
-                    <input type="submit" value="submit" />
 
-                </form>
-
-            </div>
-        }*@
-        
-        
-        @*
-    @foreach (var item in Model.assignments)
-    {
-         <h3>@item.assignmentName</h3>
-         <form action="~/Assignment/GetAssignmentFileFromUser" method="post">
-
-             <label for="file">Filename:</label>
-             <input type="file" name="file" id="file" />
-             <br />
-             <input type="text" id="assignmentname" name="assignmentname" value="@item.assignmentName" style="visibility:none;"/>
-             <input type="submit" name="submit" value="Submit" />
-         </form>
-
-    }*@
-
-        
-                
         <div class="col-md-1"></div>
 
-            <div class="col-md-7">
 
+        <div class="col-md-7">
+
+
+            @foreach (var item in Model.assignments)
+            {
+            <div class="toggle" id="box_@item.id">
+                <div class="panel panel-default" id="button1_@item.id">
+                    <div class="panel-heading">
+                        <h1 class="panel-heading">@item.assignmentName - @item.assignmentSubName</h1>
+                        <form action="~/Assignment/GetAssignmentFileFromUser" method="post" enctype="multipart/form-data">
+                            <input type="hidden" class="asName" name="asName" value=@item.id />
+                            <label for="file">
+                                <span class="glyphicon-folder-open" id="foldericon" aria-hidden="true">File</Span>
+                                <input type="file" name="file" style="display:none" />
+                            </label>
+                            
+                            <label for="submit">
+                                <span class="glyphicon-floppy-disk" aria-hidden="true">Submit</span>
+                                <input type="submit" value="submit" />
+                            </label>
+                        </form>
+            </div>
+            </div>
+            </div>
+            }
+            <div class="col-md-7">
+            
         @foreach (var item in Model.assignments)
                 {
                 <div class="toggle" id="box_@item.id">
@@ -99,29 +92,40 @@
                         <div class="panel-body">
 
 
-                            <p>@item.description</p>
-
-
-
-                            @* ------- byrjun á Javascript til að birta viðkomandi description ---------------
-                                <script>
-                                    $(document).ready(function()
-                                    {
-                                        $("#show").click(function(){
-                                            $("p").show(@item.description);
-                                        });
-
-                                    });
-
-                                </script>*@
-
                     </div>
                 </div>
             </div>
             }
+            @*
+            <h1 class="panel-title">@item.assignmentName - @item.assignmentSubName</h1>
+
+            <form action="~/Assignment/GetAssignmentFileFromUser" method="post" enctype="multipart/form-data">
+                <label for="file">
+
+                    <span class="glyphicon glyphicon-folder-open" id="foldericon" aria-hidden="true">File</span>
+                </label>
+                <input type="hidden" class="asName" id="@item.id" name="asName" value=@item.id>
+                <input type="file" id="file" name="file" style="display:none"/>
+                <label for="submit">
+                    <span class="glyphicon glyphicon-floppy-disk" id="saveicon" aria-hidden="true">Submit</span>
+                    <input type="submit" id="submit" value="submit" style="display:none" />
+                </label>
+
+                </form>
+            </div>
+
+            <div class="panel-body">
+
+
+            <p>@item.description</p>
+            </div>
         </div>
     </div>
-</div>
+                        }
+*@
+        </div>
+        </div>       
+</div>          
 
 <div class="container-fluid">
     <div class="row">
@@ -150,43 +154,55 @@
     </div>
 </div>
 
-<!--------------------
+                                <!--------------------
+                                  
+            <table class="table-bordered">
+                <thead>
+                    <tr>
+                        <th>Assignment Name:</th>
+                        <th>Assignment SubName:</th>
+                        <th>Description:</th>
+                        <th>Due Date:</th>
+                        <th>ID:</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   @*@foreach (var item in @Model.assignments)
+                    {
+                        <tr>
+                            <td>@item.assignmentName</td>
+                            <td>@item.assignmentSubName</td>
+                            <td>@item.description</td>
+                            <td>@item.dueDate</td>
+                            <td>@item.id</td>
+                        </tr>
+                    }*@
+                </tbody>
+            </table>
 
-<table class="table-bordered">
-    <thead>
-        <tr>
-            <th>Assignment Name:</th>
-            <th>Assignment SubName:</th>
-            <th>Description:</th>
-            <th>Due Date:</th>
-            <th>ID:</th>
-        </tr>
-    </thead>
-    <tbody>
-       @*@foreach (var item in @Model.assignments) 
-        {
-            <tr>
-                <td>@item.assignmentName</td>
-                <td>@item.assignmentSubName</td>
-                <td>@item.description</td>
-                <td>@item.dueDate</td>
-                <td>@item.id</td>
-            </tr>
-        }*@
-    </tbody>
-</table>
+            --------------------->
+            @*
+                                <ul>
+                                    @foreach (var x in @Model.assignmentStudent)
+                                    {
+                                        <li>AssignmentID: @x.assignmentId</li>
+                                        <li>HasBeenTurnedIn:@x.hasBeenTurnedIn</li>
+                                        <li>StudentID:@x.studentId</li>
+                                        <li>ID:@x.id</li>
+                                    }
+                                </ul>
 
---------------------->
+                                @* ------- byrjun á Javascript til að birta viðkomandi description ---------------
+                <script>
+                    $(document).ready(function()
+                    {
+                        $("#show").click(function(){
+                            $("p").show(@item.description);
+                        });
 
-     <ul>
-       @foreach (var x in @Model.assignmentStudent )
-        {
-            <li>AssignmentID: @x.assignmentId</li>
-            <li>HasBeenTurnedIn:@x.hasBeenTurnedIn</li>
-            <li>StudentID:@x.studentId</li>
-            <li>ID:@x.id</li>
-        }
-    </ul>
-    
-    
+                    });
+
+                </script>*@
+
+
 

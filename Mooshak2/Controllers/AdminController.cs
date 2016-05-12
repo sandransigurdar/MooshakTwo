@@ -46,7 +46,7 @@ namespace Mooshak2.Controllers
 
             if (ModelState.IsValid)
             {
-                //cS.SaveCourseToDatabase(newCourse);
+                cS.SaveCourseToDatabase(newCourse);
                 return RedirectToAction("HomePage");
             }
 
