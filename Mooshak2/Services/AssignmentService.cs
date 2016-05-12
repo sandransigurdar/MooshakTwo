@@ -79,38 +79,35 @@ namespace Mooshak2.Services
 
         }
 
-        public void SaveAssignment(string assignmentName, HttpPostedFileBase filePath)
+        public string SaveAssignment(string assignmentId, HttpPostedFileBase filePath)
         {
+            var bla = filePath;
 
-            int studentId = 0;
+            int studentId = 404;
 
             string loggedInUser = LoginService.nameOfLoggedInUser;
 
-            foreach (var item in _db.Students)
+            foreach(var item in _db.Students)
             {
-                if (loggedInUser == item.userName)
+                if(loggedInUser == item.userName)
                 {
                     studentId = item.id;
                 }
             }
 
-            int assignmentId = 404;
-            foreach(var item in _db.Assignments)
+            if(studentId == 404)
             {
-                if(item.assignmentName == assignmentName)
-                {
-                    assignmentId = item.id;
-                }
+                //return View("~/Views/Shared/Error.cshtml");
             }
 
-            string assignmentIdString = assignmentId.ToString();
-
-            string rootOfProjectPath = GetPathForAssignments() + studentId + "\\" + assignmentIdString;
+            string rootOfProjectPath = GetPathForAssignments() + studentId + "\\";
 
             if (!System.IO.Directory.Exists(rootOfProjectPath))
             {
-                //koma í veg fyrir villur   createdirectory
+                string createText = "Hello and Welcome" + Environment.NewLine;
+                File.WriteAllText(rootOfProjectPath, createText);
             }
+            rootOfProjectPath +=  assignmentId + ".cpp";
 
             System.IO.FileStream outStream = new System.IO.FileStream(rootOfProjectPath, System.IO.FileMode.CreateNew);
 
@@ -118,6 +115,7 @@ namespace Mooshak2.Services
             outStream.Flush();
             outStream.Dispose();
 
+            return rootOfProjectPath;
         }
 
         public void SaveChangesToDatabase(Assignment newAssignment)
@@ -126,42 +124,114 @@ namespace Mooshak2.Services
             _db.SaveChanges();
         }
 
-        public void CompileAndReturnStatusOfAssignment(string code)
-        {
-        }
-
-        public string ReturnCode(string nameOfAssignment)
+        public string ReturnCode(string filePath)
 
         {
-            //TODO FINNA SKJAL
-            int assignmentId = 404;
-            foreach (var item in _db.Assignments)
+            if (!File.Exists(filePath))
             {
-                if(nameOfAssignment == item.assignmentName)
-                {
-                    assignmentId = item.id;
-                }
+                //return View("Error");
             }
-
-            string assignmentIdString = assignmentId.ToString();
-
-            string rootOfProjectPath = GetPathForAssignments();
-
-            string path = rootOfProjectPath + assignmentIdString;
             
-            //string path = @"c:\test\bla.cpp";
+            string readText = File.ReadAllText(filePath);
 
-            if (!File.Exists(path))
-            {
-                string createText = "Hello and Welcome" + Environment.NewLine;
-                File.WriteAllText(path, createText);
-            }
-
-            string readText = File.ReadAllText(path);
             return readText;
         }
 
+        public int CompileAndReturnStatusOfAssignment(string assignmentId, string code)
+        {
 
+            //---------------------------------------------------
+
+            //TODO FINNA FOLDER TIL AÐ VISTA C++ SKJAL
+
+            var workingFolder = "C:\\test\\";
+            var cppFileName = "Hello.cpp";
+            var exeFilePath = workingFolder + "Hello.exe";
+
+            // Write the code to a file, such that the compiler
+
+            // can find it:
+
+            System.IO.File.WriteAllText(workingFolder + cppFileName, code);
+
+            // In this case, we use the C++ compiler (cl.exe) which ships
+            // with Visual Studio. It is located in this folder:
+
+            //TODO Búa til lykil fyrir pathið á visual studio e.t.c.
+
+            var compilerFolder = "C:\\Program Files\\Microsoft Visual Studio 14.0\\VC\\bin\\";
+
+            // There is a bit more to executing the compiler than
+            // just calling cl.exe. In order for it to be able to know
+            // where to find #include-d files (such as <iostream>),
+            // we need to add certain folders to the PATH.
+            // There is a .bat file which does that, and it is
+            // located in the same folder as cl.exe, so we need to execute
+            // that .bat file first.
+
+            // Using this approach means that:
+            // * the computer running our web application must have
+            //   Visual Studio installed. This is an assumption we can
+            //   make in this project.
+            // * Hardcoding the path to the compiler is not an optimal
+            //   solution. A better approach is to store the path in
+            //   web.config, and access that value using ConfigurationManager.AppSettings.
+
+            // Execute the compiler:
+
+            var lines = new List<string>();
+            Process compiler = new Process();
+            compiler.StartInfo.FileName = "cmd.exe";
+            compiler.StartInfo.WorkingDirectory = workingFolder;
+            compiler.StartInfo.RedirectStandardInput = true;
+            compiler.StartInfo.RedirectStandardOutput = true;
+            compiler.StartInfo.UseShellExecute = false;
+
+            compiler.Start();
+            compiler.StandardInput.WriteLine("\"" + compilerFolder + "vcvars32.bat" + "\"");
+            compiler.StandardInput.WriteLine("cl.exe /nologo /EHsc " + cppFileName);
+            compiler.StandardInput.WriteLine("exit");
+            string output = compiler.StandardOutput.ReadToEnd();
+            compiler.WaitForExit();
+            compiler.Close();
+
+            // Check if the compile succeeded, and if it did,
+            // we try to execute the code:
+
+            if (System.IO.File.Exists(exeFilePath))
+            {
+                var processInfoExe = new ProcessStartInfo(exeFilePath, "");
+                processInfoExe.UseShellExecute = false;
+                processInfoExe.RedirectStandardOutput = true;
+                processInfoExe.RedirectStandardError = true;
+                processInfoExe.CreateNoWindow = true;
+
+                using (var processExe = new Process())
+                {
+                    processExe.StartInfo = processInfoExe;
+                    processExe.Start();
+
+                    // In this example, we don't try to pass any input
+                    // to the program, but that is of course also
+                    // necessary. We would do that here, using
+                    // processExe.StandardInput.WriteLine(), similar
+                    // to above.
+                    // We then read the output of the program:
+
+                    while (!processExe.StandardOutput.EndOfStream)
+                    {
+                        lines.Add(processExe.StandardOutput.ReadLine());
+                    }
+                }
+
+                // TODO: We might want to clean up after the process, there
+                // may be files we should delete etc.
+            }
+            return 5;
+            
+
+            //---------------------------------------------------
+        }
 
 
 

@@ -42,6 +42,7 @@ namespace Mooshak2.Models
             Database.SetInitializer<ApplicationDbContext>(null);
         }
 
+
             public IDbSet<Assignment>        Assignments    { get; set; }
             public IDbSet<Course>            Courses           { get; set; }
             public IDbSet<Student>           Students         { get; set; }
@@ -52,6 +53,7 @@ namespace Mooshak2.Models
         // <summary>
 
         // Hér fyrir ofan er tenging við database fyrir entity klasa samkvæmt fyrirlestri hjá Dabs...
+
 
         // </summary>
 

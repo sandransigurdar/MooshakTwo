@@ -24,15 +24,19 @@ namespace Mooshak2.Controllers
         public ActionResult GetAssignmentFileFromUser(FormCollection formCollection)
         {
 
-            string assignmentName = Request.Form["asName"];
+            string assignmentId = Request.Form["asName"];
             
-            var filePath = Request.Files.Get("file");
+            var fileName = Request.Files.Get("file");
 
-            aS.SaveAssignment(assignmentName , filePath);
+            string pathToFile = aS.SaveAssignment(assignmentId , fileName);
 
-            // string assignmentName2 = "6";
-            // aS.CompileAndReturnStatusOfAssignment(assignmentName);
-            string code = aS.ReturnCode("Verk1");
+            string code = aS.ReturnCode(pathToFile);
+
+            //Status 0 equals Not returned
+            //Status 1 equals Returned with no errors
+            //Status 2 equals Returned with errors
+
+            //int status = aS.CompileAndReturnStatusOfAssignment(assignmentId, code); 
 
             return View("~/Views/Student/HomePage.cshtml");
         }
