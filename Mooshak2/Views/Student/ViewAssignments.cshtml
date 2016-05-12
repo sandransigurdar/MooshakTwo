@@ -82,7 +82,7 @@
 
                             <h1 class="panel-title">@item.assignmentName - @item.assignmentSubName</h1>
 
-                            <form action="~/Assignment/GetAssignmentFileFromUser" method="post" enctype="multipart/form-data">
+                            <form action="~/Assignment/GetAssignmentFileFromUser" method="post" enctype="multipart/form-data" id="studentform">
                                 <label for="file">
                                     <input type="text" class="assignmentname" name="assignmentname" value="@item.assignmentName" style="display:none">
                                     <span class="glyphicon glyphicon-folder-open" id="foldericon" aria-hidden="true">File</span>

@@ -5,7 +5,7 @@
 
 <div class="container-fluid" id="fluid">
     <div class="row">
-        <div class="col-md-1"></div>
+    <!----    <div class="col-md-1"></div>                -->
         <div class="col-md-7">
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -13,7 +13,7 @@
                 </div>
                 <form action="ViewCourses" method="POST" class="form-horizontal">
                     <div class="created-div">
-                        <table class="table">
+                        <table class="table" >
                             <tr>
                                 <th>Name</th>
                                 <th>SSN</th>
@@ -21,7 +21,7 @@
                             </tr>
                             @foreach (var item in Model.teachers)
                             {
-                            <tr>
+                            <tr >
                                 <td>@item.name</td>
                                 <td>@item.ssn</td>
                                 <td>@item.email</td>
@@ -36,7 +36,7 @@
 </div>
 <div class="container-fluid" >      <!--------var svona-------<div class="container-fluid" id="fluid"-->
     <div class="row">
-        <div class="col-md-1"></div>
+   <!---     <div class="col-md-1"></div>  --->
         <div class="col-md-7">
             <div class="panel panel-default">
                 <div class="panel-heading">
