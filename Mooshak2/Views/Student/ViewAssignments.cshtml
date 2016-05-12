@@ -3,19 +3,15 @@
     Layout = "~/Views/Shared/StudentLayout.cshtml";
 }
 
-    <script src="https://code.jquery.com/jquery-1.9.1.min.js">
-
-        //$(document).ready(function () {
-
-        //$(".btn").click(function () {
-        //    var divToToggle = $($(this).find("button").attr('href'));
-        //    $(".toggle:visible").not(divToToggle).hide();
-        //    divToToggle.slideToggle("slow");
-
-        //});
-        //});
-
-
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript">
+        
+        $(document).ready(function () {
+            $("button#btn-id.btn").click(function () { 
+                var selected = $(this).attr('href'); 
+                $(selected).show('slow').siblings().hide('slow'); 
+            });
+        });
     </script>
 
 <div class="container-fluid" id="fluid">
@@ -28,7 +24,7 @@
                 <div class="panel-body" id="navbuttons">
                     @foreach (var item in Model.assignments)
                     {
-                        <button type="button" class="btn btn-default" id="btn-id" data-toggle="collapse" href="@("#box" + item.id)">@item.assignmentName</button>
+                        <button type="button" class="btn btn-default" id="btn-id" href="@("#box" + item.id)">@item.assignmentName</button>
                         
                     }
                 </div>
@@ -96,7 +92,3 @@
         </div>
     </div>
 </div>
-
-
-
-
