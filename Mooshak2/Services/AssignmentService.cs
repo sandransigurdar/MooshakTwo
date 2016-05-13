@@ -92,11 +92,6 @@ namespace Mooshak2.Services
                 }
             }
 
-            if (studentId == 404)
-            {
-                //return View("~/Views/Shared/Error.cshtml");
-            }
-
             string rootOfProjectPath = GetPathForAssignments() + studentId + "\\";
 
             if (!System.IO.Directory.Exists(rootOfProjectPath))
@@ -105,7 +100,9 @@ namespace Mooshak2.Services
                 File.WriteAllText(rootOfProjectPath, createText);
             }
 
-            rootOfProjectPath += assignmentId + ".cpp";
+            int numberOfFilesInFolder = Directory.EnumerateFiles(rootOfProjectPath, "*.cpp").Count();
+
+            rootOfProjectPath += assignmentId + "_" + numberOfFilesInFolder + ".cpp";
             System.IO.FileStream outStream = new System.IO.FileStream(rootOfProjectPath, System.IO.FileMode.CreateNew);
             filePath.InputStream.CopyTo(outStream);
             outStream.Flush();
@@ -123,11 +120,7 @@ namespace Mooshak2.Services
         public string ReturnCode(string filePath)
 
         {
-            if (!File.Exists(filePath))
-            {
-                //return View("Error");
-            }
-
+            //Path verður til þegar notandi er búinn til af admin
             string readText = File.ReadAllText(filePath);
 
             return readText;
@@ -173,13 +166,6 @@ namespace Mooshak2.Services
                 {
                     processExe.StartInfo = processInfoExe;
                     processExe.Start();
-
-                    // In this example, we don't try to pass any input
-                    // to the program, but that is of course also
-                    // necessary. We would do that here, using
-                    // processExe.StandardInput.WriteLine(), similar
-                    // to above.
-                    // We then read the output of the program:
                     string input = "";
 
                     foreach (var item in _db.Assignments)
@@ -188,18 +174,18 @@ namespace Mooshak2.Services
                         {
                             input += item.input;
                         }
-
                     }
+
+                    /*Við fengum input ekki til að virka   :(
+                    processExe.StandardInput.WriteLine(input);*/
 
                     while (!processExe.StandardOutput.EndOfStream)
                     {
-                        //processExe.StandardInput.WriteLine(input);
                         lines.Add(processExe.StandardOutput.ReadLine());
                     }
                 }
             }
             List<string> codeStringList = lines;
-
 
             string codeResult = "";
             foreach (var item in codeStringList)
@@ -207,17 +193,7 @@ namespace Mooshak2.Services
                 codeResult += item;
             }
 
-            //foreach(var item in _db.AssignmentStudents)
-            //{
-            //    if(assignmentId == item.)
-            //    {
-
-            //    }
-            //}
-
             string nameOfLoggedInUser = LoginService.nameOfLoggedInUser;
-
-
 
             int status = 0;
             int studentId = 0;
@@ -230,8 +206,7 @@ namespace Mooshak2.Services
                 }
             }
 
-
-            foreach (var item in _db.Assignments)
+            foreach(var item in _db.Assignments)
 
             {
                 if (codeResult == item.correctOutput && assignmentIdInt == item.id)
@@ -243,7 +218,6 @@ namespace Mooshak2.Services
                     status = 2;
                 }
             }
-
 
             AssignmentStudent oAS = null;
 
@@ -267,7 +241,6 @@ namespace Mooshak2.Services
 
             _db.AssignmentStudents.Add(nAS);
             _db.SaveChanges();
-
         }
     }
 }
