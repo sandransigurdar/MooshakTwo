@@ -13,7 +13,7 @@ namespace Mooshak2.Services
 {
     public class AssignmentService
     {
-        
+
         public AssignmentService(IMyDataContext context)
         {
             _db = context ?? new ApplicationDbContext();
@@ -28,7 +28,6 @@ namespace Mooshak2.Services
             _db = new ApplicationDbContext();
         }
 
-
         public List<Assignment> GetAllAssignments()
         {
             List<Assignment> allAssignments = new List<Assignment>();
@@ -39,10 +38,7 @@ namespace Mooshak2.Services
             }
 
             return allAssignments;
-
         }
-
-
 
         public List<AssignmentStudent> GetAssignmentStatus(int studentId)
         {
@@ -56,7 +52,6 @@ namespace Mooshak2.Services
             }
 
             return statuses;
-
         }
 
         public string GetPathForAssignments()
@@ -81,15 +76,12 @@ namespace Mooshak2.Services
             newAssignment.correctOutput = correctOutput;
 
             return newAssignment;
-
         }
 
         public string SaveAssignment(string assignmentId, HttpPostedFileBase filePath)
         {
             var bla = filePath;
-
             int studentId = 404;
-
             string loggedInUser = LoginService.nameOfLoggedInUser;
 
             foreach (var item in _db.Students)
@@ -112,10 +104,9 @@ namespace Mooshak2.Services
                 string createText = "Hello and Welcome" + Environment.NewLine;
                 File.WriteAllText(rootOfProjectPath, createText);
             }
+
             rootOfProjectPath += assignmentId + ".cpp";
-
             System.IO.FileStream outStream = new System.IO.FileStream(rootOfProjectPath, System.IO.FileMode.CreateNew);
-
             filePath.InputStream.CopyTo(outStream);
             outStream.Flush();
             outStream.Dispose();
@@ -136,14 +127,15 @@ namespace Mooshak2.Services
             {
                 //return View("Error");
             }
-            
+
             string readText = File.ReadAllText(filePath);
 
             return readText;
         }
 
-        public int CompileAndReturnStatusOfAssignment(string assignmentId, string code)
+        public void CompileAndReturnStatusOfAssignment(string assignmentId, string code)
         {
+            int assignmentIdInt = int.Parse(assignmentId);
             string workingFolder = GetPathForAssignments();
             string cppFileName = assignmentId + ".cpp";
             string exeFilePath = workingFolder + assignmentId + ".exe";
@@ -151,9 +143,8 @@ namespace Mooshak2.Services
             System.IO.File.WriteAllText(workingFolder + cppFileName, code);
 
             var compilerFolder = ConfigurationSettings.AppSettings["VisualStudioCompilerPath"];
-           
 
-            List <string> lines = new List<string>();
+            List<string> lines = new List<string>();
 
             Process compiler = new Process();
             compiler.StartInfo.FileName = "cmd.exe";
@@ -189,68 +180,94 @@ namespace Mooshak2.Services
                     // processExe.StandardInput.WriteLine(), similar
                     // to above.
                     // We then read the output of the program:
+                    string input = "";
+
+                    foreach (var item in _db.Assignments)
+                    {
+                        if (assignmentIdInt == item.id)
+                        {
+                            input += item.input;
+                        }
+                            
+                    }
 
                     while (!processExe.StandardOutput.EndOfStream)
                     {
+                        //processExe.StandardInput.WriteLine(input);
                         lines.Add(processExe.StandardOutput.ReadLine());
                     }
                 }
-
-                // TODO: We might want to clean up after the process, there
-                // may be files we should delete etc.
             }
-            List <string> codeStringList = lines;
+            List<string> codeStringList = lines;
+
 
             string codeResult = "";
-            foreach(var item in codeStringList)
+            foreach (var item in codeStringList)
             {
                 codeResult += item;
             }
 
-            int loggedInUserId = 404;
+            //foreach(var item in _db.AssignmentStudents)
+            //{
+            //    if(assignmentId == item.)
+            //    {
+
+            //    }
+            //}
+            
             string nameOfLoggedInUser = LoginService.nameOfLoggedInUser;
-            foreach(var item in _db.Students)
+            
+
+           
+            int status = 0;
+            int studentId = 0;
+            
+            foreach (var item in _db.Students)
             {
-                if(nameOfLoggedInUser == item.userName)
+                if (nameOfLoggedInUser == item.userName)
                 {
-                    loggedInUserId = item.id;
+                    studentId = item.id;
                 }
             }
 
-            /*foreach(var item in _db.AssignmentStudents)
-           
-            int assignmentIdInt = int.Parse(assignmentId);
-            int status = -1999;
-
-            foreach (var item in _db.AssignmentStudents)
+            
+            foreach(var item in _db.Assignments)
 
             {
-                if(loggedInUserId == item.studentId && assignmentIdInt == item.assignmentId)
+                if(codeResult == item.correctOutput && assignmentIdInt == item.id)
                 {
-                    foreach(var assignment in _db.Assignments)
-                    {
-                        if(codeResult == assignment.correctOutput)
-                        {
-                            status = 1; 
-                        }
-                        else if(!(codeResult==assignment.correctOutput))
-                        {
-                            status = 2;
-                        }
-
-                    }
+                    status = 1;
                 }
-            } */
-            
-            //TODO SAVE TO DATABASE
+                else if(codeResult != item.correctOutput && assignmentIdInt == item.id)
+                {
+                    status = 2;
+                }
+            }
 
 
-            return status;
+            AssignmentStudent oAS = null;
+
+            foreach (var item in _db.AssignmentStudents)
+            {
+                if (item.assignmentId == assignmentIdInt && item.studentId == studentId)
+                {
+                    oAS = item;
+                }
+            }
+
+            if (oAS != null)
+            {
+                _db.AssignmentStudents.Remove(oAS);
+            }
+
+            AssignmentStudent nAS = new AssignmentStudent();
+            nAS.assignmentId = assignmentIdInt;
+            nAS.hasBeenTurnedIn = status;
+            nAS.studentId = studentId;
             
+            _db.AssignmentStudents.Add(nAS);
+            _db.SaveChanges();
 
         }
-
-
-
     }
 }

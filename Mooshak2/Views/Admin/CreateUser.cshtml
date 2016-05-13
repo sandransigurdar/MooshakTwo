@@ -26,10 +26,10 @@
                     <h2 class="navtitle">Create User</h2>
                 </div>
 
-
                 <form action="CreateUser" method="POST" class="form-horizontal">
 
                     <div class="form-group">
+                        <div class="alert-danger">@Html.ValidationMessage("name")</div>
                         <label class="col-sm-2 control-label" for="name">Name:</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="name" name="name" />
@@ -37,6 +37,7 @@
                      </div>
 
                      <div class="form-group">
+                         <div class="alert-danger">@Html.ValidationMessage("username")</div>
                          <label class="col-sm-2 control-label" for="username">User Name:</label>
                          <div class="col-sm-10">
                             <input type="text" class="form-control" id="username" name="username" />
@@ -44,6 +45,7 @@
                       </div>
 
                       <div class="form-group">
+                          <div class="alert-danger">@Html.ValidationMessage("password")</div>
                           <label class="col-sm-2 control-label" for="password">Password:</label>
                           <div class="col-sm-10">
                               <input type="password" class="form-control" id="password" name="password" />
@@ -51,17 +53,20 @@
                       </div>
 
                       <div class="form-group">
+                          <div class="alert-danger">@Html.ValidationMessage("ssn")</div>
                           <label class="col-sm-2 control-label" for="ssn">SSN:</label>
                           <div class="col-sm-10">
                               <input type="text" class="form-control" id="ssn" name="ssn" />
                           </div>
                       </div>
                       <div class="form-group">
+                          <div class="alert-danger">@Html.ValidationMessage("email")</div>
                           <label class="col-sm-2 control-label" for="email">Email:</label>
                           <div class="col-sm-10">
                               <input type="email" class="form-control" id="email" name="email" />
                           </div>
                       </div>
+                        @*<div class="alert-danger">@Html.ValidationMessage("role")</div>*@
                         <div id="style-button">
                             <input type="radio" name="role" id="role" value="1" /> Student <br />
                             <input type="radio" name="role" id="role" value="2" /> Teacher <br />
