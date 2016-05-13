@@ -12,16 +12,12 @@ using System.Configuration;
 namespace Mooshak2.Services
 {
     public class AssignmentService
-    {
-<<<<<<< HEAD
-=======
-        
+    {        
         public AssignmentService(IMyDataContext context)
         {
             _db = context ?? new ApplicationDbContext();
         }
 
->>>>>>> 0c3de1321a89ffaa8c58f2ba2f56ccd61076496d
         LoginService lS = new LoginService();
 
         private IMyDataContext _db;
@@ -240,13 +236,12 @@ namespace Mooshak2.Services
                     
                 }
             }
-=======
-            } */
-            
->>>>>>> 0c3de1321a89ffaa8c58f2ba2f56ccd61076496d
+
             //TODO SAVE TO DATABASE
 
-            return status;
+            return status;*/
+
+            return 0;
         }
 
         public void SaveStatusOfAssignment(int status)

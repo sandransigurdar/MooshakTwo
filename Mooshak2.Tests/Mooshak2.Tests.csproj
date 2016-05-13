@@ -95,7 +95,6 @@
     <Compile Include="InMemoryDbSet.cs" />
     <Compile Include="MockDataContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Controllers\HomeControllerTest.cs" />
     <Compile Include="Services\AssignmentServiceTest.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -109,6 +108,9 @@
       <Project>{F1A3F67A-7F06-4463-9E20-96A725001922}</Project>
       <Name>Mooshak2</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controllers\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
