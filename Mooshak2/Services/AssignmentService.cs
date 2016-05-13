@@ -11,13 +11,17 @@ using System.Configuration;
 
 namespace Mooshak2.Services
 {
-
     public class AssignmentService
     {
+        
+        public AssignmentService(IMyDataContext context)
+        {
+            _db = context ?? new ApplicationDbContext();
+        }
 
         LoginService lS = new LoginService();
 
-        private ApplicationDbContext _db;
+        private IMyDataContext _db;
 
         public AssignmentService()
         {
