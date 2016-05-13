@@ -78,24 +78,34 @@
             <div class="tab-content">
                 <div id="home" class="tab-pane fade in active">
                     <h3>Submissions</h3>
-                    <table class="table-responsive">
+                    <table class="table">
                         <thead>
-                        <tr>
-                            <th>Hand in number:</th>
-                            <th>Status</th>
-                        </tr>
+                            <tr>
+                                <th>Hand in ID:</th>
+                                <th>For assignment:</th>
+                                <th>Status</th>
+                            </tr>
                         </thead>
-                    <tbody>
-                        @foreach (var item in Model.assignmentStudent)
-                        {
-                            if (item.hasBeenTurnedIn == 1)
+                        <tbody>
+                            @foreach (var item in Model.assignmentStudent)
                             {
-                                <tr class="success">
-                                    <td>@item.id</td>
-                                    <td>Success</td>
-                                </tr>
+                                if (item.hasBeenTurnedIn == 1)
+                                {
+                                    <tr class="success">
+                                        <td>@item.id</td>
+                                        <td>@item.assignmentId</td>
+                                        <td>Success</td>
+                                    </tr>
+                                }
+                                if (item.hasBeenTurnedIn == 2)
+                                {
+                                    <tr class="danger">
+                                        <td>@item.id</td>
+                                        <td>@item.assignmentId</td>
+                                        <td>Success</td>
+                                    </tr>
+                                }
                             }
-                        }
                     </tbody>
                     </table>
                        
