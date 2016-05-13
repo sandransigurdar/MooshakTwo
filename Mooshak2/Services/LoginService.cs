@@ -24,47 +24,35 @@ namespace Mooshak2.Services
         }
 
         public static string nameOfLoggedInUser = "";
-        
         public static int userRole = 0;
-
-        
-
 
         public int Authenticate(string name, string password)
         {
-            
             foreach (var item in _db.Students)
             {
                 if (name == item.userName && password == item.password)
                 {
-                    
                     return 1;
                 }
-                  
             }
 
             foreach (var item in _db.Teachers)
             {
                 if (name == item.userName && password == item.password)
                 {
-                   
                     return 2;
                 }
-                   
             }
 
             foreach (var item in _db.Admins)
             {
                 if (name == item.userName && password == item.password)
                 {
-                   
                    return 3;
                 }
-                   
             }
 
             return 404;
-
         }
     }
 }

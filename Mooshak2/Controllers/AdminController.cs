@@ -15,10 +15,9 @@ namespace Mooshak2.Controllers
         CourseService cS = new CourseService();
         AdminUserViewModel aUVM = new AdminUserViewModel();
 
-        //[Authorize (LoginService.userRole == 3)]   Gummi ætlaði að skoða þetta og svara okkur
+        [CustomAuthorization(3)]
         public ActionResult CreateCourse()
         {
-
             List<Teacher> ListOfAllTeachers = new List<Teacher>();
             ListOfAllTeachers = uS.GetAllTeachers();
 
@@ -26,6 +25,7 @@ namespace Mooshak2.Controllers
         }
 
         [HttpPost]
+        [CustomAuthorization(3)]
         public ActionResult CreateCourse(FormCollection formCollection)
         {
             string courseName = Request.Form["coursename"];
@@ -53,6 +53,7 @@ namespace Mooshak2.Controllers
             return View(newCourse);
         }
 
+        [CustomAuthorization(3)]
         public ActionResult CreateUser()
         {
             List<Course> listOfAllCourses = new List<Course>();
@@ -62,9 +63,9 @@ namespace Mooshak2.Controllers
         }
 
         [HttpPost]
+        [CustomAuthorization(3)]
         public ActionResult CreateUser(FormCollection formCollection)
         {
-
             string name = Request.Form["name"];
             string userName = Request.Form["username"];
             string ssn = Request.Form["ssn"];
@@ -73,18 +74,135 @@ namespace Mooshak2.Controllers
             string userRole = Request.Form["role"];
             string course = Request.Form["course"];
 
+            int userRoleInt = Convert.ToInt32(userRole);
+
             
-            uS.CreateUser(name, userName, ssn, email, password, userRole, course);
+            if (string.IsNullOrEmpty(userRole))
+            {
+                Student userRoleNotPicker = new Student();
+                ModelState.AddModelError("userrole", "* Please pick either a teacher or a student.");
+                return View(userRoleNotPicker);
+            }
 
-            return View("~/Views/Admin/HomePage.cshtml");
+            if (userRoleInt == 1)
+            {
+                Student newStudent = new Student();
 
+                newStudent.name = name;
+                newStudent.userName = userName;
+                newStudent.ssn = ssn;
+                newStudent.email = email;
+                newStudent.password = password;
+                newStudent.role = 1;
+
+                if (string.IsNullOrEmpty(newStudent.name))
+                {
+                    ModelState.AddModelError("name", "* Please enter a name.");
+                }
+                if (string.IsNullOrEmpty(newStudent.userName))
+                {
+                    ModelState.AddModelError("username", "* Please enter a username.");
+                }
+                if (string.IsNullOrEmpty(newStudent.ssn))
+                {
+                    ModelState.AddModelError("ssn", "* Please enter a social security number.");
+                }
+                if (string.IsNullOrEmpty(newStudent.email))
+                {
+                    ModelState.AddModelError("email", "* Please enter a email.");
+                }
+                if (string.IsNullOrEmpty(newStudent.password))
+                {
+                    ModelState.AddModelError("password", "* Please enter a password.");
+                }
+                if (string.IsNullOrEmpty(course))
+                {
+                    ModelState.AddModelError("course", "* Please pick a course.");
+                }
+
+                if (ModelState.IsValid)
+                {
+                    Teacher emptyTeacher = new Teacher();
+                    uS.CreateUser(1, newStudent, emptyTeacher, course);
+                    return View("~/Views/Admin/HomePage.cshtml");
+                }
+                else
+                {
+                    var errors = ModelState.Select(x => x.Value.Errors)
+                           .Where(y => y.Count > 0)
+                           .ToList();
+
+                    return View("CreateUser", errors);
+                }
+            }
+
+            else if (userRoleInt == 2)
+            {
+                Teacher newTeacher = new Teacher();
+
+                newTeacher.name = name;
+                newTeacher.userName = userName;
+                newTeacher.ssn = ssn;
+                newTeacher.email = email;
+                newTeacher.password = password;
+                newTeacher.role = 2;
+
+                if (string.IsNullOrEmpty(newTeacher.name))
+                {
+                    ModelState.AddModelError("name", "* Please enter a name.");
+                }
+                if (string.IsNullOrEmpty(newTeacher.userName))
+                {
+                    ModelState.AddModelError("username", "* Please enter a username.");
+                }
+                if (string.IsNullOrEmpty(newTeacher.ssn))
+                {
+                    ModelState.AddModelError("ssn", "* Please enter a social security number.");
+                }
+                if (string.IsNullOrEmpty(newTeacher.email))
+                {
+                    ModelState.AddModelError("email", "* Please enter a email.");
+                }
+                if (string.IsNullOrEmpty(newTeacher.password))
+                {
+                    ModelState.AddModelError("password", "* Please enter a password.");
+                }
+                if (string.IsNullOrEmpty(newTeacher.password))
+                {
+                    ModelState.AddModelError("password", "* Please enter a password.");
+                }
+                if (string.IsNullOrEmpty(course))
+                {
+                    ModelState.AddModelError("course", "* Please pick a course.");
+                }
+
+                if (ModelState.IsValid)
+                {
+                    Student emptyStudent = new Student();
+                    uS.CreateUser(2, emptyStudent, newTeacher, course);
+                    return View("~/Views/Admin/HomePage.cshtml");
+                }
+                else
+                {
+                    var errors = ModelState.Select(x => x.Value.Errors)
+                          .Where(y => y.Count > 0)
+                          .ToList();
+
+                    return RedirectToAction("CreateUser", errors);
+                }
+
+                return View("~/Views/Admin/CreateUser.cshtml", newTeacher);
+            }
+            return View(/* ERROR */);
         }
 
+        [CustomAuthorization(3)]
         public ActionResult HomePage()
         {
             return View();
         }
 
+        [CustomAuthorization(3)]
         public ActionResult ViewCourses()
         {
             List<Course> allCourses = new List<Course>();
@@ -92,6 +210,7 @@ namespace Mooshak2.Controllers
             return View(allCourses);
         }
 
+        [CustomAuthorization(3)]
         public ActionResult ViewUsers()
         {
             List<Student> allStudents = new List<Student>();

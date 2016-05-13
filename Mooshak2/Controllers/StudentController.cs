@@ -12,15 +12,15 @@ namespace Mooshak2.Controllers
 {
     public class StudentController : Controller
     {
+        [CustomAuthorization(1)]
         public ActionResult HomePage()
         {
-
             return View();
         }
 
+        [CustomAuthorization(1)]
         public ActionResult ViewAssignments()
         {
-
             AssignmentService aS = new AssignmentService();
             List <Assignment> ListOfAllAssignments = new List<Assignment>();
             ListOfAllAssignments = aS.GetAllAssignments();
@@ -39,6 +39,5 @@ namespace Mooshak2.Controllers
 
             return View(sAVM);
         }
-
     }
 }

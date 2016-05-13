@@ -15,11 +15,11 @@ namespace Mooshak2.Controllers
 
         public ActionResult CreateAssignment()
         {
-     
             return View();
         }
 
         [HttpPost]
+        [CustomAuthorization(2)]
         public ActionResult CreateAssignment(FormCollection formCollection)
         {
             string name = Request.Form["name"];
@@ -37,7 +37,6 @@ namespace Mooshak2.Controllers
             }
 
             Assignment newAssignment = new Assignment();
-
             newAssignment = aS.CreateAssignment(name, subname, description, date, input, correctoutput);
 
             if (string.IsNullOrEmpty(newAssignment.assignmentName))
@@ -72,13 +71,12 @@ namespace Mooshak2.Controllers
             }
 
             return View(newAssignment);
-
         }
 
+        [CustomAuthorization(2)]
         public ActionResult HomePage()
         {
             return View();
         }
-
     }
 }
