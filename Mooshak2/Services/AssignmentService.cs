@@ -11,12 +11,20 @@ using System.Configuration;
 
 namespace Mooshak2.Services
 {
-
     public class AssignmentService
     {
+<<<<<<< HEAD
+=======
+        
+        public AssignmentService(IMyDataContext context)
+        {
+            _db = context ?? new ApplicationDbContext();
+        }
+
+>>>>>>> 0c3de1321a89ffaa8c58f2ba2f56ccd61076496d
         LoginService lS = new LoginService();
 
-        private ApplicationDbContext _db;
+        private IMyDataContext _db;
 
         public AssignmentService()
         {
@@ -201,10 +209,13 @@ namespace Mooshak2.Services
                 }
             }
 
+            /*foreach(var item in _db.AssignmentStudents)
+           
             int assignmentIdInt = int.Parse(assignmentId);
             int status = 404;
             int studentId = 404;
 
+<<<<<<< HEAD
             foreach (var item in _db.Students)
             {
                 if(nameOfLoggedInUser == item.userName)
@@ -214,16 +225,25 @@ namespace Mooshak2.Services
             }
             
             foreach(var item in _db.AssignmentStudents)
+=======
+            foreach (var item in _db.AssignmentStudents)
+
+>>>>>>> 0c3de1321a89ffaa8c58f2ba2f56ccd61076496d
             {
                 if(assignmentIdInt == item.assignmentId && studentId == item.studentId)
                 {
                     
 
                 }
+<<<<<<< HEAD
             }
                     
                 }
             }
+=======
+            } */
+            
+>>>>>>> 0c3de1321a89ffaa8c58f2ba2f56ccd61076496d
             //TODO SAVE TO DATABASE
 
             return status;

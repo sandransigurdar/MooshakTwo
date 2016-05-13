@@ -31,6 +31,7 @@ namespace Mooshak2.Models
         IDbSet<Admin> Admins { get; set; }
         IDbSet<AssignmentStudent> AssignmentStudents { get; set; }
         IDbSet<CourseStudent> CourseStudents { get; set; }
+
         int SaveChanges();
     }
 
