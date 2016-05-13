@@ -14,7 +14,6 @@ namespace Mooshak2.Services
 
     public class AssignmentService
     {
-
         LoginService lS = new LoginService();
 
         private ApplicationDbContext _db;
@@ -23,7 +22,6 @@ namespace Mooshak2.Services
         {
             _db = new ApplicationDbContext();
         }
-
 
         public List<Assignment> GetAllAssignments()
         {
@@ -35,10 +33,7 @@ namespace Mooshak2.Services
             }
 
             return allAssignments;
-
         }
-
-
 
         public List<AssignmentStudent> GetAssignmentStatus(int studentId)
         {
@@ -52,7 +47,6 @@ namespace Mooshak2.Services
             }
 
             return statuses;
-
         }
 
         public string GetPathForAssignments()
@@ -77,15 +71,12 @@ namespace Mooshak2.Services
             newAssignment.correctOutput = correctOutput;
 
             return newAssignment;
-
         }
 
         public string SaveAssignment(string assignmentId, HttpPostedFileBase filePath)
         {
             var bla = filePath;
-
             int studentId = 404;
-
             string loggedInUser = LoginService.nameOfLoggedInUser;
 
             foreach (var item in _db.Students)
@@ -108,10 +99,9 @@ namespace Mooshak2.Services
                 string createText = "Hello and Welcome" + Environment.NewLine;
                 File.WriteAllText(rootOfProjectPath, createText);
             }
+
             rootOfProjectPath += assignmentId + ".cpp";
-
             System.IO.FileStream outStream = new System.IO.FileStream(rootOfProjectPath, System.IO.FileMode.CreateNew);
-
             filePath.InputStream.CopyTo(outStream);
             outStream.Flush();
             outStream.Dispose();
@@ -147,7 +137,6 @@ namespace Mooshak2.Services
             System.IO.File.WriteAllText(workingFolder + cppFileName, code);
 
             var compilerFolder = ConfigurationSettings.AppSettings["VisualStudioCompilerPath"];
-           
 
             List <string> lines = new List<string>();
 
@@ -191,7 +180,6 @@ namespace Mooshak2.Services
                         lines.Add(processExe.StandardOutput.ReadLine());
                     }
                 }
-
                 // TODO: We might want to clean up after the process, there
                 // may be files we should delete etc.
             }
@@ -214,36 +202,36 @@ namespace Mooshak2.Services
             }
 
             int assignmentIdInt = int.Parse(assignmentId);
-            int status = -1999;
+            int status = 404;
+            int studentId = 404;
 
-            foreach (var item in _db.AssignmentStudents)
+            foreach (var item in _db.Students)
             {
-                if(loggedInUserId == item.studentId && assignmentIdInt == item.assignmentId)
+                if(nameOfLoggedInUser == item.userName)
                 {
-                    foreach(var assignment in _db.Assignments)
-                    {
-                        if(codeResult == assignment.correctOutput)
-                        {
-                            status = 1; 
-                        }
-                        else if(!(codeResult==assignment.correctOutput))
-                        {
-                            status = 2;
-                        }
-
-                    }
+                    studentId = item.id;
                 }
             }
             
+            foreach(var item in _db.AssignmentStudents)
+            {
+                if(assignmentIdInt == item.assignmentId && studentId == item.studentId)
+                {
+                    
+
+                }
+            }
+                    
+                }
+            }
             //TODO SAVE TO DATABASE
 
-
             return status;
-            
-
         }
 
+        public void SaveStatusOfAssignment(int status)
+        {
 
-
+        }
     }
 }

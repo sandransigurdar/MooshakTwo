@@ -24,14 +24,11 @@ namespace Mooshak2.Controllers
             string name = Request.Form["username"];
             string password = Request.Form["password"];
 
-
             int userRole;
-
             userRole = ls.Authenticate(name, password);
 
             if (userRole == 1)
             {
-
                 var student = us.getStudentByName(name);
                 LoginService.nameOfLoggedInUser = name;
                 LoginService.userRole = 1;
@@ -61,7 +58,6 @@ namespace Mooshak2.Controllers
             }
 
             return View(userOrPasswordNotFound);
-            
         }
     }
 }

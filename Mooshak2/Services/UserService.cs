@@ -68,27 +68,17 @@ namespace Mooshak2.Services
             return student;
         }
 
-        public void CreateUser(string name, string userName, string ssn, string email, string password, string userRole, string course)
+        public void CreateUser(int userRole, Student newStudent, Teacher newTeacher, string course)
         {
             int user = Convert.ToInt32(userRole);
 
             if (user == 1)
             {
-                Student newStudent = new Student();
-
-                newStudent.name = name;
-                newStudent.userName = userName;
-                newStudent.ssn = ssn;
-                newStudent.email = email;
-                newStudent.password = password;
-                newStudent.role = 1;
-
 
                 int courseId = 0;
 
                 foreach (var item in _db.Courses)
                 {
-
                     if (item.courseName == course)
                     {
                         courseId = item.id;
@@ -103,7 +93,7 @@ namespace Mooshak2.Services
 
                 foreach (var item in _db.Students)
                 {
-                    if (item.name == name)
+                    if (item.name == newStudent.name)
                     {
                         studentId = item.id;
                     }
@@ -114,7 +104,6 @@ namespace Mooshak2.Services
 
                 Directory.CreateDirectory(wholePath);
 
-
                 cS.courseId = courseId;
                 cS.studentId = studentId;
 
@@ -124,22 +113,11 @@ namespace Mooshak2.Services
 
             else if (user == 2)
             {
-                Teacher newTeacher = new Teacher();
-
-                newTeacher.name = name;
-                newTeacher.userName = userName;
-                newTeacher.ssn = ssn;
-                newTeacher.email = email;
-                newTeacher.password = password;
-                newTeacher.role = 2;
-
-
                 foreach (var item in _db.Courses)
                 {
                     if (item.courseName == course)
                     {
-                        item.courseTeacher = name;
-
+                        item.courseTeacher = newTeacher.name;
                     }
                 }
 

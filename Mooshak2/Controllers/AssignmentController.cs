@@ -15,28 +15,30 @@ namespace Mooshak2.Controllers
 
         public ActionResult Index()
         {
-
             return View();
-
         }
 
         [HttpPost]
+        [CustomAuthorization(1)]
         public ActionResult GetAssignmentFileFromUser(FormCollection formCollection)
         {
-
             string assignmentId = Request.Form["asName"];
-            
             var fileName = Request.Files.Get("file");
-
             string pathToFile = aS.SaveAssignment(assignmentId , fileName);
-
             string code = aS.ReturnCode(pathToFile);
 
-            //Status 0 equals Not returned
-            //Status 1 equals Returned with no errors
-            //Status 2 equals Returned with errors
+            /*
+              Status 0 equals Not returned
+              Status 1 equals Returned with no errors
+              Status 2 equals Returned with errors
+            */
+            int status = aS.CompileAndReturnStatusOfAssignment(assignmentId, code);
 
-            int status = aS.CompileAndReturnStatusOfAssignment(assignmentId, code); 
+            if (status != 404)
+            {
+                aS.SaveStatusOfAssignment(status);
+            }
+            
 
             return View("~/Views/Student/HomePage.cshtml");
         }
