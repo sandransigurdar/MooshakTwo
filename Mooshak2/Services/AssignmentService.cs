@@ -217,7 +217,8 @@ namespace Mooshak2.Services
                 }
             }
 
-            
+            /*foreach(var item in _db.AssignmentStudents)
+           
             int assignmentIdInt = int.Parse(assignmentId);
             int status = -1999;
 
@@ -239,7 +240,7 @@ namespace Mooshak2.Services
 
                     }
                 }
-            }
+            } */
             
             //TODO SAVE TO DATABASE
 
