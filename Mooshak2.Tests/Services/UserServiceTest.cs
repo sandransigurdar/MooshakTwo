@@ -54,8 +54,19 @@ namespace Mooshak2.Tests.Services
 				courseTeacher = "courseTeacher",
 			};
 			mockDb.Courses.Add(f4);
+            var f5 = new Student
+            {
+                id = 3,
+                name = "SstudentName",
+                userName = "sstudentName",
+                ssn = "0002345679",
+                email = "email@ru.is",
+                password = "password",
+                role = 4,
+            };
+            mockDb.Students.Add(f5);
 
-			_service = new UserService(mockDb);
+            _service = new UserService(mockDb);
 		}
 		// Kerfisstjóri býr til notanda
 		// GetAllTeachers og annað GetAllStudents
@@ -64,18 +75,69 @@ namespace Mooshak2.Tests.Services
 		public void GetAllTeachersTest()
 		{
 			// Arrange
-			int userRole = 1;
 			Student newStudent = new Student();
 			Teacher newTeacher = new Teacher();
-			string course = "Api";
 			
 			// Act
 			var result = _service.GetAllTeachers();
 
-			// Assert
-			Assert.AreEqual(1, _service.GetAllTeachers().Count);
+            // Assert
+            Assert.AreNotEqual(0, _service.GetAllTeachers().Count);
+            Assert.AreEqual(1, _service.GetAllTeachers().Count);
+            Assert.AreNotEqual(2, _service.GetAllTeachers().Count);
 		}
-	}
-}
 
-// Athuga hvort réttur user verður til
+        [TestMethod]
+        public void GetAllStudentsTest()
+        {
+            // Arrange
+            Student newStudent = new Student();
+            Teacher newTeacher = new Teacher();
+
+
+            // Act
+            var result = _service.GetAllStudents();
+
+            // Assert
+            Assert.AreNotEqual(1, _service.GetAllStudents().Count);
+            Assert.AreEqual(2, _service.GetAllStudents().Count);
+            Assert.AreNotEqual(3, _service.GetAllStudents().Count);
+        }
+
+        [TestMethod]
+        public void CreateStudentTest()
+        {
+            // Arrange: (Jarðvegurinn undirbúinn: búa til test gögn, input sem á að fara inn í föllin o.s.frv.)
+            int userRole = 1;
+            Student newStudent = new Student();
+            Teacher newTeacher = new Teacher();
+            string course = "4";
+
+            // Act: (keyra aðgerðina sem á að prófa(yfirleitt ein lína)
+            _service.CreateUser(userRole, newStudent, null, course);
+
+            // Assert: (prófa, er svarið það sem við reiknuiðum með að fá, prófa hvaðeina sem þessi aðgerð)
+            Assert.AreEqual(3, _service.GetAllStudents().Count);
+            Assert.AreNotEqual(1, _service.GetAllStudents().Count);
+            Assert.AreNotEqual(2, _service.GetAllStudents().Count);
+        }
+
+        [TestMethod]
+        public void CreateTeacherTest()
+        {
+            // Arrange: (Jarðvegurinn undirbúinn: búa til test gögn, input sem á að fara inn í föllin o.s.frv.)
+            int userRole = 2;
+            Student newStudent = new Student();
+            Teacher newTeacher = new Teacher();
+            string course = "4";
+
+            // Act: (keyra aðgerðina sem á að prófa(yfirleitt ein lína)
+            _service.CreateUser(userRole, null, newTeacher, course);
+
+            // Assert: (prófa, er svarið það sem við reiknuiðum með að fá, prófa hvaðeina sem þessi aðgerð)
+            Assert.AreEqual(2, _service.GetAllTeachers().Count);
+            Assert.AreNotEqual(1, _service.GetAllTeachers().Count);
+            Assert.AreNotEqual(3, _service.GetAllTeachers().Count);
+        }
+    }
+}
