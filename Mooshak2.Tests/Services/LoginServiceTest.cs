@@ -1,6 +1,8 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Mooshak2.Services;
+using Mooshak2.Models;
+
 
 // LoginService test
 
@@ -15,22 +17,30 @@ namespace Mooshak2.Tests.Services
         public void Initialize()
         {
             var mockDb = new MockDataContext();
-            // var f1 = new Assignment;
+            var f1 = new ApplicationDbContext
+            {
+                /*Assignments = 1;
+                Courses = 2;
 
+                */
 
+                // stuff;
+
+            };
             _service = new LoginService(mockDb);
         }
 
         [TestMethod]
-        public void TestMethod1()
+        public void Authenticate(string name, string password)
         {
-            // Arrange: (jarðvegurinn undirbúinn: búa til test gögn, input sem á að fara inn í föllin o.s.frv..)
+            // Arrange: (Jarðvegurinn undirbúinn: búa til test gögn, input sem á að fara inn í föllin o.s.frv.)
+            LoginService service = new LoginService();
 
-            // Act: keyra aðgerðina sem á að prófa (yfirleitt ein lína)
+            // Act: (keyra aðgerðina sem á að prófa(yfirleitt ein lína)
+            var result = service.Authenticate(name, password);
 
-            /* Assert: (prófa, er svarið það sem við reiknuiðum með að fá, prófa hvaðeina sem þessi aðgerð
-            á að hafa haft í för með sér. Einhver hliðaráhrif sem ekki var hægt að sjá í skilagildi, svosem 
-            sem viðkemur gagnagrunni ?*/
+            // Assert: (prófa, er svarið það sem við reiknuiðum með að fá, prófa hvaðeina sem þessi aðgerð)
+            Assert.AreEqual(404, result);
 
         }
     }
