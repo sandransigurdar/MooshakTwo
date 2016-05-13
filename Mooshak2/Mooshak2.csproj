@@ -302,7 +302,6 @@
     <Content Include="Views\Admin\CreateUser.cshtml" />
     <Content Include="Views\Admin\ViewUsers.cshtml" />
     <Content Include="Views\Teacher\CreateAssignment.cshtml" />
-    <Content Include="Views\Student\ViewAssignments caca.cshtml" />
     <Content Include="Views\Shared\StudentLayout.cshtml" />
     <Content Include="Views\Shared\AdminLayout.cshtml" />
     <Content Include="Views\Shared\TeacherLayout.cshtml" />

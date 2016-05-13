@@ -24,7 +24,7 @@ namespace Mooshak2.Controllers
         {
             string assignmentId = Request.Form["asName"];
             var fileName = Request.Files.Get("file");
-            string pathToFile = aS.SaveAssignment(assignmentId , fileName);
+            string pathToFile = aS.SaveAssignment(assignmentId, fileName);
             string code = aS.ReturnCode(pathToFile);
 
             /*

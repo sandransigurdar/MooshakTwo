@@ -70,7 +70,7 @@ namespace Mooshak2.Tests.Services
             newAssignment.dueDate = DateTime.Parse("11/11/2016");
             newAssignment.input = "input";
             newAssignment.correctOutput = "correctOutput";
-
+            
             // Act: (keyra aðgerðina sem á að prófa(yfirleitt ein lína)
             _service.SaveChangesToDatabase(newAssignment);
 
