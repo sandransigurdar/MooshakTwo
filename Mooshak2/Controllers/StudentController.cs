@@ -14,7 +14,6 @@ namespace Mooshak2.Controllers
     {
         public ActionResult HomePage()
         {
-
             return View();
         }
 

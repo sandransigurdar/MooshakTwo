@@ -83,13 +83,13 @@ namespace Mooshak2.Services
                 newStudent.password = password;
                 newStudent.role = 1;
 
-                
+
                 int courseId = 0;
 
                 foreach (var item in _db.Courses)
                 {
-                    
-                    if(item.courseName == course)
+
+                    if (item.courseName == course)
                     {
                         courseId = item.id;
                     }
@@ -98,10 +98,10 @@ namespace Mooshak2.Services
                 _db.Students.Add(newStudent);
                 _db.SaveChanges();
 
-                
+
                 int studentId = 0;
 
-                foreach(var item in _db.Students)
+                foreach (var item in _db.Students)
                 {
                     if (item.name == name)
                     {
@@ -114,7 +114,7 @@ namespace Mooshak2.Services
 
                 Directory.CreateDirectory(wholePath);
 
-                
+
                 cS.courseId = courseId;
                 cS.studentId = studentId;
 
@@ -122,9 +122,9 @@ namespace Mooshak2.Services
                 _db.SaveChanges();
             }
 
-            else if(user == 2)
+            else if (user == 2)
             {
-                Teacher newTeacher = new Teacher(); 
+                Teacher newTeacher = new Teacher();
 
                 newTeacher.name = name;
                 newTeacher.userName = userName;
@@ -134,12 +134,12 @@ namespace Mooshak2.Services
                 newTeacher.role = 2;
 
 
-                foreach(var item in _db.Courses)
+                foreach (var item in _db.Courses)
                 {
-                    if(item.courseName == course)
+                    if (item.courseName == course)
                     {
                         item.courseTeacher = name;
-                        
+
                     }
                 }
 
