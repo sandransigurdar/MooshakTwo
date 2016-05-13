@@ -216,13 +216,13 @@ namespace Mooshak2.Services
                 codeResult += codeResult[i];
             }
 
-            foreach(var item in _db.AssignmentStudents)
+            /*foreach(var item in _db.AssignmentStudents)
             {
                 if(assignmentId == item.)
                 {
 
                 }
-            }
+            } */
             
 
 
