@@ -15,10 +15,9 @@ namespace Mooshak2.Controllers
         CourseService cS = new CourseService();
         AdminUserViewModel aUVM = new AdminUserViewModel();
 
-        //[Authorize (LoginService.userRole == 3)]   Gummi ætlaði að skoða þetta og svara okkur
+        //[Authorize (LoginService.userRole == 3)]   Gummi ætlaði að skoða hvernig á að gera custom Authorize og svara okkur
         public ActionResult CreateCourse()
         {
-
             List<Teacher> ListOfAllTeachers = new List<Teacher>();
             ListOfAllTeachers = uS.GetAllTeachers();
 

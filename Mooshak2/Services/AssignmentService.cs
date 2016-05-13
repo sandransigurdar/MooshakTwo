@@ -7,13 +7,14 @@ using Mooshak2.Models.ViewModels;
 using Mooshak2.Models.Entity;
 using System.IO;
 using System.Diagnostics;
+using System.Configuration;
 
 namespace Mooshak2.Services
 {
 
     public class AssignmentService
     {
-        
+
         LoginService lS = new LoginService();
 
         private ApplicationDbContext _db;
@@ -87,15 +88,15 @@ namespace Mooshak2.Services
 
             string loggedInUser = LoginService.nameOfLoggedInUser;
 
-            foreach(var item in _db.Students)
+            foreach (var item in _db.Students)
             {
-                if(loggedInUser == item.userName)
+                if (loggedInUser == item.userName)
                 {
                     studentId = item.id;
                 }
             }
 
-            if(studentId == 404)
+            if (studentId == 404)
             {
                 //return View("~/Views/Shared/Error.cshtml");
             }
@@ -107,7 +108,7 @@ namespace Mooshak2.Services
                 string createText = "Hello and Welcome" + Environment.NewLine;
                 File.WriteAllText(rootOfProjectPath, createText);
             }
-            rootOfProjectPath +=  assignmentId + ".cpp";
+            rootOfProjectPath += assignmentId + ".cpp";
 
             System.IO.FileStream outStream = new System.IO.FileStream(rootOfProjectPath, System.IO.FileMode.CreateNew);
 
@@ -145,19 +146,8 @@ namespace Mooshak2.Services
 
             System.IO.File.WriteAllText(workingFolder + cppFileName, code);
 
-            //TODO Búa til lykil fyrir pathið á visual studio e.t.c.
-
-            var compilerFolder = "C:\\Program Files\\Microsoft Visual Studio 14.0\\VC\\bin\\";
-
-            // Using this approach means that:
-            // * the computer running our web application must have
-            //   Visual Studio installed. This is an assumption we can
-            //   make in this project.
-            // * Hardcoding the path to the compiler is not an optimal
-            //   solution. A better approach is to store the path in
-            //   web.config, and access that value using ConfigurationManager.AppSettings.
-
-            // Execute the compiler:
+            var compilerFolder = ConfigurationSettings.AppSettings["VisualStudioCompilerPath"];
+           
 
             List <string> lines = new List<string>();
 
@@ -175,9 +165,6 @@ namespace Mooshak2.Services
             string output = compiler.StandardOutput.ReadToEnd();
             compiler.WaitForExit();
             compiler.Close();
-
-            // Check if the compile succeeded, and if it did,
-            // we try to execute the code:
 
             if (System.IO.File.Exists(exeFilePath))
             {
@@ -211,25 +198,52 @@ namespace Mooshak2.Services
             List <string> codeStringList = lines;
 
             string codeResult = "";
-            for (int i = 0; i<codeStringList.Count; i++)
+            foreach(var item in codeStringList)
             {
-                codeResult += codeResult[i];
+                codeResult += item;
+            }
+
+            int loggedInUserId = 404;
+            string nameOfLoggedInUser = LoginService.nameOfLoggedInUser;
+            foreach(var item in _db.Students)
+            {
+                if(nameOfLoggedInUser == item.userName)
+                {
+                    loggedInUserId = item.id;
+                }
             }
 
             /*foreach(var item in _db.AssignmentStudents)
-            {
-                if(assignmentId == item.)
-                {
+           
+            int assignmentIdInt = int.Parse(assignmentId);
+            int status = -1999;
 
+            foreach (var item in _db.AssignmentStudents)
+
+            {
+                if(loggedInUserId == item.studentId && assignmentIdInt == item.assignmentId)
+                {
+                    foreach(var assignment in _db.Assignments)
+                    {
+                        if(codeResult == assignment.correctOutput)
+                        {
+                            status = 1; 
+                        }
+                        else if(!(codeResult==assignment.correctOutput))
+                        {
+                            status = 2;
+                        }
+
+                    }
                 }
             } */
             
+            //TODO SAVE TO DATABASE
 
 
-            return 5;
+            return status;
             
 
-            //---------------------------------------------------
         }
 
 
