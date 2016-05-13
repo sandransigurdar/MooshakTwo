@@ -152,8 +152,7 @@ header.navbar/*.navbar-default*/
  */
 body, html {
     background-repeat: no-repeat;
-    background-image: linear-gradient(rgba(104, 145, 162, 0.35), rgba(104, 145, 162, 0.28));
-    height: 100%; 
+    background-image: linear-gradient(rgba(104, 145, 162, 0.35), rgba(104, 145, 162, 0.28)); 
     background-color: rgba(104, 145, 162, 0.28);
 }
 
