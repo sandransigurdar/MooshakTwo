@@ -77,9 +77,29 @@
 
             <div class="tab-content">
                 <div id="home" class="tab-pane fade in active">
-                    <h3>HOME</h3>
-                    <p>Það þarf að laga helling hérna en ágætis byrjun...</p>
-                </div>
+                    <h3>Submissions</h3>
+                    <table class="table-responsive">
+                        <thead>
+                        <tr>
+                            <th>Hand in number:</th>
+                            <th>Status</th>
+                        </tr>
+                        </thead>
+                    <tbody>
+                        @foreach (var item in Model.assignmentStudent)
+                        {
+                            if (item.hasBeenTurnedIn == 1)
+                            {
+                                <tr class="success">
+                                    <td>@item.id</td>
+                                    <td>Success</td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                    </table>
+                       
+</div>
                 <div id="menu1" class="tab-pane fade">
                     <h3>Menu 1</h3>
                     <p>Some content in menu 1.</p>
