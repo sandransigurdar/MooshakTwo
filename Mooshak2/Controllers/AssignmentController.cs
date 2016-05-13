@@ -32,13 +32,7 @@ namespace Mooshak2.Controllers
               Status 1 equals Returned with no errors
               Status 2 equals Returned with errors
             */
-            int status = aS.CompileAndReturnStatusOfAssignment(assignmentId, code);
-
-            if (status != 404)
-            {
-                aS.SaveStatusOfAssignment(status);
-            }
-            
+            aS.CompileAndReturnStatusOfAssignment(assignmentId, code);
 
             return View("~/Views/Student/HomePage.cshtml");
         }
