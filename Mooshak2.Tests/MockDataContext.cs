@@ -7,14 +7,12 @@ using System.Linq;
 
 namespace Mooshak2.Tests
 {
-    class MockDataContext : IMyDataContext
+    public class MockDataContext : IMyDataContext
     {
-        /// Sets up the fake database.
-        /// </summary>
         public MockDataContext()
         {
-            // We're setting our DbSets to be InMemoryDbSets rather than using SQL Server.
-            
+            // We're setting our DbSets to be InMemoryDbSets rather than using SQL Server.            
+
             Assignments = new InMemoryDbSet<Assignment>();
             Courses = new InMemoryDbSet<Course>();
             Students = new InMemoryDbSet<Student>();
