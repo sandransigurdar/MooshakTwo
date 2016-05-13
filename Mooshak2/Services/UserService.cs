@@ -15,11 +15,9 @@ namespace Mooshak2.Services
 {
     public class UserService
     {
-        private readonly IMyDataContext _dab;
-
         public UserService(IMyDataContext context)
         {
-            _dab = context ?? new ApplicationDbContext();
+            _db = context ?? new ApplicationDbContext();
         }
 
 
@@ -27,7 +25,7 @@ namespace Mooshak2.Services
         CourseStudent cS = new CourseStudent();
         LoginService lS = new LoginService();
 
-        private ApplicationDbContext _db;
+        private IMyDataContext _db;
 
 
         public UserService()
