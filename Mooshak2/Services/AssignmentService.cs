@@ -207,9 +207,21 @@ namespace Mooshak2.Services
                 codeResult += item;
             }
 
-            int studentId = 404;
-            string nameOfLoggedInUser = LoginService.nameOfLoggedInUser;
+            //foreach(var item in _db.AssignmentStudents)
+            //{
+            //    if(assignmentId == item.)
+            //    {
 
+            //    }
+            //}
+            
+            string nameOfLoggedInUser = LoginService.nameOfLoggedInUser;
+            
+
+           
+            int status = 0;
+            int studentId = 0;
+            
             foreach (var item in _db.Students)
             {
                 if (nameOfLoggedInUser == item.userName)
@@ -218,9 +230,9 @@ namespace Mooshak2.Services
                 }
             }
 
-            int status = 0;
             
             foreach(var item in _db.Assignments)
+
             {
                 if(codeResult == item.correctOutput && assignmentIdInt == item.id)
                 {
@@ -232,19 +244,27 @@ namespace Mooshak2.Services
                 }
             }
 
-            foreach (var item in _db.Students)
+
+            AssignmentStudent oAS = null;
+
+            foreach (var item in _db.AssignmentStudents)
             {
-                if (nameOfLoggedInUser == item.userName)
+                if (item.assignmentId == assignmentIdInt && item.studentId == studentId)
                 {
-                    studentId = item.id;
+                    oAS = item;
                 }
+            }
+
+            if (oAS != null)
+            {
+                _db.AssignmentStudents.Remove(oAS);
             }
 
             AssignmentStudent nAS = new AssignmentStudent();
             nAS.assignmentId = assignmentIdInt;
             nAS.hasBeenTurnedIn = status;
             nAS.studentId = studentId;
-
+            
             _db.AssignmentStudents.Add(nAS);
             _db.SaveChanges();
 

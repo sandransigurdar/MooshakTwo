@@ -26,18 +26,15 @@
                 <div class="panel-body" id="navbuttons">
                     @foreach (var item in Model.assignments)
                     {
-                        <button type="button" class="btn btn-default" id="btn-id" href="@("#box" + item.id)">@item.assignmentName</button>
-                        
+                        <button type="button" class="btn btn-default" id="btn-id" href="@("#box" + item.id)">@item.assignmentName</button>                        
                     }
                 </div>
             </div>
         </div>
-
+         
         <div class="col-md-1"></div>
 
-
         <div class="col-md-7">
-
 
             @foreach (var item in Model.assignments)
             {
