@@ -197,7 +197,7 @@ namespace Mooshak2.Services
 
             int status = 0;
             int studentId = 0;
-            
+
             foreach (var item in _db.Students)
             {
                 if (nameOfLoggedInUser == item.userName)
@@ -209,11 +209,11 @@ namespace Mooshak2.Services
             foreach(var item in _db.Assignments)
 
             {
-                if(codeResult == item.correctOutput && assignmentIdInt == item.id)
+                if (codeResult == item.correctOutput && assignmentIdInt == item.id)
                 {
                     status = 1;
                 }
-                else if(codeResult != item.correctOutput && assignmentIdInt == item.id)
+                else if (codeResult != item.correctOutput && assignmentIdInt == item.id)
                 {
                     status = 2;
                 }
@@ -238,7 +238,7 @@ namespace Mooshak2.Services
             nAS.assignmentId = assignmentIdInt;
             nAS.hasBeenTurnedIn = status;
             nAS.studentId = studentId;
-            
+
             _db.AssignmentStudents.Add(nAS);
             _db.SaveChanges();
         }
